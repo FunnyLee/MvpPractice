@@ -24,7 +24,7 @@ public class PictureFragment extends BaseViewFragment {
     @BindView(R.id.tab_layout_news)
     TabLayout mTabLayoutNews;
     @BindView(R.id.view_pager_news)
-    ViewPager mViewPagerNews;
+    ViewPager mViewPager;
     private List<BaseFragment> mFragmentList;
     private List<ChannelBean> mPicChannelList;
     private List<String> mTitleList;
@@ -64,6 +64,7 @@ public class PictureFragment extends BaseViewFragment {
 
     @Override
     protected void initView(View view) {
-
+//        mTabLayoutNews.setupWithViewPager(mViewPager);
+//        mTabLayoutNews.setTabMode(TabLayout.MODE_FIXED);
     }
 }
