@@ -1,8 +1,11 @@
 package com.example.think.base;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.think.R;
@@ -30,6 +33,13 @@ public abstract class BaseActivity<P extends IBasePresenter> extends RxAppCompat
             return;
         }
         setContentView(getLayoutId());
+        //设置状态栏的颜色
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
+        }
+
         ButterKnife.bind(this);
         registEventBus();
         initData();

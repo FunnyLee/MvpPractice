@@ -31,4 +31,9 @@ public class VideoFragment extends BaseListFragment {
     public void setPresenter(Object presenter) {
 
     }
+
+    @Override
+    public void fetchData() {
+
+    }
 }

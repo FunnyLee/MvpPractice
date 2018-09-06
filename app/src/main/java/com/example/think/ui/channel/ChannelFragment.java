@@ -31,4 +31,9 @@ public class ChannelFragment extends BaseListFragment {
     public void setPresenter(Object presenter) {
 
     }
+
+    @Override
+    public void fetchData() {
+
+    }
 }

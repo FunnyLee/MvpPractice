@@ -1,15 +1,12 @@
 package com.example.think.ui.activity;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-
 import com.example.think.R;
+import com.example.think.base.BaseActivity;
 
-public class WelcomActivity extends AppCompatActivity {
+public class WelcomActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcom);
+    protected int getLayoutId() {
+        return R.layout.activity_welcom;
     }
 }

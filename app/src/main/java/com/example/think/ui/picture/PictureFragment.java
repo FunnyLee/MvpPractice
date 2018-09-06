@@ -8,6 +8,7 @@ import com.example.think.R;
 import com.example.think.base.BaseFragment;
 import com.example.think.base.BaseViewFragment;
 import com.example.think.bean.ChannelBean;
+import com.example.think.ui.adapter.ViewPagerFragmentAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +65,10 @@ public class PictureFragment extends BaseViewFragment {
 
     @Override
     protected void initView(View view) {
-//        mTabLayoutNews.setupWithViewPager(mViewPager);
-//        mTabLayoutNews.setTabMode(TabLayout.MODE_FIXED);
+        mTabLayoutNews.setupWithViewPager(mViewPager);
+        mTabLayoutNews.setTabMode(TabLayout.MODE_FIXED);
+
+        ViewPagerFragmentAdapter adapter = new ViewPagerFragmentAdapter(getFragmentManager(),mFragmentList,mTitleList);
+        mViewPager.setAdapter(adapter);
     }
 }
