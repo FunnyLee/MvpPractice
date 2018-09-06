@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class PictureArticleFragment extends BaseListFragment<IPictureContract.Presenter> implements IPictureContract.View {
 
-    
+
     public static PictureArticleFragment newInstance() {
         PictureArticleFragment fragment = new PictureArticleFragment();
         return fragment;
