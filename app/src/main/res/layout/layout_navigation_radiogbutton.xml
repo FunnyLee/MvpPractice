@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.bingoogolapple.badgeview.BGABadgeRadioButton
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:button="@null"
+    android:gravity="center_horizontal"
+    android:textColor="@color/navigation_color_selector"
+    android:textSize="@dimen/sp_12"
+    app:badge_bgColor="#ffff0000"
+    app:badge_borderColor="#ffffffff"
+    app:badge_borderWidth="@dimen/dp_0"
+    app:badge_dragExtra="@dimen/dp_4"
+    app:badge_gravity="rightTop"
+    app:badge_horizontalMargin="@dimen/dp_0"
+    app:badge_isResumeTravel="false"
+    app:badge_padding="@dimen/dp_5"
+    app:badge_draggable="true"
+    app:badge_textColor="#ffffffff"
+    app:badge_textSize="@dimen/sp_8"
+    app:badge_verticalMargin="@dimen/dp_0"/>
+
+    <!--app:badge_dragable="true"-->

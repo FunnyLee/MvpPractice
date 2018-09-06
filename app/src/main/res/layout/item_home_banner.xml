@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_hometitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:padding="@dimen/dp_5"
+        android:text="首页"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/sp_16"
+        />
+
+    <com.youth.banner.Banner
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/B_banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_240"
+        android:layout_alignParentTop="true"
+        app:delay_time="4000"
+        app:indicator_drawable_selected="@drawable/indicator_select"
+        app:indicator_drawable_unselected="@drawable/indicator_unselect"
+        app:indicator_height="@dimen/dp_8"
+        app:indicator_margin="@dimen/dp_8"
+        app:indicator_width="@dimen/dp_8"/>
+
+</RelativeLayout>
