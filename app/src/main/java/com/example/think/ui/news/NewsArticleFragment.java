@@ -41,7 +41,7 @@ public class NewsArticleFragment extends BaseListFragment<IArticleContract.Prese
 
     public static NewsArticleFragment newInstance(String categoryId) {
         Bundle args = new Bundle();
-        args.putString("NewsArticleView", categoryId);
+        args.putString("channelId", categoryId);
         NewsArticleFragment fragment = new NewsArticleFragment();
         fragment.setArguments(args);
         return fragment;
@@ -64,7 +64,7 @@ public class NewsArticleFragment extends BaseListFragment<IArticleContract.Prese
      */
     @Override
     protected void initData() {
-        mCategoryId = getArguments().getString("NewsArticleView");
+        mCategoryId = getArguments().getString("channelId");
     }
 
     @Override

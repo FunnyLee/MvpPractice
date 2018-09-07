@@ -13,7 +13,6 @@ import retrofit2.http.Query;
  */
 public interface IMobileNewsApi {
 
-    String HOST = "http://toutiao.com/";
 //
 //    获取个性化新闻
 //    深圳 http://is.snssdk.com/api/news/feed/v58/?iid=5034850950&device_id=6096495334&category=news_society

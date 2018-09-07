@@ -27,7 +27,7 @@ public class NewsArticlePresenter implements IArticleContract.Presenter {
 
     private Gson mGson = new Gson();
 
-    private String category;
+    private String mCategory;
 
     private String time;
 
@@ -42,15 +42,15 @@ public class NewsArticlePresenter implements IArticleContract.Presenter {
 
     @SuppressLint("CheckResult")
     @Override
-    public void doLoadData(String... category) {
+    public void doLoadData(String category) {
 
-        if (this.category == null) {
-            this.category = category[0];
+        if(mCategory == null){
+            mCategory = category;
         }
 
         //下拉刷新时，catagory参数不会变，time参数会改变
         Observable<MultiNewsArticleBean> observable = RetrofitFactory.getInstance()
-                .create(IMobileNewsApi.class).getNewsArticleOne(this.category, time);
+                .create(IMobileNewsApi.class).getNewsArticleOne(category, time);
         observable.subscribeOn(Schedulers.io())
                 .switchMap((Function<MultiNewsArticleBean, Observable<MultiNewsArticleDataBean>>) multiNewsArticleBean -> {
                     List<MultiNewsArticleDataBean> dataList = new ArrayList<>();
@@ -116,7 +116,7 @@ public class NewsArticlePresenter implements IArticleContract.Presenter {
 
     @Override
     public void doLoadMoreData() {
-        doLoadData();
+        doLoadData(mCategory);
     }
 
     @Override
@@ -139,7 +139,7 @@ public class NewsArticlePresenter implements IArticleContract.Presenter {
             time = String.valueOf(System.currentTimeMillis() / 1000);
         }
         mView.onShowLoading();
-        doLoadData();
+        doLoadData(mCategory);
     }
 
     @Override

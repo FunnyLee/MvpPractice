@@ -82,7 +82,6 @@ public class NewsArticleTextViewBinder extends ItemViewBinder<MultiNewsArticleDa
                             });
                     popupMenu.show();
                 });
-
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

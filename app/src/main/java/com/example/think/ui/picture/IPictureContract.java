@@ -2,6 +2,10 @@ package com.example.think.ui.picture;
 
 import com.example.think.base.IBaseListView;
 import com.example.think.base.IBasePresenter;
+import com.example.think.bean.phote.PhotoArticleBean;
+import com.example.think.net.NetCallBack;
+
+import java.util.List;
 
 /**
  * Author: Funny
@@ -24,22 +28,29 @@ public interface IPictureContract {
         /**
          * 请求数据
          */
-        void loadData();
+        void doLoadData(String category);
 
         /**
          * 加载更多
          */
-        void loadMoreData();
+        void doLoadMoreData();
 
         /**
          * 设置适配器
          */
-        void setAdapter();
+        void doSetAdapter(List<PhotoArticleBean.DataBean> datas);
 
         /**
          * 加载完成
          */
-        void onShowNoMore();
+        void doShowNoMore();
+    }
+
+    interface Model {
+        /**
+         * 网络请求
+         */
+        void loadNetData(String category, String time, NetCallBack<PhotoArticleBean.DataBean> netCallBack);
     }
 
 }

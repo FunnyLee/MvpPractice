@@ -67,7 +67,7 @@ public class NewsFragment extends BaseViewFragment {
         }
 
         for (ChannelBean newsChannelBean : mNewsChannelList) {
-            mTitleList.add(newsChannelBean.channelName);
+            mTitleList.add(newsChannelBean.channelId);
 
             String channelId = newsChannelBean.channelId;
 
@@ -99,7 +99,6 @@ public class NewsFragment extends BaseViewFragment {
     protected void initView(View view) {
         mTabLayoutNews.setupWithViewPager(mViewPager);
         mTabLayoutNews.setTabMode(TabLayout.MODE_SCROLLABLE);
-
         ViewPagerFragmentAdapter fragmentAdapter = new ViewPagerFragmentAdapter(getChildFragmentManager(), mFragmentList, mTitleList);
         mViewPager.setAdapter(fragmentAdapter);
     }

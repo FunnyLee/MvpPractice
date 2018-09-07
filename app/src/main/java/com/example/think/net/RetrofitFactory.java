@@ -20,6 +20,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RetrofitFactory {
 
+    private static final String HOST = "http://toutiao.com/";
+
     private static volatile Retrofit sInstance;
 
     private RetrofitFactory() {
@@ -42,7 +44,7 @@ public class RetrofitFactory {
                             .build();
 
                     sInstance = new Retrofit.Builder()
-                            .baseUrl(IMobileNewsApi.HOST)
+                            .baseUrl(HOST)
                             .client(mClient)
                             .addConverterFactory(GsonConverterFactory.create())
                             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

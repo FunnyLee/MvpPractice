@@ -31,7 +31,7 @@ public interface IArticleContract {
         /**
          * 请求数据
          */
-        void doLoadData(String... category);
+        void doLoadData(String category);
 
         /**
          * 再起请求数据
