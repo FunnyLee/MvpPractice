@@ -43,7 +43,6 @@ public class PictureArticleModel implements IPictureContract.Model {
                     @Override
                     public void accept(List<PhotoArticleBean.DataBean> dataBeans) throws Exception {
                         netCallBack.success(dataBeans);
-
                     }
                 }, new Consumer<Throwable>() {
                     @Override

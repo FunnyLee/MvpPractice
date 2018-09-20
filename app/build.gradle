@@ -100,4 +100,8 @@ dependencies {
     implementation 'me.drakeet.multitype:multitype:3.4.4'
     // 持久化 Cookie
     implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+    //网络请求日志拦截
+    implementation('com.github.ihsanbal:LoggingInterceptor:2.0.7') {
+        exclude group: 'org.json', module: 'json'
+    }
 }

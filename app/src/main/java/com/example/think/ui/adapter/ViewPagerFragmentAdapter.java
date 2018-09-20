@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Author: Funny
  * Time: 2018/8/16
- * Description: This is BaseFragmentAdapter
+ * Description: This is ViewPager的通用Adapter
  */
 public class ViewPagerFragmentAdapter extends FragmentStatePagerAdapter {
 

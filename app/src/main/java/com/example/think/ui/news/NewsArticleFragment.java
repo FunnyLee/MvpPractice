@@ -94,8 +94,6 @@ public class NewsArticleFragment extends BaseListFragment<IArticleContract.Prese
                     }
                 });
         mRecyclerView.setAdapter(mAdapter);
-
-
     }
 
     @Override

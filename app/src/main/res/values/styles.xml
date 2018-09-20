@@ -6,11 +6,16 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!--设置这一行，是为了APP启动时的状态颜色-->
         <item name="android:statusBarColor">@color/statusBarColor</item>
     </style>
 
+    <!--标题栏ToolBar样式-->
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <!--标题栏ToolBar样式-->
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
 
     <style name="TabLayout" parent="Base.Widget.Design.TabLayout">
         <item name="tabMaxWidth">@dimen/design_tab_max_width</item>

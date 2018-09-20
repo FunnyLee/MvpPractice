@@ -72,7 +72,7 @@ public class NewsArticleTextViewBinder extends ItemViewBinder<MultiNewsArticleDa
                     RxPopupMenu.itemClicks(popupMenu)
                             .throttleFirst(Constants.CLICK_INTERVAL, TimeUnit.SECONDS)
                             .subscribe(menuItem -> {
-                                if(menuItem.getItemId() == R.id.action_share){
+                                if (menuItem.getItemId() == R.id.action_share) {
                                     Intent shareIntent = new Intent()
                                             .setAction(Intent.ACTION_SEND)
                                             .setType("text/plain")
@@ -81,6 +81,13 @@ public class NewsArticleTextViewBinder extends ItemViewBinder<MultiNewsArticleDa
                                 }
                             });
                     popupMenu.show();
+                });
+
+        //条目点击事件，跳转到新闻内容NewsContentActivity
+        RxView.clicks(holder.itemView)
+                .throttleFirst(Constants.CLICK_INTERVAL, TimeUnit.SECONDS)
+                .subscribe(o -> {
+                    // TODO: 2018/9/19 跳转到新闻内容页面，这里是没有图片的
                 });
     }
 

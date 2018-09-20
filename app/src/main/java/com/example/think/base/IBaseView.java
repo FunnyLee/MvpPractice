@@ -3,7 +3,7 @@ package com.example.think.base;
 /**
  * Author: Funny
  * Time: 2018/8/17
- * Description: This is IBaseView
+ * Description: This is 一级View接口
  */
 public interface IBaseView<P> {
     /**

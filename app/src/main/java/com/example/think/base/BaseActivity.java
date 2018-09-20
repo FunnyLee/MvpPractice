@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.example.think.R;
 import com.example.think.utils.BindEventBus;
@@ -21,24 +20,24 @@ import butterknife.ButterKnife;
  * Time: 2018/8/14
  * Description: This is BaseActivity
  */
-public abstract class BaseActivity<P extends IBasePresenter> extends RxAppCompatActivity {
+public abstract class BaseActivity<P extends IBasePresenter> extends RxAppCompatActivity implements IBaseView<P> {
 
-    private long firstTime = 0;
+    protected P mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setPresenter(mPresenter);
+
         if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
             finish();
             return;
         }
         setContentView(getLayoutId());
-        //设置状态栏的颜色
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
-        }
+
+        //设置状态栏颜色
+        initStatusBarColor(setStatusBarColor());
 
         ButterKnife.bind(this);
         registEventBus();
@@ -47,8 +46,21 @@ public abstract class BaseActivity<P extends IBasePresenter> extends RxAppCompat
         initEvent();
     }
 
-    private void registEventBus(){
-        if(this.getClass().isAnnotationPresent(BindEventBus.class)){
+    protected int setStatusBarColor() {
+        return R.color.colorPrimary;
+    }
+
+    private void initStatusBarColor(int color) {
+        //设置状态栏的颜色
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(getResources().getColor(color));
+        }
+    }
+
+    private void registEventBus() {
+        if (this.getClass().isAnnotationPresent(BindEventBus.class)) {
             EventBus.getDefault().register(this);
         }
     }
@@ -56,7 +68,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends RxAppCompat
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(this.getClass().isAnnotationPresent(BindEventBus.class)){
+        if (this.getClass().isAnnotationPresent(BindEventBus.class)) {
             EventBus.getDefault().unregister(this);
         }
     }
@@ -72,15 +84,5 @@ public abstract class BaseActivity<P extends IBasePresenter> extends RxAppCompat
     protected void initEvent() {
     }
 
-    @Override
-    public void onBackPressed() {
-        //双击退出APP
-        long secondTime = System.currentTimeMillis();
-        if (secondTime - firstTime > 2000) {
-            Toast.makeText(this, R.string.two_press_exit, Toast.LENGTH_SHORT).show();
-            firstTime = secondTime;
-        } else {
-            System.exit(0);
-        }
-    }
+
 }

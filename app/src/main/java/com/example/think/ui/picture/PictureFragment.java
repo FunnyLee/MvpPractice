@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.example.think.R;
 import com.example.think.base.BaseFragment;
-import com.example.think.base.BaseViewFragment;
+import com.example.think.base.ViewFragment;
 import com.example.think.bean.ChannelBean;
 import com.example.think.ui.adapter.ViewPagerFragmentAdapter;
 
@@ -20,7 +20,7 @@ import butterknife.BindView;
  * Time: 2018/8/14
  * Description: This is 图片
  */
-public class PictureFragment extends BaseViewFragment {
+public class PictureFragment extends ViewFragment {
 
     @BindView(R.id.tab_layout_news)
     TabLayout mTabLayoutNews;
@@ -58,7 +58,7 @@ public class PictureFragment extends BaseViewFragment {
 
         for (ChannelBean channelBean : mPicChannelList) {
             mTitleList.add(channelBean.channelName);
-            BaseFragment fragment = PictureArticleFragment.newInstance();
+            BaseFragment fragment = PictureArticleFragment.newInstance(channelBean.channelId);
             mFragmentList.add(fragment);
         }
     }

@@ -13,17 +13,18 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.example.think.R;
-import com.example.think.base.BaseActivity;
+import com.example.think.base.ViewActivity;
 import com.example.think.ui.channel.ChannelFragment;
+import com.example.think.ui.news.NewsFragment;
 import com.example.think.ui.picture.PictureFragment;
 import com.example.think.ui.video.VideoFragment;
-import com.example.think.ui.news.NewsFragment;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends ViewActivity {
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -35,6 +36,9 @@ public class MainActivity extends BaseActivity {
     NavigationView mNavView;
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
+
+    private long firstTime = 0;
+
 
     public static void start(Context context) {
         Intent starter = new Intent(context, MainActivity.class);
@@ -139,4 +143,15 @@ public class MainActivity extends BaseActivity {
         transaction.commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        //双击退出APP
+        long secondTime = System.currentTimeMillis();
+        if (secondTime - firstTime > 2000) {
+            Toast.makeText(this, R.string.two_press_exit, Toast.LENGTH_SHORT).show();
+            firstTime = secondTime;
+        } else {
+            System.exit(0);
+        }
+    }
 }

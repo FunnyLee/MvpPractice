@@ -5,7 +5,7 @@ package com.example.think.base;
  * Time: 2018/9/5
  * Description: This is BaseViewFragment，适配器的Fragment
  */
-public abstract class BaseViewFragment extends BaseFragment {
+public abstract class ViewFragment extends BaseFragment {
 
     @Override
     public void onShowLoading() {

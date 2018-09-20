@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.think.Constants;
 import com.example.think.R;
 import com.example.think.bean.news.MultiNewsArticleDataBean;
+import com.example.think.ui.newsContent.NewsContentActivity;
 import com.example.think.utils.ImageHelper;
 import com.example.think.utils.TimeUtil;
 import com.jakewharton.rxbinding2.view.RxView;
@@ -100,6 +101,14 @@ public class NewsArticleImgViewBinder extends ItemViewBinder<MultiNewsArticleDat
                 imgUrl += uri.replace("list", "large");
             }
         }
+
+        //条目点击事件
+        String picUrl = imgUrl;
+        RxView.clicks(holder.itemView)
+                .throttleFirst(Constants.CLICK_INTERVAL, TimeUnit.SECONDS)
+                .subscribe(o -> {
+                    NewsContentActivity.start(context, picUrl, item);
+                });
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

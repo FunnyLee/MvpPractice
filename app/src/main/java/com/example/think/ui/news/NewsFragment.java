@@ -8,14 +8,12 @@ import android.widget.LinearLayout;
 
 import com.example.think.R;
 import com.example.think.base.BaseFragment;
-import com.example.think.base.BaseViewFragment;
+import com.example.think.base.ViewFragment;
 import com.example.think.bean.ChannelBean;
 import com.example.think.ui.adapter.ViewPagerFragmentAdapter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 
@@ -24,7 +22,7 @@ import butterknife.BindView;
  * Time: 2018/8/14
  * Description: This is AccountFragment
  */
-public class NewsFragment extends BaseViewFragment {
+public class NewsFragment extends ViewFragment {
     @BindView(R.id.tab_layout_news)
     TabLayout mTabLayoutNews;
     @BindView(R.id.add_channel_iv)
@@ -33,10 +31,9 @@ public class NewsFragment extends BaseViewFragment {
     LinearLayout mHeaderLayout;
     @BindView(R.id.view_pager_news)
     ViewPager mViewPager;
+
     private List<String> mTitleList;
     private List<ChannelBean> mNewsChannelList;
-    //这个Map主要是为了缓存已创建的Fragment
-    private Map<String, BaseFragment> mFragmentMap = new HashMap<>();
     private List<BaseFragment> mFragmentList;
 
 
@@ -67,32 +64,20 @@ public class NewsFragment extends BaseViewFragment {
         }
 
         for (ChannelBean newsChannelBean : mNewsChannelList) {
-            mTitleList.add(newsChannelBean.channelId);
+
+            mTitleList.add(newsChannelBean.channelName);
 
             String channelId = newsChannelBean.channelId;
 
             BaseFragment fragment = null;
 
             if ("question_and_answer".equals(channelId)) {
-                if (mFragmentMap.containsKey(channelId)) {
-                    fragment = mFragmentMap.get(channelId);
-                } else {
-                    fragment = WendaArticleFragment.newInstance();
-                }
-
+                fragment = WendaArticleFragment.newInstance();
             } else {
-                if (mFragmentMap.containsKey(channelId)) {
-                    fragment = mFragmentMap.get(channelId);
-                } else {
-                    fragment = NewsArticleFragment.newInstance(channelId);
-                }
+                fragment = NewsArticleFragment.newInstance(channelId);
             }
-
-            if (fragment != null) {
-                mFragmentMap.put(channelId, fragment);
-            }
+            mFragmentList.add(fragment);
         }
-        mFragmentList.addAll(mFragmentMap.values());
     }
 
     @Override
