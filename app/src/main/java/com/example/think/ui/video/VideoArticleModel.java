@@ -8,6 +8,8 @@ import com.example.think.net.IMobileVideoApi;
 import com.example.think.net.NetCallBack;
 import com.example.think.net.RetrofitFactory;
 import com.google.gson.Gson;
+import com.trello.rxlifecycle2.LifecycleProvider;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +29,7 @@ public class VideoArticleModel implements IVideoContract.Model {
 
     @SuppressLint("CheckResult")
     @Override
-    public void loadNetData(String category, String time, NetCallBack<MultiNewsArticleDataBean> netCallBack) {
+    public void loadNetData(LifecycleProvider<ActivityEvent> provider, String category, String time, NetCallBack<MultiNewsArticleDataBean> netCallBack) {
         Observable<MultiNewsArticleBean> observable = RetrofitFactory.getInstance().create(IMobileVideoApi.class).getVideoArticle(category, time);
         observable.subscribeOn(Schedulers.io())
                 .map(new Function<MultiNewsArticleBean, List<MultiNewsArticleDataBean>>() {
@@ -43,6 +45,7 @@ public class VideoArticleModel implements IVideoContract.Model {
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(provider.bindToLifecycle())
                 .subscribe(new Consumer<List<MultiNewsArticleDataBean>>() {
                     @Override
                     public void accept(List<MultiNewsArticleDataBean> multiNewsArticleDataBeans) throws Exception {

@@ -53,7 +53,7 @@ public class NewsArticleFragment extends BaseListFragment<IArticleContract.Prese
      * @param presenter
      */
     @Override
-    public void setPresenter(IArticleContract.Presenter presenter) {
+    public void onSetPresenter(IArticleContract.Presenter presenter) {
         if (presenter == null) {
             this.mPresenter = new NewsArticlePresenter(this);
         }

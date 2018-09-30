@@ -28,7 +28,7 @@ public class ChannelFragment extends BaseListFragment {
     }
 
     @Override
-    public void setPresenter(Object presenter) {
+    public void onSetPresenter(Object presenter) {
 
     }
 

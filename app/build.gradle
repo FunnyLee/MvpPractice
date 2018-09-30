@@ -1,6 +1,11 @@
 apply plugin: 'com.android.application'
 
-//def configInfo = rootProject.ext.config
+apply plugin: 'org.greenrobot.greendao'
+greendao {
+    schemaVersion 1
+    daoPackage 'com.example.think.greendao'
+    targetGenDir 'src/main/java'
+}
 
 android {
     compileSdkVersion 27
@@ -83,9 +88,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     //rxLifecycle
     implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.2'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-navi:2.2.2'
     //rxCache
     implementation 'com.github.VictorAlbertos.RxCache:runtime:1.8.3-2.x'
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.6'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
     implementation 'com.github.VictorAlbertos.Jolyglot:gson:0.0.4'
     //徽章控件
     implementation 'cn.bingoogolapple:bga-badgeview-api:1.1.8'
@@ -104,4 +110,6 @@ dependencies {
     implementation('com.github.ihsanbal:LoggingInterceptor:2.0.7') {
         exclude group: 'org.json', module: 'json'
     }
+    //GreenDao
+    implementation 'org.greenrobot:greendao:3.2.2'
 }

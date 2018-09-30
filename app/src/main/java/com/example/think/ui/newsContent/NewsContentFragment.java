@@ -11,7 +11,7 @@ import com.example.think.base.BaseFragment;
 public class NewsContentFragment extends BaseFragment<INewsContentContract.Presenter> implements INewsContentContract.View {
 
     @Override
-    public void setPresenter(INewsContentContract.Presenter presenter) {
+    public void onSetPresenter(INewsContentContract.Presenter presenter) {
 
     }
 

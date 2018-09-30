@@ -4,6 +4,8 @@ import com.example.think.base.IBaseListView;
 import com.example.think.base.IBasePresenter;
 import com.example.think.bean.news.MultiNewsArticleDataBean;
 import com.example.think.net.NetCallBack;
+import com.trello.rxlifecycle2.LifecycleProvider;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.util.List;
 
@@ -52,7 +54,7 @@ public interface IVideoContract {
         /**
          * 网络请求
          */
-        void loadNetData(String category, String time, NetCallBack<MultiNewsArticleDataBean> netCallBack);
+        void loadNetData(LifecycleProvider<ActivityEvent> provider, String category, String time, NetCallBack<MultiNewsArticleDataBean> netCallBack);
 
     }
 

@@ -4,12 +4,16 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.think.R;
 import com.example.think.utils.BindEventBus;
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+import com.trello.navi2.component.support.NaviAppCompatActivity;
+import com.trello.rxlifecycle2.LifecycleProvider;
+import com.trello.rxlifecycle2.android.ActivityEvent;
+import com.trello.rxlifecycle2.navi.NaviLifecycle;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -20,7 +24,8 @@ import butterknife.ButterKnife;
  * Time: 2018/8/14
  * Description: This is BaseActivity
  */
-public abstract class BaseActivity<P extends IBasePresenter> extends RxAppCompatActivity implements IBaseView<P> {
+public abstract class BaseActivity<P extends IBasePresenter> extends NaviAppCompatActivity implements IBaseView<P> {
+
 
     protected P mPresenter;
 
@@ -28,7 +33,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends RxAppCompat
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setPresenter(mPresenter);
+        onSetPresenter(mPresenter);
 
         if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
             finish();
@@ -50,6 +55,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends RxAppCompat
         return R.color.colorPrimary;
     }
 
+    @RequiresApi(19)
     private void initStatusBarColor(int color) {
         //设置状态栏的颜色
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -71,6 +77,12 @@ public abstract class BaseActivity<P extends IBasePresenter> extends RxAppCompat
         if (this.getClass().isAnnotationPresent(BindEventBus.class)) {
             EventBus.getDefault().unregister(this);
         }
+    }
+
+    @Override
+    public LifecycleProvider<ActivityEvent> autoRxLifeCycle() {
+        //返回Rxlifecycler的provider对象
+        return NaviLifecycle.createActivityLifecycleProvider(this);
     }
 
     protected abstract int getLayoutId();

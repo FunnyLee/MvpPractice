@@ -39,7 +39,7 @@ public class PictureArticleFragment extends BaseListFragment<IPictureContract.Pr
      * @param presenter
      */
     @Override
-    public void setPresenter(IPictureContract.Presenter presenter) {
+    public void onSetPresenter(IPictureContract.Presenter presenter) {
         if (mPresenter == null) {
             mPresenter = new PictureArticlePresenter(this);
         }

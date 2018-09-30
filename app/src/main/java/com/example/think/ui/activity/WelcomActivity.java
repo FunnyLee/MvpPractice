@@ -1,7 +1,16 @@
 package com.example.think.ui.activity;
 
+import android.annotation.SuppressLint;
+
 import com.example.think.R;
 import com.example.think.base.ViewActivity;
+
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public class WelcomActivity extends ViewActivity {
 
@@ -10,8 +19,25 @@ public class WelcomActivity extends ViewActivity {
         return R.layout.activity_welcom;
     }
 
-    @Override
+
+        @Override
     protected int setStatusBarColor() {
         return R.color.statusBarColor;
+    }
+
+    @SuppressLint("CheckResult")
+    @Override
+    protected void initEvent() {
+        Observable.just("splash")
+                .delay(1, TimeUnit.SECONDS)
+                .observeOn(Schedulers.io())
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .compose(autoRxLifeCycle().bindToLifecycle())
+                .subscribe(new Consumer() {
+                    @Override
+                    public void accept(Object o) throws Exception {
+                        MainActivity.start(WelcomActivity.this);
+                    }
+                });
     }
 }

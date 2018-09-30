@@ -6,6 +6,8 @@ import android.text.TextUtils;
 import com.example.think.bean.news.MultiNewsArticleDataBean;
 import com.example.think.net.NetCallBack;
 import com.example.think.utils.TimeUtil;
+import com.trello.rxlifecycle2.LifecycleProvider;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,18 +28,20 @@ public class VideoArticlePresenter implements IVideoContract.Presenter {
     private String mTime;
     private List<MultiNewsArticleDataBean> mDatas;
     private String mCategory;
+    private final LifecycleProvider<ActivityEvent> mProvider;
 
     public VideoArticlePresenter(VideoArticleFragment view) {
         mView = view;
         mModel = new VideoArticleModel();
         mTime = TimeUtil.getCurrentTimeStamp();
         mDatas = new ArrayList<>();
+        mProvider = mView.autoRxLifeCycle();
     }
 
     @Override
     public void doLoadData(String categoryId) {
         mCategory = categoryId;
-        mModel.loadNetData(categoryId, mTime, new NetCallBack<MultiNewsArticleDataBean>() {
+        mModel.loadNetData(mProvider,categoryId, mTime, new NetCallBack<MultiNewsArticleDataBean>() {
             @SuppressLint("CheckResult")
             @Override
             public void success(List<MultiNewsArticleDataBean> datas) {
@@ -67,6 +71,7 @@ public class VideoArticlePresenter implements IVideoContract.Presenter {
                             }
                         })
                         .toList()
+                        .compose(mProvider.bindToLifecycle())
                         .subscribe(new Consumer<List<MultiNewsArticleDataBean>>() {
                             @Override
                             public void accept(List<MultiNewsArticleDataBean> dataBeans) throws Exception {

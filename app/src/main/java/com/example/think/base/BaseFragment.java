@@ -4,12 +4,15 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.think.utils.BindEventBus;
+import com.trello.navi2.component.support.NaviFragment;
+import com.trello.rxlifecycle2.LifecycleProvider;
+import com.trello.rxlifecycle2.android.ActivityEvent;
+import com.trello.rxlifecycle2.navi.NaviLifecycle;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -20,7 +23,7 @@ import butterknife.ButterKnife;
  * Time: 2018/8/14
  * Description: This is BaseFragment
  */
-public abstract class BaseFragment<P extends IBasePresenter> extends Fragment implements IBaseView<P> {
+public abstract class BaseFragment<P extends IBasePresenter> extends NaviFragment implements IBaseView<P> {
 
     protected P mPresenter;
 
@@ -35,12 +38,13 @@ public abstract class BaseFragment<P extends IBasePresenter> extends Fragment im
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setPresenter(mPresenter);
+        onSetPresenter(mPresenter);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         View view = LayoutInflater.from(getContext()).inflate(getLayoutId(), null);
         ButterKnife.bind(this, view);
 
@@ -63,6 +67,12 @@ public abstract class BaseFragment<P extends IBasePresenter> extends Fragment im
         if (this.getClass().isAnnotationPresent(BindEventBus.class)) {
             EventBus.getDefault().unregister(this);
         }
+    }
+
+    @Override
+    public LifecycleProvider<ActivityEvent> autoRxLifeCycle() {
+        //返回Rxlifecycler的provider对象
+        return NaviLifecycle.createActivityLifecycleProvider(this);
     }
 
     protected abstract int getLayoutId();

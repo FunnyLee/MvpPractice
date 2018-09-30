@@ -39,7 +39,7 @@ public class VideoArticleFragment extends BaseListFragment<IVideoContract.Presen
      * @param presenter
      */
     @Override
-    public void setPresenter(IVideoContract.Presenter presenter) {
+    public void onSetPresenter(IVideoContract.Presenter presenter) {
         if (mPresenter == null) {
             mPresenter = new VideoArticlePresenter(this);
         }

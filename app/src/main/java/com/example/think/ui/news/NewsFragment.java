@@ -1,19 +1,23 @@
 package com.example.think.ui.news;
 
+import android.annotation.SuppressLint;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.example.think.Constants;
 import com.example.think.R;
 import com.example.think.base.BaseFragment;
 import com.example.think.base.ViewFragment;
 import com.example.think.bean.ChannelBean;
 import com.example.think.ui.adapter.ViewPagerFragmentAdapter;
+import com.jakewharton.rxbinding2.view.RxView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 
@@ -63,6 +67,25 @@ public class NewsFragment extends ViewFragment {
             mNewsChannelList.add(bean);
         }
 
+
+//        List<ChannelEntity> channelEntities = GreenDaoManager.getInstance().queryAll();
+//
+//        for (ChannelEntity channelEntity : channelEntities) {
+//            mTitleList.add(channelEntity.channelName);
+//
+//            String channelId = channelEntity.channelId;
+//
+//            BaseFragment fragment = null;
+//
+//            if ("question_and_answer".equals(channelId)) {
+//                fragment = WendaArticleFragment.newInstance();
+//            } else {
+//                fragment = NewsArticleFragment.newInstance(channelId);
+//            }
+//            mFragmentList.add(fragment);
+//        }
+
+
         for (ChannelBean newsChannelBean : mNewsChannelList) {
 
             mTitleList.add(newsChannelBean.channelName);
@@ -86,5 +109,15 @@ public class NewsFragment extends ViewFragment {
         mTabLayoutNews.setTabMode(TabLayout.MODE_SCROLLABLE);
         ViewPagerFragmentAdapter fragmentAdapter = new ViewPagerFragmentAdapter(getChildFragmentManager(), mFragmentList, mTitleList);
         mViewPager.setAdapter(fragmentAdapter);
+    }
+
+    @SuppressLint("CheckResult")
+    @Override
+    protected void initEvent() {
+        RxView.clicks(mAddChannelIv)
+                .throttleFirst(Constants.CLICK_INTERVAL, TimeUnit.SECONDS)
+                .subscribe(o -> {
+                    NewsChannelActivity.start(mContext);
+                });
     }
 }

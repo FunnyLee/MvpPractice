@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FE3232</color>
-    <color name="colorPrimaryDark">#C2185B</color>
+    <color name="colorPrimaryDark">#FE3232</color>
     <color name="colorAccent">#FF5252</color>
     <!--状态栏的颜色-->
     <color name="statusBarColor">@color/Grey400</color>
+
     <color name="textColorPrimary">#616161</color>
     <color name="viewBackground">@android:color/white</color>
     <color name="windowBackground">@color/Grey100</color>

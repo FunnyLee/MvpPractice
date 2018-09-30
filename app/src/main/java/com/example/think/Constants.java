@@ -12,4 +12,6 @@ public class Constants {
      */
     public static final long CLICK_INTERVAL = 1;
 
+    public static final String DB_NAME = "channel.db";
+
 }

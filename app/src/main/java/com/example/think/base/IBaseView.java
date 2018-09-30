@@ -1,5 +1,8 @@
 package com.example.think.base;
 
+import com.trello.rxlifecycle2.LifecycleProvider;
+import com.trello.rxlifecycle2.android.ActivityEvent;
+
 /**
  * Author: Funny
  * Time: 2018/8/17
@@ -24,10 +27,10 @@ public interface IBaseView<P> {
     /**
      * 设置 presenter
      */
-    void setPresenter(P presenter);
+    void onSetPresenter(P presenter);
 
     /**
      * 绑定生命周期
      */
-    //<X> AutoDisposeConverter<X> bindAutoDispose();
+    LifecycleProvider<ActivityEvent> autoRxLifeCycle();
 }

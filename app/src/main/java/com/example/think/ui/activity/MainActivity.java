@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.example.think.R;
 import com.example.think.base.ViewActivity;
+import com.example.think.database.ChannelEntity;
+import com.example.think.greendao.GreenDaoManager;
 import com.example.think.ui.channel.ChannelFragment;
 import com.example.think.ui.news.NewsFragment;
 import com.example.think.ui.picture.PictureFragment;
@@ -74,6 +76,22 @@ public class MainActivity extends ViewActivity {
         //默认选中新闻
         mToolbar.setTitle(R.string.title_news);
         switchFragment(NewsFragment.newInstance(), R.id.frame_layout);
+    }
+
+    @Override
+    protected void initData() {
+        String[] channelNames = getResources().getStringArray(R.array.mobile_news_name);
+        String[] channelIds = getResources().getStringArray(R.array.mobile_news_id);
+
+//        for (int i = 0; i < channelNames.length; i++) {
+//            ChannelEntity entity = new ChannelEntity(null, channelIds[i], channelNames[i]);
+//            //存入数据库
+//            GreenDaoManager.getInstance().insert(entity);
+//        }
+        GreenDaoManager.getInstance().deleteAll();
+        ChannelEntity entity = new ChannelEntity(null, channelIds[1], channelNames[1]);
+        //存入数据库
+        GreenDaoManager.getInstance().insert(entity);
     }
 
     @Override
@@ -146,6 +164,7 @@ public class MainActivity extends ViewActivity {
     @Override
     public void onBackPressed() {
         //双击退出APP
+        super.onBackPressed();
         long secondTime = System.currentTimeMillis();
         if (secondTime - firstTime > 2000) {
             Toast.makeText(this, R.string.two_press_exit, Toast.LENGTH_SHORT).show();

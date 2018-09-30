@@ -17,4 +17,5 @@ public interface IBasePresenter {
      */
     void doShowNetError();
 
+
 }

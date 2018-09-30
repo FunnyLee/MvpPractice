@@ -108,6 +108,8 @@ public class NewsArticleImgViewBinder extends ItemViewBinder<MultiNewsArticleDat
                 .throttleFirst(Constants.CLICK_INTERVAL, TimeUnit.SECONDS)
                 .subscribe(o -> {
                     NewsContentActivity.start(context, picUrl, item);
+                    //ScrollingActivity.start(context);
+                    //NavigationActivity.start(context);
                 });
     }
 

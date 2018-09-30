@@ -23,7 +23,7 @@ public abstract class ViewActivity extends BaseActivity {
     }
 
     @Override
-    public void setPresenter(Object presenter) {
+    public void onSetPresenter(Object presenter) {
 
     }
 }

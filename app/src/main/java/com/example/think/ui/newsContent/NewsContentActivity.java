@@ -14,6 +14,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -24,6 +26,7 @@ import com.example.think.R;
 import com.example.think.base.BaseActivity;
 import com.example.think.bean.news.MultiNewsArticleDataBean;
 import com.example.think.utils.ImageHelper;
+import com.example.think.widget.AppBarStateChangeListener;
 
 import butterknife.BindView;
 
@@ -62,7 +65,7 @@ public class NewsContentActivity extends BaseActivity<INewsContentContract.Prese
     }
 
     @Override
-    public void setPresenter(INewsContentContract.Presenter presenter) {
+    public void onSetPresenter(INewsContentContract.Presenter presenter) {
         if (mPresenter == null) {
             mPresenter = new NewsContentPresenter(this);
         }
@@ -83,7 +86,11 @@ public class NewsContentActivity extends BaseActivity<INewsContentContract.Prese
         mPresenter.doLoadData(mBean);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    protected int setStatusBarColor() {
+        return R.color.transparent;
+    }
+
     @Override
     protected void initView() {
         //设置ToolBar
@@ -93,14 +100,9 @@ public class NewsContentActivity extends BaseActivity<INewsContentContract.Prese
         //返回箭头可用
         getSupportActionBar().setHomeButtonEnabled(true);
 
-       mCollapsingLayout.setTitle(mBean.getMedia_name());
+        mCollapsingLayout.setTitle(mBean.getMedia_name());
 
         ImageHelper.loadCenterCrop(this, mPicUrl, mIvPic);
-    }
-
-    @Override
-    protected int setStatusBarColor() {
-        return R.color.colorAccent_night;
     }
 
     @Override
@@ -112,9 +114,36 @@ public class NewsContentActivity extends BaseActivity<INewsContentContract.Prese
                 int offsetAbs = Math.abs(verticalOffset);
                 int totalScrollRange = appBarLayout.getTotalScrollRange();
                 mToolBar.setBackgroundColor(changeAlpha(getResources().getColor(R.color.colorPrimary), Math.abs(offsetAbs * 1.0f) / totalScrollRange));
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    Window window = getWindow();
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                    window.setStatusBarColor(changeAlpha(getResources().getColor(R.color.colorPrimary), Math.abs(offsetAbs * 1.0f) / totalScrollRange));
+                }
+            }
+        });
+
+
+        mAppbarLayout.addOnOffsetChangedListener(new AppBarStateChangeListener() {
+            @Override
+            public void onStateChanged(AppBarLayout appBarLayout, State state, int verticalOffset) {
+                if (state == State.EXPANDED) {
+                    //展开状态
+
+
+                } else if (state == State.COLLAPSED) {
+
+                    //折叠状态
+
+                } else {
+
+                    //中间状态
+
+                }
             }
         });
     }
+
 
     public int changeAlpha(int color, float offset) {
         int alpha = (int) (Color.alpha(color) * offset);
@@ -154,7 +183,7 @@ public class NewsContentActivity extends BaseActivity<INewsContentContract.Prese
         });
 
         //加载url
-        mWebView.loadUrl(url);
+        mWebView.loadDataWithBaseURL(null, url, "text/html", "utf-8", null);
 
     }
 

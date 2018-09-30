@@ -23,7 +23,7 @@ public abstract class ViewFragment extends BaseFragment {
     }
 
     @Override
-    public void setPresenter(Object presenter) {
+    public void onSetPresenter(Object presenter) {
 
     }
 }
