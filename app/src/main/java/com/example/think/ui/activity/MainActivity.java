@@ -101,7 +101,6 @@ public class MainActivity extends ViewActivity {
             }
         }
 
-
         /**
          * 图片channel
          */
@@ -114,8 +113,7 @@ public class MainActivity extends ViewActivity {
                 PictureDao.insert(entity);
             }
         }
-
-
+        
         /**
          * 视频
          */
