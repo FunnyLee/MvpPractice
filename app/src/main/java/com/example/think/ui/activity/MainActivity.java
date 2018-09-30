@@ -113,7 +113,7 @@ public class MainActivity extends ViewActivity {
                 PictureDao.insert(entity);
             }
         }
-        
+
         /**
          * 视频
          */

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_36"
+        android:layout_margin="@dimen/dp_8"
+        android:background="@drawable/channle_view_bg_shape"
+        android:gravity="center"
+        android:text="AAAAA"
+        android:textColor="@color/textColorPrimary"/>
+
+    <ImageView
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_channel_edit"
+        android:layout_width="@dimen/dp_16"
+        android:layout_height="@dimen/dp_16"/>
+
+</RelativeLayout>
