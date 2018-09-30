@@ -3,7 +3,7 @@ package com.example.think;
 import android.app.Application;
 import android.content.Context;
 
-import com.example.think.greendao.GreenDaoManager;
+import com.example.think.greendao.DaoManager.GreenDaoManager;
 
 /**
  * Author: Funny

@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 greendao {
     schemaVersion 1
-    daoPackage 'com.example.think.greendao'
+    daoPackage 'com.example.think.greendao.generate'
     targetGenDir 'src/main/java'
 }
 

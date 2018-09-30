@@ -11,7 +11,8 @@ import com.example.think.Constants;
 import com.example.think.R;
 import com.example.think.base.BaseFragment;
 import com.example.think.base.ViewFragment;
-import com.example.think.bean.ChannelBean;
+import com.example.think.greendao.DaoManager.NewsDao;
+import com.example.think.greendao.entity.NewsChannel;
 import com.example.think.ui.adapter.ViewPagerFragmentAdapter;
 import com.jakewharton.rxbinding2.view.RxView;
 
@@ -37,7 +38,6 @@ public class NewsFragment extends ViewFragment {
     ViewPager mViewPager;
 
     private List<String> mTitleList;
-    private List<ChannelBean> mNewsChannelList;
     private List<BaseFragment> mFragmentList;
 
 
@@ -53,44 +53,14 @@ public class NewsFragment extends ViewFragment {
 
     @Override
     protected void initData() {
-        String[] newsNames = mContext.getResources().getStringArray(R.array.mobile_news_name);
-        String[] newsIds = mContext.getResources().getStringArray(R.array.mobile_news_id);
-
-        mNewsChannelList = new ArrayList<>();
         mTitleList = new ArrayList<>();
         mFragmentList = new ArrayList<>();
 
-        for (int i = 0; i < newsNames.length; i++) {
-            ChannelBean bean = new ChannelBean();
-            bean.channelId = newsIds[i];
-            bean.channelName = newsNames[i];
-            mNewsChannelList.add(bean);
-        }
+        List<NewsChannel> channelEntities = NewsDao.queryAll();
+        for (NewsChannel channelEntity : channelEntities) {
+            mTitleList.add(channelEntity.channelName);
 
-
-//        List<ChannelEntity> channelEntities = GreenDaoManager.getInstance().queryAll();
-//
-//        for (ChannelEntity channelEntity : channelEntities) {
-//            mTitleList.add(channelEntity.channelName);
-//
-//            String channelId = channelEntity.channelId;
-//
-//            BaseFragment fragment = null;
-//
-//            if ("question_and_answer".equals(channelId)) {
-//                fragment = WendaArticleFragment.newInstance();
-//            } else {
-//                fragment = NewsArticleFragment.newInstance(channelId);
-//            }
-//            mFragmentList.add(fragment);
-//        }
-
-
-        for (ChannelBean newsChannelBean : mNewsChannelList) {
-
-            mTitleList.add(newsChannelBean.channelName);
-
-            String channelId = newsChannelBean.channelId;
+            String channelId = channelEntity.channelId;
 
             BaseFragment fragment = null;
 

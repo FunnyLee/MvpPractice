@@ -17,12 +17,18 @@ import android.widget.Toast;
 
 import com.example.think.R;
 import com.example.think.base.ViewActivity;
-import com.example.think.database.ChannelEntity;
-import com.example.think.greendao.GreenDaoManager;
+import com.example.think.greendao.DaoManager.NewsDao;
+import com.example.think.greendao.DaoManager.PictureDao;
+import com.example.think.greendao.DaoManager.VideoDao;
+import com.example.think.greendao.entity.NewsChannel;
+import com.example.think.greendao.entity.PictureChannel;
+import com.example.think.greendao.entity.VideoChannel;
 import com.example.think.ui.channel.ChannelFragment;
 import com.example.think.ui.news.NewsFragment;
 import com.example.think.ui.picture.PictureFragment;
 import com.example.think.ui.video.VideoFragment;
+
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -80,18 +86,48 @@ public class MainActivity extends ViewActivity {
 
     @Override
     protected void initData() {
+        /**
+         * 新闻channel
+         */
         String[] channelNames = getResources().getStringArray(R.array.mobile_news_name);
         String[] channelIds = getResources().getStringArray(R.array.mobile_news_id);
+        //如果查询得到的集合长度为0
+        List<NewsChannel> entities = NewsDao.queryAll();
+        if (entities.size() == 0) {
+            for (int i = 0; i < channelNames.length; i++) {
+                NewsChannel entity = new NewsChannel(null, channelIds[i], channelNames[i]);
+                //存入数据库
+                NewsDao.insert(entity);
+            }
+        }
 
-//        for (int i = 0; i < channelNames.length; i++) {
-//            ChannelEntity entity = new ChannelEntity(null, channelIds[i], channelNames[i]);
-//            //存入数据库
-//            GreenDaoManager.getInstance().insert(entity);
-//        }
-        GreenDaoManager.getInstance().deleteAll();
-        ChannelEntity entity = new ChannelEntity(null, channelIds[1], channelNames[1]);
-        //存入数据库
-        GreenDaoManager.getInstance().insert(entity);
+
+        /**
+         * 图片channel
+         */
+        String[] pictureNames = getResources().getStringArray(R.array.picture_name);
+        String[] pictureIds = getResources().getStringArray(R.array.picture_id);
+        List<PictureChannel> pictureChannels = PictureDao.queryAll();
+        if (pictureChannels.size() == 0) {
+            for (int i = 0; i < pictureNames.length; i++) {
+                PictureChannel entity = new PictureChannel(null, pictureIds[i], pictureNames[i]);
+                PictureDao.insert(entity);
+            }
+        }
+
+
+        /**
+         * 视频
+         */
+        String[] videoNames = getResources().getStringArray(R.array.mobile_video_name);
+        String[] videoIds = getResources().getStringArray(R.array.mobile_video_id);
+        List<VideoChannel> videoChannels = VideoDao.queryAll();
+        if (videoChannels.size() == 0) {
+            for (int i = 0; i < videoNames.length; i++) {
+                VideoChannel entity = new VideoChannel(null, videoNames[i], videoIds[i]);
+                VideoDao.insert(entity);
+            }
+        }
     }
 
     @Override

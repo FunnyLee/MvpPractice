@@ -7,7 +7,8 @@ import android.view.View;
 import com.example.think.R;
 import com.example.think.base.BaseFragment;
 import com.example.think.base.ViewFragment;
-import com.example.think.bean.ChannelBean;
+import com.example.think.greendao.DaoManager.PictureDao;
+import com.example.think.greendao.entity.PictureChannel;
 import com.example.think.ui.adapter.ViewPagerFragmentAdapter;
 
 import java.util.ArrayList;
@@ -27,7 +28,6 @@ public class PictureFragment extends ViewFragment {
     @BindView(R.id.view_pager_news)
     ViewPager mViewPager;
     private List<BaseFragment> mFragmentList;
-    private List<ChannelBean> mPicChannelList;
     private List<String> mTitleList;
 
     public static PictureFragment newInstance() {
@@ -42,21 +42,34 @@ public class PictureFragment extends ViewFragment {
 
     @Override
     protected void initData() {
-        String[] pictureNames = mContext.getResources().getStringArray(R.array.picture_name);
-        String[] pictureIds = mContext.getResources().getStringArray(R.array.picture_id);
+//        String[] pictureNames = mContext.getResources().getStringArray(R.array.picture_name);
+//        String[] pictureIds = mContext.getResources().getStringArray(R.array.picture_id);
+//
+//        mFragmentList = new ArrayList<>();
+//        mPicChannelList = new ArrayList();
+//        mTitleList = new ArrayList<>();
+//
+//        for (int i = 0; i < pictureNames.length; i++) {
+//            ChannelBean channelBean = new ChannelBean();
+//            channelBean.channelName = pictureNames[i];
+//            channelBean.channelId = pictureIds[i];
+//            mPicChannelList.add(channelBean);
+//        }
+
+//        for (ChannelBean channelBean : mPicChannelList) {
+//            mTitleList.add(channelBean.channelName);
+//            BaseFragment fragment = PictureArticleFragment.newInstance(channelBean.channelId);
+//            mFragmentList.add(fragment);
+//        }
+
+
+
 
         mFragmentList = new ArrayList<>();
-        mPicChannelList = new ArrayList();
         mTitleList = new ArrayList<>();
 
-        for (int i = 0; i < pictureNames.length; i++) {
-            ChannelBean channelBean = new ChannelBean();
-            channelBean.channelName = pictureNames[i];
-            channelBean.channelId = pictureIds[i];
-            mPicChannelList.add(channelBean);
-        }
-
-        for (ChannelBean channelBean : mPicChannelList) {
+        List<PictureChannel> pictureChannels2 = PictureDao.queryAll();
+        for (PictureChannel channelBean : pictureChannels2) {
             mTitleList.add(channelBean.channelName);
             BaseFragment fragment = PictureArticleFragment.newInstance(channelBean.channelId);
             mFragmentList.add(fragment);
@@ -68,7 +81,7 @@ public class PictureFragment extends ViewFragment {
         mTabLayoutNews.setupWithViewPager(mViewPager);
         mTabLayoutNews.setTabMode(TabLayout.MODE_FIXED);
 
-        ViewPagerFragmentAdapter adapter = new ViewPagerFragmentAdapter(getFragmentManager(),mFragmentList,mTitleList);
+        ViewPagerFragmentAdapter adapter = new ViewPagerFragmentAdapter(getFragmentManager(), mFragmentList, mTitleList);
         mViewPager.setAdapter(adapter);
     }
 }

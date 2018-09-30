@@ -1,4 +1,4 @@
-package com.example.think.greendao;
+package com.example.think.greendao.generate;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -21,12 +21,16 @@ public class DaoMaster extends AbstractDaoMaster {
 
     /** Creates underlying database table using DAOs. */
     public static void createAllTables(Database db, boolean ifNotExists) {
-        ChannelEntityDao.createTable(db, ifNotExists);
+        NewsChannelDao.createTable(db, ifNotExists);
+        PictureChannelDao.createTable(db, ifNotExists);
+        VideoChannelDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
     public static void dropAllTables(Database db, boolean ifExists) {
-        ChannelEntityDao.dropTable(db, ifExists);
+        NewsChannelDao.dropTable(db, ifExists);
+        PictureChannelDao.dropTable(db, ifExists);
+        VideoChannelDao.dropTable(db, ifExists);
     }
 
     /**
@@ -45,7 +49,9 @@ public class DaoMaster extends AbstractDaoMaster {
 
     public DaoMaster(Database db) {
         super(db, SCHEMA_VERSION);
-        registerDaoClass(ChannelEntityDao.class);
+        registerDaoClass(NewsChannelDao.class);
+        registerDaoClass(PictureChannelDao.class);
+        registerDaoClass(VideoChannelDao.class);
     }
 
     public DaoSession newSession() {

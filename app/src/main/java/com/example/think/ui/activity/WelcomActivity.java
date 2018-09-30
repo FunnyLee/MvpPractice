@@ -20,7 +20,7 @@ public class WelcomActivity extends ViewActivity {
     }
 
 
-        @Override
+    @Override
     protected int setStatusBarColor() {
         return R.color.statusBarColor;
     }
@@ -37,6 +37,7 @@ public class WelcomActivity extends ViewActivity {
                     @Override
                     public void accept(Object o) throws Exception {
                         MainActivity.start(WelcomActivity.this);
+                        finish();
                     }
                 });
     }

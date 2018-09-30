@@ -1,12 +1,14 @@
-package com.example.think.greendao;
+package com.example.think.greendao.DaoManager;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.think.Constants;
-import com.example.think.database.ChannelEntity;
-
-import java.util.List;
+import com.example.think.greendao.generate.DaoMaster;
+import com.example.think.greendao.generate.DaoSession;
+import com.example.think.greendao.generate.NewsChannelDao;
+import com.example.think.greendao.generate.PictureChannelDao;
+import com.example.think.greendao.generate.VideoChannelDao;
 
 /**
  * Author: Funny
@@ -16,7 +18,7 @@ import java.util.List;
 public class GreenDaoManager {
 
     private static volatile GreenDaoManager sInstance;
-    private ChannelEntityDao mChannelDao;
+    private DaoSession mDaoSession;
 
     private GreenDaoManager() {
     }
@@ -39,30 +41,23 @@ public class GreenDaoManager {
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(context, Constants.DB_NAME, null);
         SQLiteDatabase database = helper.getReadableDatabase();
         DaoMaster daoMaster = new DaoMaster(database);
-        DaoSession daoSession = daoMaster.newSession();
-        mChannelDao = daoSession.getChannelEntityDao();
+        mDaoSession = daoMaster.newSession();
     }
 
-    /**
-     * 增
-     *
-     * @param entity
-     */
-    public long insert(ChannelEntity entity) {
-        long insert = mChannelDao.insert(entity);
-        return insert;
+    public DaoSession getDaoSession() {
+        return mDaoSession;
     }
 
-    /**
-     * 查询所有
-     */
-    public List<ChannelEntity> queryAll() {
-        List<ChannelEntity> channelEntities = mChannelDao.loadAll();
-        return channelEntities;
+    public NewsChannelDao getNewsChannelDao() {
+        return mDaoSession.getNewsChannelDao();
     }
 
-    public void deleteAll(){
-        mChannelDao.deleteAll();
+    public PictureChannelDao getPictureChannelDao() {
+        return mDaoSession.getPictureChannelDao();
+    }
+
+    public VideoChannelDao getVideoChannelDao() {
+        return mDaoSession.getVideoChannelDao();
     }
 
 }

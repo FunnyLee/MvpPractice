@@ -7,7 +7,8 @@ import android.view.View;
 import com.example.think.R;
 import com.example.think.base.BaseFragment;
 import com.example.think.base.ViewFragment;
-import com.example.think.bean.ChannelBean;
+import com.example.think.greendao.DaoManager.VideoDao;
+import com.example.think.greendao.entity.VideoChannel;
 import com.example.think.ui.adapter.ViewPagerFragmentAdapter;
 
 import java.util.ArrayList;
@@ -28,7 +29,6 @@ public class VideoFragment extends ViewFragment {
     ViewPager mViewPagerVideo;
     private List<BaseFragment> mFragmentList;
     private List<String> mTitleList;
-    private List<ChannelBean> mChannelList;
 
     public static VideoFragment newInstance() {
         VideoFragment fragment = new VideoFragment();
@@ -42,25 +42,16 @@ public class VideoFragment extends ViewFragment {
 
     @Override
     protected void initData() {
-        String[] videoNames = mContext.getResources().getStringArray(R.array.mobile_video_name);
-        String[] videoIds = mContext.getResources().getStringArray(R.array.mobile_video_id);
-
         mFragmentList = new ArrayList<>();
         mTitleList = new ArrayList<>();
-        mChannelList = new ArrayList<>();
 
-        for (int i = 0; i < videoNames.length; i++) {
-            ChannelBean channelBean = new ChannelBean();
-            channelBean.channelName = videoNames[i];
-            channelBean.channelId = videoIds[i];
-            mChannelList.add(channelBean);
-        }
-
-        for (ChannelBean channelBean : mChannelList) {
+        List<VideoChannel> videoChannels = VideoDao.queryAll();
+        for (VideoChannel channelBean : videoChannels) {
             mTitleList.add(channelBean.channelName);
             VideoArticleFragment fragment = VideoArticleFragment.newInstance(channelBean.channelId);
             mFragmentList.add(fragment);
         }
+
     }
 
     @Override
@@ -68,7 +59,7 @@ public class VideoFragment extends ViewFragment {
         mTabLayoutVideo.setupWithViewPager(mViewPagerVideo);
         mTabLayoutVideo.setTabMode(TabLayout.MODE_SCROLLABLE);
 
-        ViewPagerFragmentAdapter adapter = new ViewPagerFragmentAdapter(getFragmentManager(),mFragmentList,mTitleList);
+        ViewPagerFragmentAdapter adapter = new ViewPagerFragmentAdapter(getFragmentManager(), mFragmentList, mTitleList);
         mViewPagerVideo.setAdapter(adapter);
     }
 }

@@ -9,8 +9,6 @@ import android.view.MenuItem;
 
 import com.example.think.R;
 import com.example.think.base.ViewActivity;
-import com.example.think.database.ChannelEntity;
-import com.example.think.greendao.GreenDaoManager;
 
 import butterknife.BindView;
 
@@ -45,14 +43,6 @@ public class NewsChannelActivity extends ViewActivity {
 
     @Override
     protected void initData() {
-        String[] channelNames = getResources().getStringArray(R.array.mobile_news_name);
-        String[] channelIds = getResources().getStringArray(R.array.mobile_news_id);
-
-        for (int i = 0; i < channelNames.length; i++) {
-            ChannelEntity entity = new ChannelEntity(null, channelIds[i], channelNames[i]);
-            //存入数据库
-            GreenDaoManager.getInstance().insert(entity);
-        }
 
     }
 
