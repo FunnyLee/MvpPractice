@@ -10,7 +10,7 @@
     tools:context=".ui.activity.WelcomActivity">
 
     <ImageView
-        android:src="@drawable/error_image"
+        android:src="@drawable/splash"
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

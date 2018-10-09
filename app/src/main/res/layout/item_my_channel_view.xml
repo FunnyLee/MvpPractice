@@ -5,6 +5,7 @@
               android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tv_channel_name"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_36"
         android:layout_margin="@dimen/dp_8"
@@ -14,6 +15,8 @@
         android:textColor="@color/textColorPrimary"/>
 
     <ImageView
+        android:id="@+id/iv_fork"
+        android:layout_marginRight="@dimen/dp_8"
         android:layout_alignParentRight="true"
         android:src="@drawable/ic_channel_edit"
         android:layout_width="@dimen/dp_16"

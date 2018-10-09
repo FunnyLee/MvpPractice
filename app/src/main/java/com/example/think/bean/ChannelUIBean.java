@@ -24,6 +24,9 @@ public class ChannelUIBean {
 
     public NewsChannel newChannel;
 
+    //是否为编辑模式，默认为false
+    public boolean isEditMode = false;
+
     public ChannelUIBean buildMyChannelHeader() {
         this.spanSize = SPAN_HEADER;
         this.itemType = ITEM_MY_CHANNEL_HEADER;
@@ -43,7 +46,7 @@ public class ChannelUIBean {
         return this;
     }
 
-    public ChannelUIBean buildHideChannel(NewsChannel newChannel){
+    public ChannelUIBean buildHideChannel(NewsChannel newChannel) {
         this.spanSize = SPAN_CHANNEL;
         this.itemType = ITEM_HIDE_CHANNEL;
         this.newChannel = newChannel;

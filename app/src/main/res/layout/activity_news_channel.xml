@@ -8,7 +8,32 @@
     android:orientation="vertical"
     tools:context=".ui.news.NewsChannelActivity">
 
-    <include layout="@layout/layout_toolbar"/>
+    <!--<include layout="@layout/layout_toolbar"/>-->
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/AppBarLayout01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <TextView
+                android:layout_gravity="center"
+                android:text="编辑频道"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/White"
+                android:textSize="@dimen/sp_20"/>
+
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
