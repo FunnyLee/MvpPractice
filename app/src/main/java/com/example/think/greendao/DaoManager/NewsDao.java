@@ -27,12 +27,27 @@ public class NewsDao {
 
     /**
      * 查询所有
+     *
+     * @return
      */
     public static List<NewsChannel> queryAll() {
         List<NewsChannel> channelEntities = sNewsChannelDao.loadAll();
         return channelEntities;
     }
 
+    /**
+     * 根据是否显示，来查询频道
+     *
+     * @return
+     */
+    public static List<NewsChannel> queryIsShowChannel(boolean isShow) {
+        List<NewsChannel> list = sNewsChannelDao.queryBuilder().where(NewsChannelDao.Properties.IsShow.eq(isShow)).list();
+        return list;
+    }
+
+    /**
+     * 删除所有
+     */
     public static void deleteAll() {
         sNewsChannelDao.deleteAll();
     }

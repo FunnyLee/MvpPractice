@@ -95,7 +95,13 @@ public class MainActivity extends ViewActivity {
         List<NewsChannel> entities = NewsDao.queryAll();
         if (entities.size() == 0) {
             for (int i = 0; i < channelNames.length; i++) {
-                NewsChannel entity = new NewsChannel(null, channelIds[i], channelNames[i]);
+                NewsChannel entity;
+                if (i <= 5) {
+                    //初始时，前6个为显示的频道
+                    entity = new NewsChannel(null, channelIds[i], channelNames[i], true);
+                } else {
+                    entity = new NewsChannel(null, channelIds[i], channelNames[i], false);
+                }
                 //存入数据库
                 NewsDao.insert(entity);
             }

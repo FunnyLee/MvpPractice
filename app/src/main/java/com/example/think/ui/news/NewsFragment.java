@@ -56,7 +56,8 @@ public class NewsFragment extends ViewFragment {
         mTitleList = new ArrayList<>();
         mFragmentList = new ArrayList<>();
 
-        List<NewsChannel> channelEntities = NewsDao.queryAll();
+        List<NewsChannel> channelEntities = NewsDao.queryIsShowChannel(true);
+
         for (NewsChannel channelEntity : channelEntities) {
             mTitleList.add(channelEntity.channelName);
 

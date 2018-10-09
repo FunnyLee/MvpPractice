@@ -1,9 +1,9 @@
 package com.example.think.greendao.entity;
 
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.NotNull;
-import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * Author: Funny
@@ -23,12 +23,17 @@ public class NewsChannel {
     @NotNull
     public String channelName;
 
-    @Generated(hash = 1167317767)
+    @NotNull
+    //标志是显示频道，还是隐藏频道
+    public boolean isShow;
+
+    @Generated(hash = 703720814)
     public NewsChannel(Long id, @NotNull String channelId,
-            @NotNull String channelName) {
+            @NotNull String channelName, boolean isShow) {
         this.id = id;
         this.channelId = channelId;
         this.channelName = channelName;
+        this.isShow = isShow;
     }
 
     @Generated(hash = 566079451)
@@ -57,6 +62,14 @@ public class NewsChannel {
 
     public void setChannelName(String channelName) {
         this.channelName = channelName;
+    }
+
+    public boolean getIsShow() {
+        return this.isShow;
+    }
+
+    public void setIsShow(boolean isShow) {
+        this.isShow = isShow;
     }
     
 }

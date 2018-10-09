@@ -27,6 +27,7 @@ public class NewsChannelDao extends AbstractDao<NewsChannel, Long> {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property ChannelId = new Property(1, String.class, "channelId", false, "CHANNEL_ID");
         public final static Property ChannelName = new Property(2, String.class, "channelName", false, "CHANNEL_NAME");
+        public final static Property IsShow = new Property(3, boolean.class, "isShow", false, "IS_SHOW");
     }
 
 
@@ -44,7 +45,8 @@ public class NewsChannelDao extends AbstractDao<NewsChannel, Long> {
         db.execSQL("CREATE TABLE " + constraint + "\"NEWS_CHANNEL\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"CHANNEL_ID\" TEXT NOT NULL ," + // 1: channelId
-                "\"CHANNEL_NAME\" TEXT NOT NULL );"); // 2: channelName
+                "\"CHANNEL_NAME\" TEXT NOT NULL ," + // 2: channelName
+                "\"IS_SHOW\" INTEGER NOT NULL );"); // 3: isShow
     }
 
     /** Drops the underlying database table. */
@@ -63,6 +65,7 @@ public class NewsChannelDao extends AbstractDao<NewsChannel, Long> {
         }
         stmt.bindString(2, entity.getChannelId());
         stmt.bindString(3, entity.getChannelName());
+        stmt.bindLong(4, entity.getIsShow() ? 1L: 0L);
     }
 
     @Override
@@ -75,6 +78,7 @@ public class NewsChannelDao extends AbstractDao<NewsChannel, Long> {
         }
         stmt.bindString(2, entity.getChannelId());
         stmt.bindString(3, entity.getChannelName());
+        stmt.bindLong(4, entity.getIsShow() ? 1L: 0L);
     }
 
     @Override
@@ -87,7 +91,8 @@ public class NewsChannelDao extends AbstractDao<NewsChannel, Long> {
         NewsChannel entity = new NewsChannel( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.getString(offset + 1), // channelId
-            cursor.getString(offset + 2) // channelName
+            cursor.getString(offset + 2), // channelName
+            cursor.getShort(offset + 3) != 0 // isShow
         );
         return entity;
     }
@@ -97,6 +102,7 @@ public class NewsChannelDao extends AbstractDao<NewsChannel, Long> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setChannelId(cursor.getString(offset + 1));
         entity.setChannelName(cursor.getString(offset + 2));
+        entity.setIsShow(cursor.getShort(offset + 3) != 0);
      }
     
     @Override

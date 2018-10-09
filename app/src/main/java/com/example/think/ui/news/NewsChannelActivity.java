@@ -62,50 +62,43 @@ public class NewsChannelActivity extends ViewActivity {
     @SuppressLint("CheckResult")
     @Override
     protected void initData() {
-        List<NewsChannel> newsChannels = NewsDao.queryAll();
-
-        Observable.fromIterable(newsChannels)
+        mDatas = new ArrayList<>();
+        mDatas.add(new ChannelUIBean().buildMyChannelHeader());
+        Observable.fromIterable(NewsDao.queryIsShowChannel(true))
                 .map(new Function<NewsChannel, ChannelUIBean>() {
                     @Override
                     public ChannelUIBean apply(NewsChannel newsChannel) throws Exception {
-                        ChannelUIBean channelUIBean = new ChannelUIBean().buildMyChannel(newsChannel);
-                        return channelUIBean;
+                        return new ChannelUIBean().buildMyChannel(newsChannel);
                     }
                 })
                 .toList()
                 .subscribe(new Consumer<List<ChannelUIBean>>() {
                     @Override
                     public void accept(List<ChannelUIBean> channelUIBeans) throws Exception {
-                        mDatas = new ArrayList<>();
                         mDatas.addAll(channelUIBeans);
-                        setRecyclerView();
                     }
                 });
+
+        mDatas.add(new ChannelUIBean().buildHideChannerlHeader());
+        Observable.fromIterable(NewsDao.queryIsShowChannel(false))
+                .map(new Function<NewsChannel, ChannelUIBean>() {
+                    @Override
+                    public ChannelUIBean apply(NewsChannel newsChannel) throws Exception {
+                        return new ChannelUIBean().buildHideChannel(newsChannel);
+                    }
+                })
+                .toList()
+                .subscribe(new Consumer<List<ChannelUIBean>>() {
+                    @Override
+                    public void accept(List<ChannelUIBean> channelUIBeans) throws Exception {
+                        mDatas.addAll(channelUIBeans);
+                    }
+                });
+
+        setRecyclerView();
     }
 
-//    @Override
-//    protected void initEvent() {
-//        mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-//            @Override
-//            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-//                if (view.getId() == R.id.tv_edit) {
-//                    TextView tvBtnEdit = (TextView) view;
-//                    ChannelUIBean item = mDatas.get(position);
-//                    if (item.isEditMode) {
-//                        tvBtnEdit.setText("编辑");
-//                        item.isEditMode = false;
-//                    } else {
-//                        tvBtnEdit.setText("完成");
-//                        item.isEditMode = true;
-//                    }
-//                }
-//            }
-//        });
-//    }
-
     private void setRecyclerView() {
-        mDatas.add(0, new ChannelUIBean().buildMyChannelHeader());
-        mDatas.add(mDatas.size() / 2 - 1, new ChannelUIBean().buildHideChannerlHeader());
         mAdapter = new NewsChannelAdapter(this, mDatas);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 4));
         mAdapter.setSpanSizeLookup(new BaseQuickAdapter.SpanSizeLookup() {
