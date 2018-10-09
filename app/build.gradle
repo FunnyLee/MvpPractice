@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'org.greenrobot.greendao'
+
+def configInfo = rootProject.ext.android
+
 greendao {
     schemaVersion 1
     daoPackage 'com.example.think.greendao.generate'
@@ -8,13 +10,13 @@ greendao {
 }
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion configInfo.compileSdkVersion
     defaultConfig {
-        applicationId "com.example.think"
-        minSdkVersion 19
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        applicationId configInfo.applicationId
+        minSdkVersion configInfo.minSdkVersion
+        targetSdkVersion configInfo.targetSdkVersion
+        versionCode configInfo.versionCode
+        versionName configInfo.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         //支持vector矢量图，minSdk小于21时，需要加这一行

@@ -1,15 +1,12 @@
 ext {
-    config = [
+    android = [
             //app、sdk版本信息
-            applicationId              :"com.example.think",
-            compileSdkVersion          : 27,
-            minSdkVersion              : 15,
-            targetSdkVersion           : 22,
-            multidex                   : "1.0.3",
-            gsonVersion                : "2.8.4",
-            supportLibVersion          : "25.3.1",
-            constraintLayoutVersion    : "1.1.2",
-            orgApacheCommonsLangVersion: "2.6",
-            baseLibrary                : ":uhomebk_base"
+            applicationId    : "com.example.think",
+            compileSdkVersion: 27,
+            minSdkVersion    : 19,
+            targetSdkVersion : 27,
+            versionCode      : 1,
+            versionName      : "1.0"
     ]
+
 }
