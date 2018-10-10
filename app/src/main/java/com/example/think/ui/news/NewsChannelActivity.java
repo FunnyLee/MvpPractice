@@ -7,6 +7,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.MenuItem;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -16,6 +17,7 @@ import com.example.think.bean.ChannelUIBean;
 import com.example.think.greendao.DaoManager.NewsDao;
 import com.example.think.greendao.entity.NewsChannel;
 import com.example.think.ui.adapter.NewsChannelAdapter;
+import com.example.think.widget.ItemTouchCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,7 +101,9 @@ public class NewsChannelActivity extends ViewActivity {
     }
 
     private void setRecyclerView() {
-        mAdapter = new NewsChannelAdapter(this, mDatas);
+
+
+        mAdapter = new NewsChannelAdapter(this, mDatas,null);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 4));
         mAdapter.setSpanSizeLookup(new BaseQuickAdapter.SpanSizeLookup() {
             @Override
@@ -107,11 +111,13 @@ public class NewsChannelActivity extends ViewActivity {
                 return mDatas.get(position).spanSize;
             }
         });
-        mRecyclerView.setAdapter(mAdapter);
-    }
 
-    public void change() {
-        mAdapter.notifyDataSetChanged();
+        //RecyclerView拖拽滑动
+        ItemTouchCallback<ChannelUIBean> callback = new ItemTouchCallback(mDatas,mAdapter);
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
+        itemTouchHelper.attachToRecyclerView(mRecyclerView);
+
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
