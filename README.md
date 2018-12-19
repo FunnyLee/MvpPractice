@@ -1,5 +1,8 @@
 # 练手MVP模式
 
+**先来一发Google官方Mvp架构地址：**
+[https://github.com/googlesamples/android-architecture/tree/todo-mvp/]
+
 Mvp模式练习项目，使用Android开发主流技术栈搭建了一个简单的框架，并实现了一些今日头条的新闻页面。  
 
 使用的开源库：
