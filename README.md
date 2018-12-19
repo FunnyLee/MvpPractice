@@ -10,3 +10,4 @@ Mvp模式练习项目，使用Android开发主流技术栈搭建了一个简单�
 5. RecyclerView的通用Adapter库BaseRecyclerViewAdapterHelper
 6. RecylcerView多条目实现multitype
 7. 在基类中封装EventBus
+8. 整体遵循Material Design风格
