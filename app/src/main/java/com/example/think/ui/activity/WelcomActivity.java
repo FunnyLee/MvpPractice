@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 
 import com.example.think.R;
 import com.example.think.base.ViewActivity;
+import com.gyf.immersionbar.ImmersionBar;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,10 +20,9 @@ public class WelcomActivity extends ViewActivity {
         return R.layout.activity_welcom;
     }
 
-
     @Override
-    protected int setStatusBarColor() {
-        return R.color.statusBarColor;
+    protected void initStatusBarColor() {
+        ImmersionBar.with(this).transparentStatusBar().init();
     }
 
     @SuppressLint("CheckResult")

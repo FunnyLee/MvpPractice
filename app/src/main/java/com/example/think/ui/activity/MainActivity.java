@@ -27,6 +27,7 @@ import com.example.think.ui.channel.ChannelFragment;
 import com.example.think.ui.news.NewsFragment;
 import com.example.think.ui.picture.PictureFragment;
 import com.example.think.ui.video.VideoFragment;
+import com.gyf.immersionbar.ImmersionBar;
 
 import java.util.List;
 
@@ -56,6 +57,11 @@ public class MainActivity extends ViewActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initStatusBarColor() {
+        ImmersionBar.with(this).statusBarColor(R.color.colorPrimary).init();
     }
 
     @Override
