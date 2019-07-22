@@ -3,7 +3,7 @@ package com.example.think.ui.picture;
 import com.example.base.base.IBaseListView;
 import com.example.base.base.IBasePresenter;
 import com.example.think.bean.phote.PhotoArticleBean;
-import com.example.think.net.NetCallBack;
+import com.example.base.net.NetCallBack;
 
 import java.util.List;
 

@@ -3,7 +3,7 @@ package com.example.think.ui.newsContent;
 import com.example.think.bean.news.MultiNewsArticleDataBean;
 import com.example.think.bean.news.NewsContentBean;
 import com.example.think.net.INewsApi;
-import com.example.think.net.RetrofitFactory;
+import com.example.base.net.RetrofitFactory;
 import com.example.base.utils.ErrorAction;
 
 import io.reactivex.Observable;

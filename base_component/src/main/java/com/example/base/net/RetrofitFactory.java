@@ -1,9 +1,9 @@
-package com.example.think.net;
+package com.example.base.net;
 
 import android.util.Log;
 
 import com.example.base.AppManager;
-import com.example.think.BuildConfig;
+import com.example.base.BuildConfig;
 import com.franmontiel.persistentcookiejar.ClearableCookieJar;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;

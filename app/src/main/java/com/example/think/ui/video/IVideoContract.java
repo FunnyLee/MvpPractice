@@ -3,7 +3,7 @@ package com.example.think.ui.video;
 import com.example.base.base.IBaseListView;
 import com.example.base.base.IBasePresenter;
 import com.example.think.bean.news.MultiNewsArticleDataBean;
-import com.example.think.net.NetCallBack;
+import com.example.base.net.NetCallBack;
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
