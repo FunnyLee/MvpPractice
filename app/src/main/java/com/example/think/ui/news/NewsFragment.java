@@ -7,12 +7,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.example.think.Constants;
+import com.example.base.Constants;
 import com.example.think.R;
-import com.example.think.base.BaseFragment;
-import com.example.think.base.ViewFragment;
-import com.example.think.greendao.DaoManager.NewsDao;
-import com.example.think.greendao.entity.NewsChannel;
+import com.example.base.base.BaseFragment;
+import com.example.base.base.ViewFragment;
+import com.example.base.greendao.daoManager.NewsDao;
+import com.example.base.greendao.entity.NewsChannel;
 import com.example.think.ui.adapter.ViewPagerFragmentAdapter;
 import com.jakewharton.rxbinding2.view.RxView;
 

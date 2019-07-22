@@ -7,7 +7,7 @@ import com.example.think.bean.news.MultiNewsArticleBean;
 import com.example.think.bean.news.MultiNewsArticleDataBean;
 import com.example.think.net.IMobileNewsApi;
 import com.example.think.net.RetrofitFactory;
-import com.example.think.utils.ErrorAction;
+import com.example.base.utils.ErrorAction;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

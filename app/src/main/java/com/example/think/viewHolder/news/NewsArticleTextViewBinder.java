@@ -15,11 +15,11 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import com.example.think.Constants;
+import com.example.base.Constants;
 import com.example.think.R;
 import com.example.think.bean.news.MultiNewsArticleDataBean;
-import com.example.think.utils.ImageHelper;
-import com.example.think.utils.TimeUtil;
+import com.example.base.utils.ImageHelper;
+import com.example.base.utils.TimeUtil;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.jakewharton.rxbinding2.widget.RxPopupMenu;
 

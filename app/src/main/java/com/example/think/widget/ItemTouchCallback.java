@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
-import com.example.think.AppManager;
+import com.example.base.AppManager;
 import com.example.think.R;
 
 import java.util.Collections;

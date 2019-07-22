@@ -1,6 +1,6 @@
 package com.example.think.bean;
 
-import com.example.think.greendao.entity.NewsChannel;
+import com.example.base.greendao.entity.NewsChannel;
 
 /**
  * Author: Funny

@@ -1,13 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin: 'org.greenrobot.greendao'
 
 def configInfo = rootProject.ext.android
-
-greendao {
-    schemaVersion 1
-    daoPackage 'com.example.think.greendao.generate'
-    targetGenDir 'src/main/java'
-}
 
 android {
     compileSdkVersion configInfo.compileSdkVersion
@@ -17,7 +10,6 @@ android {
         targetSdkVersion configInfo.targetSdkVersion
         versionCode configInfo.versionCode
         versionName configInfo.versionName
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         //支持vector矢量图，minSdk小于21时，需要加这一行
         vectorDrawables.useSupportLibrary = true
@@ -55,6 +47,11 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(":base_component")
+//    api project(":base_resource")
+
+
+
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 
@@ -109,8 +106,7 @@ dependencies {
     implementation('com.github.ihsanbal:LoggingInterceptor:2.0.7') {
         exclude group: 'org.json', module: 'json'
     }
-    //GreenDao
-    implementation 'org.greenrobot:greendao:3.2.2'
+
     //沉浸式状态栏
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0-beta05'
 }

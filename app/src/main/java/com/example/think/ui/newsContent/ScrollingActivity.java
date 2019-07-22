@@ -10,7 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.example.think.R;
-import com.example.think.utils.StatusBarUtil;
 
 public class ScrollingActivity extends AppCompatActivity {
 
@@ -24,7 +23,6 @@ public class ScrollingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolling);
 
-        StatusBarUtil.setStatusBarColor(this, R.color.transparent);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

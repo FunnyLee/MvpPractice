@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 
 import com.example.think.bean.phote.PhotoArticleBean;
 import com.example.think.net.NetCallBack;
-import com.example.think.utils.TimeUtil;
+import com.example.base.utils.TimeUtil;
 
 import java.util.ArrayList;
 import java.util.List;

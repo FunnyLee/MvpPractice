@@ -1,7 +1,7 @@
 package com.example.think.ui.channel;
 
 import com.example.think.R;
-import com.example.think.base.BaseListFragment;
+import com.example.base.base.BaseListFragment;
 
 import java.util.List;
 

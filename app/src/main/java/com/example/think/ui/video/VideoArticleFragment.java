@@ -3,7 +3,7 @@ package com.example.think.ui.video;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.think.base.BaseListFragment;
+import com.example.base.base.BaseListFragment;
 import com.example.think.bean.news.MultiNewsArticleDataBean;
 import com.example.think.viewHolder.news.NewsArticleVideoViewBinder;
 

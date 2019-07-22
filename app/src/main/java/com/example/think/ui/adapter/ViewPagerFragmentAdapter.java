@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.example.think.base.BaseFragment;
+import com.example.base.base.BaseFragment;
 
 import java.util.List;
 
