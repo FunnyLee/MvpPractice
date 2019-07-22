@@ -56,7 +56,6 @@ public class MainActivity extends ViewActivity {
 
     private long firstTime = 0;
 
-
     public static void start(Context context) {
         Intent starter = new Intent(context, MainActivity.class);
         context.startActivity(starter);
