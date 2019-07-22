@@ -12,6 +12,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
@@ -45,6 +46,8 @@ public class MainActivity extends ViewActivity {
     NavigationView mNavView;
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
+    @BindView(R.id.status_view)
+    View mStatusBarView;
 
     private long firstTime = 0;
 
@@ -61,7 +64,7 @@ public class MainActivity extends ViewActivity {
 
     @Override
     protected void initStatusBarColor() {
-        ImmersionBar.with(this).statusBarColor(R.color.colorPrimary).init();
+        ImmersionBar.with(this).statusBarView(mStatusBarView).init();
     }
 
     @Override

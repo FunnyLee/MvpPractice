@@ -37,11 +37,11 @@ public abstract class BaseActivity<P extends IBasePresenter> extends NaviAppComp
             return;
         }
         setContentView(getLayoutId());
+        ButterKnife.bind(this);
 
         //设置状态栏颜色
         initStatusBarColor();
 
-        ButterKnife.bind(this);
         registEventBus();
         initData();
         initView();

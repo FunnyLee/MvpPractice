@@ -6,48 +6,60 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:context="com.example.think.ui.activity.MainActivity"
     tools:openDrawer="start">
 
-    <android.support.design.widget.CoordinatorLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <include layout="@layout/layout_toolbar"/>
-
-
-        <FrameLayout
-            android:id="@+id/frame_layout"
+        <View
+            android:id="@+id/status_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        </FrameLayout>
+            android:layout_height="0dp"
+            android:background="@color/colorPrimary"/>
 
-        <android.support.design.widget.BottomNavigationView
-            android:id="@+id/bottom_navigation"
-            style="@style/Widget.Design.BottomNavigationView"
+        <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="bottom"
-            android:background="@color/viewBackground"
-            app:elevation="@dimen/dp_16"
-            app:itemIconTint="@drawable/selector_nav_item_color"
-            app:itemTextColor="@drawable/selector_nav_item_color"
-            app:layout_behavior="com.example.think.widget.BottomNavigationBehavior"
-            app:menu="@menu/bottom_navigation_main"/>
+            android:layout_height="match_parent">
 
-    </android.support.design.widget.CoordinatorLayout>
+            <include layout="@layout/layout_toolbar"/>
+
+
+            <FrameLayout
+                android:id="@+id/frame_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            </FrameLayout>
+
+            <android.support.design.widget.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                style="@style/Widget.Design.BottomNavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:background="@color/viewBackground"
+                app:elevation="@dimen/dp_16"
+                app:itemIconTint="@drawable/selector_nav_item_color"
+                app:itemTextColor="@drawable/selector_nav_item_color"
+                app:layout_behavior="com.example.think.widget.BottomNavigationBehavior"
+                app:menu="@menu/bottom_navigation_main"/>
+
+        </android.support.design.widget.CoordinatorLayout>
+
+    </LinearLayout>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true"
+        android:scrollbars="none"
         app:headerLayout="@layout/nav_header_main"
+        app:insetForeground="@android:color/transparent"
         app:menu="@menu/nav_menu"/>
-
 
 </android.support.v4.widget.DrawerLayout>
