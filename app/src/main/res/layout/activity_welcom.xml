@@ -6,11 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:fitsSystemWindows="true"
-    tools:context=".ui.activity.WelcomActivity">
+    tools:context="com.example.think.ui.activity.WelcomActivity">
 
     <ImageView
-        android:src="@drawable/splash"
+        android:scaleType="centerCrop"
+        android:background="@drawable/splash"
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

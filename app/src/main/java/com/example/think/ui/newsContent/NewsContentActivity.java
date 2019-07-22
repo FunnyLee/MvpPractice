@@ -87,11 +87,6 @@ public class NewsContentActivity extends BaseActivity<INewsContentContract.Prese
     }
 
     @Override
-    protected int setStatusBarColor() {
-        return R.color.transparent;
-    }
-
-    @Override
     protected void initView() {
         //设置ToolBar
         setSupportActionBar(mToolBar);

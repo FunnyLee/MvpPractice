@@ -111,4 +111,6 @@ dependencies {
     }
     //GreenDao
     implementation 'org.greenrobot:greendao:3.2.2'
+    //沉浸式状态栏
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0-beta05'
 }

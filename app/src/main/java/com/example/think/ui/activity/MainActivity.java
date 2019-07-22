@@ -3,6 +3,7 @@ package com.example.think.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.IdRes;
+import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
@@ -27,8 +29,11 @@ import com.example.think.ui.channel.ChannelFragment;
 import com.example.think.ui.news.NewsFragment;
 import com.example.think.ui.picture.PictureFragment;
 import com.example.think.ui.video.VideoFragment;
+import com.example.think.utils.ImageHelper;
+import com.gyf.immersionbar.ImmersionBar;
 
 import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 
@@ -44,6 +49,10 @@ public class MainActivity extends ViewActivity {
     NavigationView mNavView;
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
+    @BindView(R.id.status_view)
+    View mStatusBarView;
+
+    private View mMenuHeadView;
 
     private long firstTime = 0;
 
@@ -56,6 +65,11 @@ public class MainActivity extends ViewActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initStatusBarColor() {
+        ImmersionBar.with(this).statusBarView(mStatusBarView).init();
     }
 
     @Override
@@ -78,6 +92,16 @@ public class MainActivity extends ViewActivity {
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        //去掉侧滑菜单的滑动条
+        NavigationMenuView navigationMenuItemView = (NavigationMenuView) mNavView.getChildAt(0);
+        if (navigationMenuItemView != null) {
+            navigationMenuItemView.setVerticalScrollBarEnabled(false);
+        }
+
+        //侧滑菜单背景图片
+        mMenuHeadView = mNavView.getHeaderView(0);
+        ImageHelper.loadBgImage(MainActivity.this, getBgPic(), mMenuHeadView);
 
         //默认选中新闻
         mToolbar.setTitle(R.string.title_news);
@@ -186,6 +210,25 @@ public class MainActivity extends ViewActivity {
             }
             return false;
         });
+
+        //侧滑菜单关闭时，加载背景图
+        mDrawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                ImageHelper.loadBgImage(MainActivity.this, getBgPic(), mMenuHeadView);
+            }
+        });
+    }
+
+    private static String getBgPic() {
+        Random random = new Random();
+        return "http://106.14.135.179/ImmersionBar/" + random.nextInt(40) + ".jpg";
     }
 
     /**

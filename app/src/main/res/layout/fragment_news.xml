@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/header_layout"
         android:layout_width="match_parent"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/green_gradient_color_shape"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 

@@ -1,15 +1,12 @@
 package com.example.think.base;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.example.think.R;
 import com.example.think.utils.BindEventBus;
+import com.gyf.immersionbar.ImmersionBar;
 import com.trello.navi2.component.support.NaviAppCompatActivity;
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle2.android.ActivityEvent;
@@ -40,29 +37,20 @@ public abstract class BaseActivity<P extends IBasePresenter> extends NaviAppComp
             return;
         }
         setContentView(getLayoutId());
+        ButterKnife.bind(this);
 
         //设置状态栏颜色
-        initStatusBarColor(setStatusBarColor());
+        initStatusBarColor();
 
-        ButterKnife.bind(this);
         registEventBus();
         initData();
         initView();
         initEvent();
     }
 
-    protected int setStatusBarColor() {
-        return R.color.colorPrimary;
-    }
-
-    @RequiresApi(19)
-    private void initStatusBarColor(int color) {
+    protected void initStatusBarColor() {
         //设置状态栏的颜色
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(getResources().getColor(color));
-        }
+        ImmersionBar.with(this).statusBarColor(R.color.theme_color).init();
     }
 
     private void registEventBus() {
