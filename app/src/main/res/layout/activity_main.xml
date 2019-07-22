@@ -18,14 +18,13 @@
             android:id="@+id/status_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/colorPrimary"/>
+            android:background="@drawable/green_gradient_color_shape"/>
 
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <include layout="@layout/layout_toolbar"/>
-
 
             <FrameLayout
                 android:id="@+id/frame_layout"

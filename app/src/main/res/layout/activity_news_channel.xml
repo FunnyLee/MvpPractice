@@ -6,9 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context=".ui.news.NewsChannelActivity">
-
-    <!--<include layout="@layout/layout_toolbar"/>-->
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/AppBarLayout01"
@@ -18,6 +17,7 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
+            android:background="@color/theme_color"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:popupTheme="@style/AppTheme.PopupOverlay">

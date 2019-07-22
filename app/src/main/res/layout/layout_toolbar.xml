@@ -11,6 +11,7 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
+        android:background="@drawable/green_gradient_color_shape"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:layout_scrollFlags="scroll|enterAlways"

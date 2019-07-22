@@ -50,7 +50,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends NaviAppComp
 
     protected void initStatusBarColor() {
         //设置状态栏的颜色
-        ImmersionBar.with(this).statusBarColor(R.color.statusBarColor).init();
+        ImmersionBar.with(this).statusBarColor(R.color.theme_color).init();
     }
 
     private void registEventBus() {

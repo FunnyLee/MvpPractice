@@ -18,6 +18,7 @@ import com.example.think.greendao.DaoManager.NewsDao;
 import com.example.think.greendao.entity.NewsChannel;
 import com.example.think.ui.adapter.NewsChannelAdapter;
 import com.example.think.widget.ItemTouchCallback;
+import com.gyf.immersionbar.ImmersionBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +48,11 @@ public class NewsChannelActivity extends ViewActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_news_channel;
+    }
+
+    @Override
+    protected void initStatusBarColor() {
+        ImmersionBar.with(this).statusBarColor(R.color.theme_color).init();
     }
 
     @Override
