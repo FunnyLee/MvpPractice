@@ -11,9 +11,6 @@ android {
         versionCode configInfo.versionCode
         versionName configInfo.versionName
 
-        //支持vector矢量图，minSdk小于21时，需要加这一行
-        vectorDrawables.useSupportLibrary = true
-
         javaCompileOptions {
             annotationProcessorOptions {
                 includeCompileClasspath = true
