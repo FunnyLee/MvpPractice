@@ -3,9 +3,6 @@ package com.example.think.ui.newsContent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -14,19 +11,17 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
-import android.view.WindowManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
-import com.example.think.R;
 import com.example.base.base.BaseActivity;
-import com.example.think.bean.news.MultiNewsArticleDataBean;
 import com.example.base.utils.ImageHelper;
-import com.example.think.widget.AppBarStateChangeListener;
+import com.example.think.R;
+import com.example.think.bean.news.MultiNewsArticleDataBean;
+import com.gyf.immersionbar.ImmersionBar;
 
 import butterknife.BindView;
 
@@ -78,6 +73,11 @@ public class NewsContentActivity extends BaseActivity<INewsContentContract.Prese
     }
 
     @Override
+    protected void initStatusBarColor() {
+        ImmersionBar.with(this).titleBar(mToolBar).init();
+    }
+
+    @Override
     protected void initData() {
         mPicUrl = getIntent().getStringExtra("picUrl");
         mBean = getIntent().getParcelableExtra("bean");
@@ -102,47 +102,21 @@ public class NewsContentActivity extends BaseActivity<INewsContentContract.Prese
 
     @Override
     protected void initEvent() {
-        mAppbarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                int offsetAbs = Math.abs(verticalOffset);
-                int totalScrollRange = appBarLayout.getTotalScrollRange();
-                mToolBar.setBackgroundColor(changeAlpha(getResources().getColor(R.color.colorPrimary), Math.abs(offsetAbs * 1.0f) / totalScrollRange));
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    Window window = getWindow();
-                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                    window.setStatusBarColor(changeAlpha(getResources().getColor(R.color.colorPrimary), Math.abs(offsetAbs * 1.0f) / totalScrollRange));
-                }
-            }
-        });
-
-
         mAppbarLayout.addOnOffsetChangedListener(new AppBarStateChangeListener() {
             @Override
-            public void onStateChanged(AppBarLayout appBarLayout, State state, int verticalOffset) {
-                if (state == State.EXPANDED) {
+            public void onStateChanged(AppBarLayout appBarLayout, int state, int verticalOffset) {
+                if (state == AppBarStateChangeListener.EXPANDED) {
                     //展开状态
-
-
-                } else if (state == State.COLLAPSED) {
-
+                    ImmersionBar.with(NewsContentActivity.this).statusBarColor(R.color.transparent).init();
+                } else if (state == AppBarStateChangeListener.COLLAPSED) {
                     //折叠状态
-
+                    ImmersionBar.with(NewsContentActivity.this).statusBarColor(R.color.theme_color).init();
                 } else {
-
                     //中间状态
-
+                    ImmersionBar.with(NewsContentActivity.this).statusBarColor(R.color.transparent).init();
                 }
             }
         });
-    }
-
-
-    public int changeAlpha(int color, float offset) {
-        int alpha = (int) (Color.alpha(color) * offset);
-        return Color.argb(alpha, 254, 50, 50);
     }
 
     @Override
@@ -225,4 +199,37 @@ public class NewsContentActivity extends BaseActivity<INewsContentContract.Prese
         return true;
     }
 
+    abstract class AppBarStateChangeListener implements AppBarLayout.OnOffsetChangedListener {
+
+        public static final int EXPANDED = 1;
+        public static final int COLLAPSED = 2;
+        public static final int IDLE = 3;
+
+        private int currentStata = IDLE;
+
+        @Override
+        public final void onOffsetChanged(AppBarLayout appBarLayout, int i) {
+            int offsetAbs = Math.abs(i);
+            int totalScrollRange = appBarLayout.getTotalScrollRange();
+            if (i == 0) {
+                if (currentStata != EXPANDED) {
+                    onStateChanged(appBarLayout, EXPANDED, i);
+                }
+                currentStata = EXPANDED;
+            } else if (totalScrollRange - offsetAbs <= 2 * ImmersionBar.getStatusBarHeight(NewsContentActivity.this)) {
+                //自定义的折叠状态，多出了一个状态栏的高度，目的是能无缝修改状态栏的颜色
+                if (currentStata != COLLAPSED) {
+                    onStateChanged(appBarLayout, COLLAPSED, i);
+                }
+                currentStata = COLLAPSED;
+            } else {
+                if (currentStata != IDLE) {
+                    onStateChanged(appBarLayout, IDLE, i);
+                }
+                currentStata = IDLE;
+            }
+        }
+
+        public abstract void onStateChanged(AppBarLayout appBarLayout, int state, int verticalOffset);
+    }
 }

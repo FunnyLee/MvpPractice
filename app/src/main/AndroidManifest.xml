@@ -24,16 +24,6 @@
         </activity>
         <activity android:name=".ui.newsContent.NewsContentActivity">
         </activity>
-        <activity
-            android:name=".ui.newsContent.ScrollingActivity"
-            android:label="@string/title_activity_scrolling"
-            android:theme="@style/AppTheme">
-        </activity>
-        <activity
-            android:name=".ui.newsContent.NavigationActivity"
-            android:label="@string/title_activity_navigation"
-            android:theme="@style/AppTheme">
-        </activity>
         <activity android:name=".ui.news.NewsChannelActivity">
         </activity>
     </application>
