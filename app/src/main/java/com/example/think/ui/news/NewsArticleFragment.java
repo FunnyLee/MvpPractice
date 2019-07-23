@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.think.R;
-import com.example.think.base.BaseListFragment;
+import com.example.base.base.BaseListFragment;
 import com.example.think.bean.news.MultiNewsArticleDataBean;
 import com.example.think.viewHolder.news.NewsArticleImgViewBinder;
 import com.example.think.viewHolder.news.NewsArticleTextViewBinder;

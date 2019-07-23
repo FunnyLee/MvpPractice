@@ -1,0 +1,30 @@
+apply plugin: 'com.android.library'
+
+def configInfo = rootProject.ext.android
+
+android {
+    compileSdkVersion configInfo.compileSdkVersion
+
+
+    defaultConfig {
+        minSdkVersion configInfo.minSdkVersion
+        targetSdkVersion configInfo.targetSdkVersion
+        versionCode configInfo.versionCode
+        versionName configInfo.versionName
+
+        //支持vector矢量图，minSdk小于21时，需要加这一行
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}

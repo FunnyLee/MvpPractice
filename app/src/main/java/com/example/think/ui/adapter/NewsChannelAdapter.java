@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.util.MultiTypeDelegate;
-import com.example.think.Constants;
+import com.example.base.Constants;
 import com.example.think.R;
 import com.example.think.bean.ChannelUIBean;
 import com.example.think.ui.news.NewsChannelActivity;

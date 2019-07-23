@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 import com.example.think.R;
 import com.example.think.bean.phote.PhotoArticleBean;
-import com.example.think.utils.ImageHelper;
-import com.example.think.utils.TimeUtil;
+import com.example.base.utils.ImageHelper;
+import com.example.base.utils.TimeUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

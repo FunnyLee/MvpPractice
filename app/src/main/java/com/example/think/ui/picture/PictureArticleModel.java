@@ -4,8 +4,8 @@ import android.annotation.SuppressLint;
 
 import com.example.think.bean.phote.PhotoArticleBean;
 import com.example.think.net.IPhotoApi;
-import com.example.think.net.NetCallBack;
-import com.example.think.net.RetrofitFactory;
+import com.example.base.net.NetCallBack;
+import com.example.base.net.RetrofitFactory;
 
 import java.util.List;
 

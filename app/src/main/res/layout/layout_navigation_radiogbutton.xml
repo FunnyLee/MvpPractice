@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:button="@null"
     android:gravity="center_horizontal"
-    android:textColor="@color/navigation_color_selector"
+    android:textColor="@drawable/navigation_color_selector"
     android:textSize="@dimen/sp_12"
     app:badge_bgColor="#ffff0000"
     app:badge_borderColor="#ffffffff"

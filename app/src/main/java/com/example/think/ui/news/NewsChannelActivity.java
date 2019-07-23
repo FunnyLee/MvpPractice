@@ -12,10 +12,10 @@ import android.view.MenuItem;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.think.R;
-import com.example.think.base.ViewActivity;
+import com.example.base.base.ViewActivity;
 import com.example.think.bean.ChannelUIBean;
-import com.example.think.greendao.DaoManager.NewsDao;
-import com.example.think.greendao.entity.NewsChannel;
+import com.example.base.greendao.daoManager.NewsDao;
+import com.example.base.greendao.entity.NewsChannel;
 import com.example.think.ui.adapter.NewsChannelAdapter;
 import com.example.think.widget.ItemTouchCallback;
 import com.gyf.immersionbar.ImmersionBar;

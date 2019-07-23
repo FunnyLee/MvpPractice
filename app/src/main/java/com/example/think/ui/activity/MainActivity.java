@@ -18,18 +18,19 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.example.think.R;
-import com.example.think.base.ViewActivity;
-import com.example.think.greendao.DaoManager.NewsDao;
-import com.example.think.greendao.DaoManager.PictureDao;
-import com.example.think.greendao.DaoManager.VideoDao;
-import com.example.think.greendao.entity.NewsChannel;
-import com.example.think.greendao.entity.PictureChannel;
-import com.example.think.greendao.entity.VideoChannel;
+import com.example.base.base.ViewActivity;
+import com.example.base.greendao.daoManager.NewsDao;
+import com.example.base.greendao.daoManager.PictureDao;
+import com.example.base.greendao.daoManager.VideoDao;
+import com.example.base.greendao.entity.NewsChannel;
+import com.example.base.greendao.entity.PictureChannel;
+import com.example.base.greendao.entity.VideoChannel;
 import com.example.think.ui.channel.ChannelFragment;
 import com.example.think.ui.news.NewsFragment;
 import com.example.think.ui.picture.PictureFragment;
 import com.example.think.ui.video.VideoFragment;
-import com.example.think.utils.ImageHelper;
+import com.example.base.utils.ImageHelper;
+
 import com.gyf.immersionbar.ImmersionBar;
 
 import java.util.List;
@@ -55,7 +56,6 @@ public class MainActivity extends ViewActivity {
     private View mMenuHeadView;
 
     private long firstTime = 0;
-
 
     public static void start(Context context) {
         Intent starter = new Intent(context, MainActivity.class);

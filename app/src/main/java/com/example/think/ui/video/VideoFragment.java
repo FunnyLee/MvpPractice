@@ -5,10 +5,10 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.example.think.R;
-import com.example.think.base.BaseFragment;
-import com.example.think.base.ViewFragment;
-import com.example.think.greendao.DaoManager.VideoDao;
-import com.example.think.greendao.entity.VideoChannel;
+import com.example.base.base.BaseFragment;
+import com.example.base.base.ViewFragment;
+import com.example.base.greendao.daoManager.VideoDao;
+import com.example.base.greendao.entity.VideoChannel;
 import com.example.think.ui.adapter.ViewPagerFragmentAdapter;
 
 import java.util.ArrayList;

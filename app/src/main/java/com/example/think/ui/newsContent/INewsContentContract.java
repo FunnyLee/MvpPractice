@@ -1,7 +1,7 @@
 package com.example.think.ui.newsContent;
 
-import com.example.think.base.IBasePresenter;
-import com.example.think.base.IBaseView;
+import com.example.base.base.IBasePresenter;
+import com.example.base.base.IBaseView;
 import com.example.think.bean.news.MultiNewsArticleDataBean;
 
 /**

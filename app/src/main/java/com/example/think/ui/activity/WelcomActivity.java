@@ -3,7 +3,8 @@ package com.example.think.ui.activity;
 import android.annotation.SuppressLint;
 
 import com.example.think.R;
-import com.example.think.base.ViewActivity;
+
+import com.example.base.base.ViewActivity;
 import com.gyf.immersionbar.ImmersionBar;
 
 import java.util.concurrent.TimeUnit;

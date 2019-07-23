@@ -23,9 +23,9 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
 import com.example.think.R;
-import com.example.think.base.BaseActivity;
+import com.example.base.base.BaseActivity;
 import com.example.think.bean.news.MultiNewsArticleDataBean;
-import com.example.think.utils.ImageHelper;
+import com.example.base.utils.ImageHelper;
 import com.example.think.widget.AppBarStateChangeListener;
 
 import butterknife.BindView;
