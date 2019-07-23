@@ -15,8 +15,6 @@ android {
     defaultConfig {
         minSdkVersion configInfo.minSdkVersion
         targetSdkVersion configInfo.targetSdkVersion
-        versionCode configInfo.versionCode
-        versionName configInfo.versionName
 
         compileOptions {
             targetCompatibility JavaVersion.VERSION_1_8
