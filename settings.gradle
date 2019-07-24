@@ -1,1 +1,1 @@
-include ':app', ':base_component', ':base_resource'
+include ':app', ':base_component', ':base_resource', ':toutiao'

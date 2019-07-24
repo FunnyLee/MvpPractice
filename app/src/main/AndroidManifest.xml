@@ -14,28 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.activity.WelcomActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".ui.activity.MainActivity">
-        </activity>
-        <activity android:name=".ui.newsContent.NewsContentActivity">
-        </activity>
-        <activity
-            android:name=".ui.newsContent.ScrollingActivity"
-            android:label="@string/title_activity_scrolling"
-            android:theme="@style/AppTheme">
-        </activity>
-        <activity
-            android:name=".ui.newsContent.NavigationActivity"
-            android:label="@string/title_activity_navigation"
-            android:theme="@style/AppTheme">
-        </activity>
-        <activity android:name=".ui.news.NewsChannelActivity">
-        </activity>
     </application>
 
 </manifest>

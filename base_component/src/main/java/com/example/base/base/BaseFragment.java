@@ -16,8 +16,6 @@ import com.trello.rxlifecycle2.navi.NaviLifecycle;
 
 import org.greenrobot.eventbus.EventBus;
 
-import butterknife.ButterKnife;
-
 /**
  * Author: Funny
  * Time: 2018/8/14
@@ -28,6 +26,7 @@ public abstract class BaseFragment<P extends IBasePresenter> extends NaviFragmen
     protected P mPresenter;
 
     protected Context mContext;
+    private View mView;
 
     @Override
     public void onAttach(Context context) {
@@ -45,14 +44,13 @@ public abstract class BaseFragment<P extends IBasePresenter> extends NaviFragmen
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view = LayoutInflater.from(getContext()).inflate(getLayoutId(), null);
-        ButterKnife.bind(this, view);
+        mView = LayoutInflater.from(getContext()).inflate(getLayoutId(), null);
 
         registEventBus();
         initData();
-        initView(view);
+        initView(mView);
         initEvent();
-        return view;
+        return mView;
     }
 
     private void registEventBus() {
@@ -86,4 +84,15 @@ public abstract class BaseFragment<P extends IBasePresenter> extends NaviFragmen
     protected void initEvent() {
     }
 
+    /**
+     * 查找控件
+     *
+     * @param viewId
+     */
+    public final <T extends View> T findViewById(int viewId) {
+        if (null != mView) {
+            return mView.findViewById(viewId);
+        }
+        return null;
+    }
 }
