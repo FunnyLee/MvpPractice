@@ -14,7 +14,6 @@ import com.trello.rxlifecycle2.navi.NaviLifecycle;
 
 import org.greenrobot.eventbus.EventBus;
 
-import butterknife.ButterKnife;
 
 /**
  * Author: Funny
@@ -37,14 +36,12 @@ public abstract class BaseActivity<P extends IBasePresenter> extends NaviAppComp
             return;
         }
         setContentView(getLayoutId());
-        ButterKnife.bind(this);
-
-        //设置状态栏颜色
-        initStatusBarColor();
 
         registEventBus();
         initData();
         initView();
+        //设置状态栏颜色
+        initStatusBarColor();
         initEvent();
     }
 

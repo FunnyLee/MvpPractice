@@ -14,6 +14,11 @@ android {
 
         //支持vector矢量图，minSdk小于21时，需要加这一行
         vectorDrawables.useSupportLibrary = true
+
+        compileOptions {
+            targetCompatibility JavaVersion.VERSION_1_8
+            sourceCompatibility JavaVersion.VERSION_1_8
+        }
     }
 
     buildTypes {
@@ -22,7 +27,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {

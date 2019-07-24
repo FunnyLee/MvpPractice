@@ -1,2 +1,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.toutiao"/>
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.example.toutiao">
+
+    <application>
+        <activity
+            android:name="com.example.toutiao.ui.activity.WelcomActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.toutiao.ui.activity.MainActivity">
+        </activity>
+        <activity android:name="com.example.toutiao.ui.newsContent.NewsContentActivity">
+        </activity>
+        <activity android:name="com.example.toutiao.ui.news.NewsChannelActivity">
+        </activity>
+    </application>
+
+
+</manifest>
