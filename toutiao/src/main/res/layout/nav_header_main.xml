@@ -6,13 +6,14 @@
     android:background="@drawable/error_image"
     android:clickable="true"
     android:foreground="?attr/selectableItemBackground"
-    android:gravity="bottom"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/dp_16"
-    android:paddingLeft="@dimen/dp_16"
-    android:paddingRight="@dimen/dp_16"
-    android:paddingTop="@dimen/dp_16"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_30"
+        android:background="@drawable/grey_gradient"
+        android:fitsSystemWindows="true"/>
 
     <!--<com.meiji.toutiao.widget.CircleImageView-->
     <!--android:layout_width="72dp"-->

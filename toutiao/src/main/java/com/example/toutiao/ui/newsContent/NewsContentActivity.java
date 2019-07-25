@@ -1,7 +1,5 @@
 package com.example.toutiao.ui.newsContent;
 
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -17,7 +15,10 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.base.base.BaseActivity;
+import com.example.base.router.RouterManager;
 import com.example.base.utils.ImageHelper;
 import com.example.toutiao.R;
 import com.example.toutiao.bean.news.MultiNewsArticleDataBean;
@@ -30,6 +31,7 @@ import com.gyf.immersionbar.ImmersionBar;
  * Description: This is 新闻内容Activity
  */
 
+@Route(path = RouterManager.NEWS_CONTENT_ACTIVITY)
 public class NewsContentActivity extends BaseActivity<INewsContentContract.Presenter> implements INewsContentContract.View {
 
     ImageView mIvPic;
@@ -40,15 +42,12 @@ public class NewsContentActivity extends BaseActivity<INewsContentContract.Prese
     ContentLoadingProgressBar mPbProgress;
     CoordinatorLayout mFlContainer;
     CollapsingToolbarLayout mCollapsingLayout;
-    private String mPicUrl;
-    private MultiNewsArticleDataBean mBean;
 
-    public static void start(Context context, String picUrl, MultiNewsArticleDataBean bean) {
-        Intent starter = new Intent(context, NewsContentActivity.class);
-        starter.putExtra("picUrl", picUrl);
-        starter.putExtra("bean", bean);
-        context.startActivity(starter);
-    }
+    @Autowired(name = "picUrl")
+    String mPicUrl;
+
+    @Autowired(name = "bean")
+    MultiNewsArticleDataBean mBean;
 
     @Override
     public void onSetPresenter(INewsContentContract.Presenter presenter) {

@@ -34,7 +34,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_30"
-                android:background="@drawable/gradient"
+                android:background="@drawable/grey_gradient"
                 android:fitsSystemWindows="true"/>
 
             <android.support.v7.widget.Toolbar

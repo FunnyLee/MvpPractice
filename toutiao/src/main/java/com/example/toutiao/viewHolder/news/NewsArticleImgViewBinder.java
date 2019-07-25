@@ -15,12 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.base.Constants;
+import com.example.base.router.RouterManager;
 import com.example.base.utils.ImageHelper;
 import com.example.base.utils.TimeUtil;
 import com.example.toutiao.R;
 import com.example.toutiao.bean.news.MultiNewsArticleDataBean;
-import com.example.toutiao.ui.newsContent.NewsContentActivity;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.jakewharton.rxbinding2.widget.RxPopupMenu;
 
@@ -105,9 +106,11 @@ public class NewsArticleImgViewBinder extends ItemViewBinder<MultiNewsArticleDat
         RxView.clicks(holder.itemView)
                 .throttleFirst(Constants.CLICK_INTERVAL, TimeUnit.SECONDS)
                 .subscribe(o -> {
-                    NewsContentActivity.start(context, picUrl, item);
-                    //ScrollingActivity.start(context);
-                    //NavigationActivity.start(context);
+//                    NewsContentActivity.start(context, picUrl, item);
+                    ARouter.getInstance().build(RouterManager.NEWS_CONTENT_ACTIVITY)
+                            .withString("picUrl", picUrl)
+                            .withParcelable("bean", item)
+                            .navigation();
                 });
     }
 

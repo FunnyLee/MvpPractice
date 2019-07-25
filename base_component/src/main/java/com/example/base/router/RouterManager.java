@@ -7,8 +7,10 @@ package com.example.base.router;
  */
 public class RouterManager {
 
-    public static final String GROUP_TOUTIAO = "group_toutiao";
+    public static final String GROUP_TOUTIAO = "/group_toutiao";
 
-    public static final String MAIN_ACTIVTY_URL = "/toutiao/MainActivity";
+    public static final String MAIN_ACTIVTY_URL = GROUP_TOUTIAO + "/MainActivity";
+
+    public static final String NEWS_CONTENT_ACTIVITY = GROUP_TOUTIAO + "/NewsContentActivity";
 
 }
