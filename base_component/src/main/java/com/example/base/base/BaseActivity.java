@@ -23,7 +23,6 @@ import org.greenrobot.eventbus.EventBus;
  */
 public abstract class BaseActivity<P extends IBasePresenter> extends NaviAppCompatActivity implements IBaseView<P> {
 
-
     protected P mPresenter;
 
     @Override

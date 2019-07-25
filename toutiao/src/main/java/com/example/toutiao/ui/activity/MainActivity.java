@@ -1,6 +1,5 @@
 package com.example.toutiao.ui.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.IdRes;
 import android.support.design.internal.NavigationMenuView;
@@ -17,6 +16,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.base.base.ViewActivity;
 import com.example.base.greendao.daoManager.NewsDao;
 import com.example.base.greendao.daoManager.PictureDao;
@@ -24,6 +24,7 @@ import com.example.base.greendao.daoManager.VideoDao;
 import com.example.base.greendao.entity.NewsChannel;
 import com.example.base.greendao.entity.PictureChannel;
 import com.example.base.greendao.entity.VideoChannel;
+import com.example.base.router.RouterManager;
 import com.example.base.utils.ImageHelper;
 import com.example.toutiao.R;
 import com.example.toutiao.ui.channel.ChannelFragment;
@@ -35,7 +36,7 @@ import com.gyf.immersionbar.ImmersionBar;
 import java.util.List;
 import java.util.Random;
 
-
+@Route(path = RouterManager.MAIN_ACTIVTY_URL)
 public class MainActivity extends ViewActivity {
 
     Toolbar mToolbar;
@@ -48,11 +49,6 @@ public class MainActivity extends ViewActivity {
     private View mMenuHeadView;
 
     private long firstTime = 0;
-
-    public static void start(Context context) {
-        Intent starter = new Intent(context, MainActivity.class);
-        context.startActivity(starter);
-    }
 
     @Override
     protected int getLayoutId() {

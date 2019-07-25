@@ -2,7 +2,9 @@ package com.example.toutiao.ui.activity;
 
 import android.annotation.SuppressLint;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.base.base.ViewActivity;
+import com.example.base.router.RouterManager;
 import com.example.toutiao.R;
 import com.gyf.immersionbar.ImmersionBar;
 
@@ -36,7 +38,7 @@ public class WelcomActivity extends ViewActivity {
                 .subscribe(new Consumer() {
                     @Override
                     public void accept(Object o) throws Exception {
-                        MainActivity.start(WelcomActivity.this);
+                        ARouter.getInstance().build(RouterManager.MAIN_ACTIVTY_URL).navigation();
                         finish();
                     }
                 });
