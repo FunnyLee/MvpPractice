@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
  * Created by Meiji on 2016/12/27.
  */
 
-public abstract class LazyLoadFragment<P extends IBasePresenter> extends BaseFragment<P> {
+public abstract class LazyLoadFragment<P extends IBasePresenter> extends BaseMvpFragment<P> {
 
     /**
      * 是否初始化过布局

@@ -3,6 +3,7 @@ package com.example.toutiao.ui.news;
 import android.annotation.SuppressLint;
 import android.text.TextUtils;
 
+import com.example.base.base.RxPresenter;
 import com.example.base.net.RetrofitFactory;
 import com.example.base.utils.ErrorAction;
 import com.example.toutiao.api.IMobileNewsApi;
@@ -23,7 +24,7 @@ import io.reactivex.schedulers.Schedulers;
  * Time: 2018/8/27
  * Description: This is NewsArticlePresenter
  */
-public class NewsArticlePresenter implements IArticleContract.Presenter {
+public class NewsArticlePresenter extends RxPresenter<IArticleContract.View> implements IArticleContract.Presenter {
 
     private Gson mGson = new Gson();
 

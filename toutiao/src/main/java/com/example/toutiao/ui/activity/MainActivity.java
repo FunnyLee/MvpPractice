@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.example.base.base.ViewActivity;
+import com.example.base.base.BaseActivity;
 import com.example.base.greendao.daoManager.NewsDao;
 import com.example.base.greendao.daoManager.PictureDao;
 import com.example.base.greendao.daoManager.VideoDao;
@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.Random;
 
 @Route(path = RouterManager.MAIN_ACTIVTY_URL)
-public class MainActivity extends ViewActivity {
+public class MainActivity extends BaseActivity {
 
     Toolbar mToolbar;
     FrameLayout mFrameLayout;

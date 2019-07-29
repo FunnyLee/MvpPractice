@@ -17,7 +17,7 @@ import android.widget.ImageView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.example.base.base.BaseActivity;
+import com.example.base.base.BaseMvpActivity;
 import com.example.base.router.RouterManager;
 import com.example.base.utils.ImageHelper;
 import com.example.toutiao.R;
@@ -32,7 +32,7 @@ import com.gyf.immersionbar.ImmersionBar;
  */
 
 @Route(path = RouterManager.NEWS_CONTENT_ACTIVITY)
-public class NewsContentActivity extends BaseActivity<INewsContentContract.Presenter> implements INewsContentContract.View {
+public class NewsContentActivity extends BaseMvpActivity<INewsContentContract.Presenter> implements INewsContentContract.View {
 
     ImageView mIvPic;
     Toolbar mToolBar;

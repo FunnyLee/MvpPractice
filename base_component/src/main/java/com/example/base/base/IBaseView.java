@@ -10,7 +10,7 @@ import com.trello.rxlifecycle2.android.ActivityEvent;
  */
 public interface IBaseView<P> {
     /**
-     * 显示加载动画
+     * 显示加载中
      */
     void onShowLoading();
 

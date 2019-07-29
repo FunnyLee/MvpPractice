@@ -86,7 +86,7 @@ public abstract class BaseListFragment<P extends IBasePresenter> extends LazyLoa
         LinearLayoutManager manager = (LinearLayoutManager) mRecyclerView.getLayoutManager();
         int firstVisibleItemPosition = manager.findFirstVisibleItemPosition();
         if (firstVisibleItemPosition == 0) {
-            mPresenter.doRefresh();
+//            mPresenter.doRefresh();
             return;
         }
         mRecyclerView.scrollToPosition(5);

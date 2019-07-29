@@ -27,5 +27,9 @@ public interface INewsContentContract {
          */
         void doLoadData(MultiNewsArticleDataBean bean);
 
+        void doRefresh();
+
+        void doShowNetError();
+
     }
 }

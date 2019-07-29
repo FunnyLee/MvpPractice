@@ -9,8 +9,8 @@ import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.base.Constants;
+import com.example.base.base.BaseMvpFragment;
 import com.example.base.base.BaseFragment;
-import com.example.base.base.ViewFragment;
 import com.example.base.greendao.daoManager.NewsDao;
 import com.example.base.greendao.entity.NewsChannel;
 import com.example.base.router.RouterManager;
@@ -28,14 +28,14 @@ import java.util.concurrent.TimeUnit;
  * Time: 2018/8/14
  * Description: This is AccountFragment
  */
-public class NewsFragment extends ViewFragment {
+public class NewsFragment extends BaseFragment {
     TabLayout mTabLayoutNews;
     ImageView mAddChannelIv;
     LinearLayout mHeaderLayout;
     ViewPager mViewPager;
 
     private List<String> mTitleList;
-    private List<BaseFragment> mFragmentList;
+    private List<BaseMvpFragment> mFragmentList;
 
 
     public static NewsFragment newInstance() {
@@ -60,7 +60,7 @@ public class NewsFragment extends ViewFragment {
 
             String channelId = channelEntity.channelId;
 
-            BaseFragment fragment = null;
+            BaseMvpFragment fragment = null;
 
             if ("question_and_answer".equals(channelId)) {
                 fragment = WendaArticleFragment.newInstance();
@@ -73,10 +73,10 @@ public class NewsFragment extends ViewFragment {
 
     @Override
     protected void initView(View view) {
-        mTabLayoutNews = (TabLayout) findViewById(R.id.tab_layout_news);
-        mAddChannelIv = (ImageView) findViewById(R.id.add_channel_iv);
-        mHeaderLayout = (LinearLayout) findViewById(R.id.header_layout);
-        mViewPager = (ViewPager) findViewById(R.id.view_pager_news);
+        mTabLayoutNews = findViewById(R.id.tab_layout_news);
+        mAddChannelIv = findViewById(R.id.add_channel_iv);
+        mHeaderLayout = findViewById(R.id.header_layout);
+        mViewPager = findViewById(R.id.view_pager_news);
 
 
         mTabLayoutNews.setupWithViewPager(mViewPager);
@@ -91,7 +91,6 @@ public class NewsFragment extends ViewFragment {
         RxView.clicks(mAddChannelIv)
                 .throttleFirst(Constants.CLICK_INTERVAL, TimeUnit.SECONDS)
                 .subscribe(o -> {
-//                    NewsChannelActivity.start(mContext);
                     ARouter.getInstance().build(RouterManager.NEWS_CHANNEL_ACTIVITY).navigation();
                 });
     }

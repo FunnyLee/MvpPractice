@@ -48,5 +48,9 @@ public interface IArticleContract {
          */
         void doShowNoMore();
 
+        void doRefresh();
+
+        void doShowNetError();
+
     }
 }

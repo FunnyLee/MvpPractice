@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.example.base.base.BaseFragment;
+import com.example.base.base.BaseMvpFragment;
 
 import java.util.List;
 
@@ -16,10 +16,10 @@ import java.util.List;
  */
 public class ViewPagerFragmentAdapter extends FragmentStatePagerAdapter {
 
-    private List<BaseFragment> fragmentList;
+    private List<BaseMvpFragment> fragmentList;
     private List<String> titleList;
 
-    public ViewPagerFragmentAdapter(FragmentManager fm, List<BaseFragment> fragmentList, List<String> titleList) {
+    public ViewPagerFragmentAdapter(FragmentManager fm, List<BaseMvpFragment> fragmentList, List<String> titleList) {
         super(fm);
         this.fragmentList = fragmentList;
         this.titleList = titleList;

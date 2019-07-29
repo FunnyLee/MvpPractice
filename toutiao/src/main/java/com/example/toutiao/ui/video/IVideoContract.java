@@ -47,6 +47,10 @@ public interface IVideoContract {
          */
         void doShowNoMore();
 
+        void doRefresh();
+
+        void doShowNetError();
+
     }
 
     interface Model {

@@ -3,7 +3,6 @@ package com.example.toutiao.ui.picture;
 import com.example.base.base.IBaseListView;
 import com.example.base.base.IBasePresenter;
 import com.example.base.net.NetCallBack;
-import com.example.base.net.NetCallBack;
 import com.example.toutiao.bean.phote.PhotoArticleBean;
 
 import java.util.List;
@@ -15,6 +14,7 @@ import java.util.List;
  */
 public interface IPictureContract {
 
+//    interface View extends IBaseListView<Presenter> {
     interface View extends IBaseListView<Presenter> {
 
         /**
@@ -45,6 +45,10 @@ public interface IPictureContract {
          * 加载完成
          */
         void doShowNoMore();
+
+        void doRefresh();
+
+        void doShowNetError();
     }
 
     interface Model {

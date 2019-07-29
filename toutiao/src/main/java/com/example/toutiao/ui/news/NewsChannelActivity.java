@@ -12,7 +12,7 @@ import android.view.MenuItem;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.example.base.base.ViewActivity;
+import com.example.base.base.BaseActivity;
 import com.example.base.greendao.daoManager.NewsDao;
 import com.example.base.greendao.entity.NewsChannel;
 import com.example.base.router.RouterManager;
@@ -34,7 +34,7 @@ import io.reactivex.functions.Function;
  */
 
 @Route(path = RouterManager.NEWS_CHANNEL_ACTIVITY)
-public class NewsChannelActivity extends ViewActivity {
+public class NewsChannelActivity extends BaseActivity {
 
     Toolbar mToolbar;
     AppBarLayout mAppBarLayout01;

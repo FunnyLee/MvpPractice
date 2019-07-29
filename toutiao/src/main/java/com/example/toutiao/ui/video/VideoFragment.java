@@ -4,8 +4,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+import com.example.base.base.BaseMvpFragment;
 import com.example.base.base.BaseFragment;
-import com.example.base.base.ViewFragment;
 import com.example.base.greendao.daoManager.VideoDao;
 import com.example.base.greendao.entity.VideoChannel;
 import com.example.toutiao.R;
@@ -19,11 +19,11 @@ import java.util.List;
  * Time: 2018/8/14
  * Description: This is 视频
  */
-public class VideoFragment extends ViewFragment {
+public class VideoFragment extends BaseFragment {
 
     TabLayout mTabLayoutVideo;
     ViewPager mViewPagerVideo;
-    private List<BaseFragment> mFragmentList;
+    private List<BaseMvpFragment> mFragmentList;
     private List<String> mTitleList;
 
     public static VideoFragment newInstance() {

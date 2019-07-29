@@ -21,13 +21,4 @@ public class WanAndroidPresenter implements IWanAndroidContract.Presenter {
 
     }
 
-    @Override
-    public void doRefresh() {
-
-    }
-
-    @Override
-    public void doShowNetError() {
-
-    }
 }

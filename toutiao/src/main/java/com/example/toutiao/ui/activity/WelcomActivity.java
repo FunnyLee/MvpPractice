@@ -3,7 +3,7 @@ package com.example.toutiao.ui.activity;
 import android.annotation.SuppressLint;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.example.base.base.ViewActivity;
+import com.example.base.base.BaseActivity;
 import com.example.base.router.RouterManager;
 import com.example.toutiao.R;
 import com.gyf.immersionbar.ImmersionBar;
@@ -15,7 +15,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class WelcomActivity extends ViewActivity {
+public class WelcomActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
