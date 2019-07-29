@@ -10,7 +10,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.example.toutiao.ui.activity.MainActivity">
+        <activity
+            android:name="com.example.toutiao.ui.activity.MainActivity"
+            android:launchMode="singleTop">
         </activity>
         <activity android:name="com.example.toutiao.ui.newsContent.NewsContentActivity">
         </activity>

@@ -7,6 +7,9 @@ package com.example.base.router;
  */
 public class RouterManager {
 
+    /**
+     * toutiao
+     */
     public static final String GROUP_TOUTIAO = "/group_toutiao";
 
     public static final String MAIN_ACTIVTY_URL = GROUP_TOUTIAO + "/MainActivity";
@@ -14,5 +17,12 @@ public class RouterManager {
     public static final String NEWS_CONTENT_ACTIVITY = GROUP_TOUTIAO + "/NewsContentActivity";
 
     public static final String NEWS_CHANNEL_ACTIVITY = GROUP_TOUTIAO + "/NewsChannelActivity";
+
+    /**
+     * wanAndroid
+     */
+    public static final String GROUP_WAN_ANDROID = "/group_wan_android";
+
+    public static final String WAN_ANDROID_ACTIVITY = GROUP_WAN_ANDROID + "/WanAndroidActivity";
 
 }

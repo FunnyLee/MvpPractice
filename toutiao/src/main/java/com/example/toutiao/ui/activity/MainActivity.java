@@ -17,6 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.base.base.ViewActivity;
 import com.example.base.greendao.daoManager.NewsDao;
 import com.example.base.greendao.daoManager.PictureDao;
@@ -181,10 +182,10 @@ public class MainActivity extends ViewActivity {
         //侧滑菜单条目的点击事件
         mNavView.setNavigationItemSelectedListener(item -> {
             int i = item.getItemId();
-            if (i == R.id.nav_switch_night_mode) {
-
-            } else if (i == R.id.nav_setting) {
-
+            if (i == R.id.nav_toutiao) {
+                ARouter.getInstance().build(RouterManager.MAIN_ACTIVTY_URL).navigation();
+            } else if (i == R.id.nav_wan_android) {
+                ARouter.getInstance().build(RouterManager.WAN_ANDROID_ACTIVITY).navigation();
             } else if (i == R.id.nav_share) {//分享
                 Intent shareIntent = new Intent()
                         .setAction(Intent.ACTION_SEND)
@@ -192,8 +193,8 @@ public class MainActivity extends ViewActivity {
                         .putExtra(Intent.EXTRA_TEXT, getString(R.string.share_app_text) + getString(R.string.source_code_url));
                 startActivity(Intent.createChooser(shareIntent, getString(R.string.share_to)));
                 mDrawerLayout.closeDrawers();
-                return false;
             }
+            mDrawerLayout.closeDrawers();
             return false;
         });
 
@@ -233,12 +234,12 @@ public class MainActivity extends ViewActivity {
     @Override
     public void onBackPressed() {
         //双击退出APP
-        super.onBackPressed();
         long secondTime = System.currentTimeMillis();
         if (secondTime - firstTime > 2000) {
             Toast.makeText(this, R.string.two_press_exit, Toast.LENGTH_SHORT).show();
             firstTime = secondTime;
         } else {
+            super.onBackPressed();
             System.exit(0);
         }
     }

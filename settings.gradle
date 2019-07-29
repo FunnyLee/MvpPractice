@@ -1,1 +1,1 @@
-include ':app', ':base_component', ':base_resource', ':toutiao'
+include ':app', ':base_component', ':base_resource', ':toutiao', ':wan_android'

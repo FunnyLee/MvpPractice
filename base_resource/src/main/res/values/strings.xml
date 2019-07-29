@@ -139,6 +139,8 @@
     <string name="nav_share">分享</string>
     <string name="video_force_landscape">视频横屏</string>
     <string name="video_force_landscape_summary">开启后强制横屏播放视频(能自动旋转就别开)</string>
+    <string name="nav_toutiao">头条</string>
+    <string name="nav_wan_android">wanAndroid</string>
 
 
     <string name="button_allow">允许</string>

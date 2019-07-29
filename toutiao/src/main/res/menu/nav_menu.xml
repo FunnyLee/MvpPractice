@@ -4,13 +4,13 @@
     <group android:id="@+id/other">
 
         <item
-            android:id="@+id/nav_switch_night_mode"
+            android:id="@+id/nav_toutiao"
             android:icon="@drawable/ic_night_gray_24dp"
-            android:title="@string/nav_switch_night_mode"/>
+            android:title="@string/nav_toutiao"/>
         <item
-            android:id="@+id/nav_setting"
+            android:id="@+id/nav_wan_android"
             android:icon="@drawable/ic_setting_gray_24dp"
-            android:title="@string/nav_setting"/>
+            android:title="@string/nav_wan_android"/>
         <item
             android:id="@+id/nav_share"
             android:icon="@drawable/ic_share_grey_24dp"

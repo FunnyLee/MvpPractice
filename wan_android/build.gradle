@@ -1,19 +1,17 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 def configInfo = rootProject.ext.android
 
 android {
     compileSdkVersion configInfo.compileSdkVersion
+
     defaultConfig {
-        applicationId configInfo.applicationId
         minSdkVersion configInfo.minSdkVersion
         targetSdkVersion configInfo.targetSdkVersion
-        versionCode configInfo.versionCode
-        versionName configInfo.versionName
 
         javaCompileOptions {
             annotationProcessorOptions {
-                includeCompileClasspath = true
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
 
@@ -26,26 +24,17 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-
-
-    dexOptions {
-//        incremental true
-        javaMaxHeapSize "4g"
-        preDexLibraries = false
-        jumboMode = true
-    }
-
 
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation project(":base_component")
     implementation project(":base_resource")
-    implementation project(":toutiao")
-    implementation project(":wan_android")
+
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
 }
