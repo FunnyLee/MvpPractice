@@ -31,8 +31,8 @@ public abstract class BaseListFragment<P extends IBasePresenter> extends LazyLoa
 
     @Override
     protected void initView(View view) {
-        mRecyclerView = view.findViewById(R.id.recycler_view);
-        mRefreshLayout = view.findViewById(R.id.refresh_layout);
+        mRecyclerView = findViewById(R.id.recycler_view);
+        mRefreshLayout = findViewById(R.id.refresh_layout);
         mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(manager);

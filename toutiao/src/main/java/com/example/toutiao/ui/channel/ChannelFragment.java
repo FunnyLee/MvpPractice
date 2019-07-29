@@ -1,7 +1,6 @@
 package com.example.toutiao.ui.channel;
 
 import com.example.base.base.BaseListFragment;
-import com.example.toutiao.R;
 
 import java.util.List;
 
@@ -17,10 +16,10 @@ public class ChannelFragment extends BaseListFragment {
         return fragment;
     }
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_channel;
-    }
+//    @Override
+//    protected int getLayoutId() {
+//        return R.layout.fragment_channel;
+//    }
 
     @Override
     public void onSetAdapter(List list) {

@@ -7,11 +7,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.base.Constants;
 import com.example.base.base.BaseFragment;
 import com.example.base.base.ViewFragment;
 import com.example.base.greendao.daoManager.NewsDao;
 import com.example.base.greendao.entity.NewsChannel;
+import com.example.base.router.RouterManager;
 import com.example.toutiao.R;
 import com.example.toutiao.ui.adapter.ViewPagerFragmentAdapter;
 import com.jakewharton.rxbinding2.view.RxView;
@@ -89,7 +91,8 @@ public class NewsFragment extends ViewFragment {
         RxView.clicks(mAddChannelIv)
                 .throttleFirst(Constants.CLICK_INTERVAL, TimeUnit.SECONDS)
                 .subscribe(o -> {
-                    NewsChannelActivity.start(mContext);
+//                    NewsChannelActivity.start(mContext);
+                    ARouter.getInstance().build(RouterManager.NEWS_CHANNEL_ACTIVITY).navigation();
                 });
     }
 }

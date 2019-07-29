@@ -1,29 +1,18 @@
 package com.example.toutiao.bean.news;
 
 import android.os.Parcel;
-import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Meiji on 2017/5/18.
  */
 
-public class MultiNewsArticleDataBean implements Parcelable {
+public class MultiNewsArticleDataBean implements Serializable {
 
-    public static final Creator<MultiNewsArticleDataBean> CREATOR = new Creator<MultiNewsArticleDataBean>() {
-        @Override
-        public MultiNewsArticleDataBean createFromParcel(Parcel in) {
-            return new MultiNewsArticleDataBean(in);
-        }
-
-        @Override
-        public MultiNewsArticleDataBean[] newArray(int size) {
-            return new MultiNewsArticleDataBean[size];
-        }
-    };
     /**
      * log_pb : {"impr_id":"20170519112306010003048108480AA6"}
      * read_count : 156694
@@ -259,77 +248,6 @@ public class MultiNewsArticleDataBean implements Parcelable {
         int result = title.hashCode();
         result = 31 * result + (int) (item_id ^ (item_id >>> 32));
         return result;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(read_count);
-        dest.writeString(media_name);
-        dest.writeInt(ban_comment);
-        dest.writeString(abstractX);
-        dest.writeInt(ban_bury);
-        dest.writeByte((byte) (has_video ? 1 : 0));
-        dest.writeInt(article_type);
-        dest.writeString(tag);
-//        dest.writeByte((byte) (has_m3u8_video ? 1 : 0));
-        dest.writeString(keywords);
-        dest.writeString(rid);
-        dest.writeString(label);
-        dest.writeByte((byte) (show_portrait_article ? 1 : 0));
-        dest.writeInt(user_verified);
-        dest.writeInt(aggr_type);
-        dest.writeInt(cell_type);
-        dest.writeInt(article_sub_type);
-        dest.writeInt(bury_count);
-        dest.writeString(title);
-        dest.writeInt(ignore_web_transform);
-        dest.writeInt(source_icon_style);
-        dest.writeInt(tip);
-        dest.writeInt(hot);
-        dest.writeString(share_url);
-        dest.writeInt(has_mp4_video);
-        dest.writeString(source);
-        dest.writeInt(comment_count);
-        dest.writeString(article_url);
-        dest.writeInt(share_count);
-        dest.writeString(stick_label);
-        dest.writeInt(publish_time);
-        dest.writeByte((byte) (has_image ? 1 : 0));
-        dest.writeInt(cell_layout_style);
-        dest.writeLong(tag_id);
-        dest.writeInt(video_style);
-        dest.writeString(verified_content);
-        dest.writeString(display_url);
-        dest.writeLong(item_id);
-        dest.writeByte((byte) (is_subject ? 1 : 0));
-        dest.writeInt(stick_style);
-        dest.writeByte((byte) (show_portrait ? 1 : 0));
-        dest.writeInt(repin_count);
-        dest.writeInt(cell_flag);
-        dest.writeString(source_open_url);
-        dest.writeInt(level);
-        dest.writeInt(digg_count);
-        dest.writeString(behot_time);
-        dest.writeString(article_alt_url);
-        dest.writeLong(cursor);
-        dest.writeString(url);
-        dest.writeInt(preload_web);
-        dest.writeInt(user_repin);
-        dest.writeInt(label_style);
-        dest.writeInt(item_version);
-        dest.writeParcelable(media_info, flags);
-        dest.writeLong(group_id);
-        dest.writeInt(gallary_image_count);
-        dest.writeString(video_id);
-        dest.writeParcelable(video_detail_info, flags);
-        dest.writeInt(video_duration);
-        dest.writeInt(group_flags);
-        dest.writeInt(like_count);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
     }
 
     public LogPbBean getLog_pb() {
@@ -949,7 +867,7 @@ public class MultiNewsArticleDataBean implements Parcelable {
                 '}';
     }
 
-    public static class LogPbBean {
+    public static class LogPbBean implements Serializable{
         /**
          * impr_id : 20170519112306010003048108480AA6
          */
@@ -965,7 +883,7 @@ public class MultiNewsArticleDataBean implements Parcelable {
         }
     }
 
-    public static class ForwardInfoBean {
+    public static class ForwardInfoBean implements Serializable{
         /**
          * forward_count : 8
          */
@@ -981,7 +899,7 @@ public class MultiNewsArticleDataBean implements Parcelable {
         }
     }
 
-    public static class UserInfoBean {
+    public static class UserInfoBean implements Serializable{
         /**
          * verified_content :
          * avatar_url : http://p3.pstatp.com/thumb/ca400072481685ad43b
@@ -1077,18 +995,7 @@ public class MultiNewsArticleDataBean implements Parcelable {
         }
     }
 
-    public static class MediaInfoBean implements Parcelable {
-        public static final Creator<MediaInfoBean> CREATOR = new Creator<MediaInfoBean>() {
-            @Override
-            public MediaInfoBean createFromParcel(Parcel in) {
-                return new MediaInfoBean(in);
-            }
-
-            @Override
-            public MediaInfoBean[] newArray(int size) {
-                return new MediaInfoBean[size];
-            }
-        };
+    public static class MediaInfoBean implements Serializable {
         /**
          * user_id : 50502346173
          * verified_content :
@@ -1128,25 +1035,6 @@ public class MultiNewsArticleDataBean implements Parcelable {
             recommend_reason = in.readString();
             is_star_user = in.readByte() != 0;
             user_verified = in.readByte() != 0;
-        }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeLong(user_id);
-            dest.writeString(verified_content);
-            dest.writeString(avatar_url);
-            dest.writeString(media_id);
-            dest.writeString(name);
-            dest.writeInt(recommend_type);
-            dest.writeByte((byte) (follow ? 1 : 0));
-            dest.writeString(recommend_reason);
-            dest.writeByte((byte) (is_star_user ? 1 : 0));
-            dest.writeByte((byte) (user_verified ? 1 : 0));
-        }
-
-        @Override
-        public int describeContents() {
-            return 0;
         }
 
         public long getUser_id() {
@@ -1230,7 +1118,7 @@ public class MultiNewsArticleDataBean implements Parcelable {
         }
     }
 
-    public static class MiddleImageBean {
+    public static class MiddleImageBean implements Serializable{
         /**
          * url : http://p9.pstatp.com/list/300x196/207c000e549a17910c1c.webp
          * width : 400
@@ -1285,7 +1173,7 @@ public class MultiNewsArticleDataBean implements Parcelable {
             this.url_list = url_list;
         }
 
-        public static class UrlListBean {
+        public static class UrlListBean implements Serializable{
             /**
              * url : http://p9.pstatp.com/list/300x196/207c000e549a17910c1c.webp
              */
@@ -1302,18 +1190,8 @@ public class MultiNewsArticleDataBean implements Parcelable {
         }
     }
 
-    public static class VideoDetailInfoBean implements Parcelable {
-        public static final Creator<VideoDetailInfoBean> CREATOR = new Creator<VideoDetailInfoBean>() {
-            @Override
-            public VideoDetailInfoBean createFromParcel(Parcel in) {
-                return new VideoDetailInfoBean(in);
-            }
+    public static class VideoDetailInfoBean implements Serializable {
 
-            @Override
-            public VideoDetailInfoBean[] newArray(int size) {
-                return new VideoDetailInfoBean[size];
-            }
-        };
         /**
          * group_flags : 32832
          * video_type : 0
@@ -1354,25 +1232,6 @@ public class MultiNewsArticleDataBean implements Parcelable {
         }
 
         public VideoDetailInfoBean() {
-        }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeInt(group_flags);
-            dest.writeInt(video_type);
-            dest.writeInt(video_preloading_flag);
-            dest.writeInt(direct_play);
-            dest.writeParcelable(detail_video_large_image, flags);
-            dest.writeInt(show_pgc_subscribe);
-            dest.writeString(video_third_monitor_url);
-            dest.writeString(video_id);
-            dest.writeInt(video_watching_count);
-            dest.writeInt(video_watch_count);
-        }
-
-        @Override
-        public int describeContents() {
-            return 0;
         }
 
         public int getGroup_flags() {
@@ -1463,18 +1322,8 @@ public class MultiNewsArticleDataBean implements Parcelable {
             this.video_url = video_url;
         }
 
-        public static class DetailVideoLargeImageBean implements Parcelable {
-            public static final Creator<DetailVideoLargeImageBean> CREATOR = new Creator<DetailVideoLargeImageBean>() {
-                @Override
-                public DetailVideoLargeImageBean createFromParcel(Parcel in) {
-                    return new DetailVideoLargeImageBean(in);
-                }
+        public static class DetailVideoLargeImageBean implements Serializable {
 
-                @Override
-                public DetailVideoLargeImageBean[] newArray(int size) {
-                    return new DetailVideoLargeImageBean[size];
-                }
-            };
             /**
              * url : http://p3.pstatp.com/video1609/17600009fb1bb36ce3ee
              * width : 580
@@ -1497,19 +1346,6 @@ public class MultiNewsArticleDataBean implements Parcelable {
             }
 
             public DetailVideoLargeImageBean() {
-            }
-
-            @Override
-            public void writeToParcel(Parcel dest, int flags) {
-                dest.writeString(url);
-                dest.writeInt(width);
-                dest.writeString(uri);
-                dest.writeInt(height);
-            }
-
-            @Override
-            public int describeContents() {
-                return 0;
             }
 
             public String getUrl() {
@@ -1554,7 +1390,7 @@ public class MultiNewsArticleDataBean implements Parcelable {
         }
     }
 
-    public static class LargeImageListBean {
+    public static class LargeImageListBean implements Serializable{
         /**
          * url : http://p3.pstatp.com/video1609/17600009fb1bb36ce3ee
          * width : 580
@@ -1611,7 +1447,7 @@ public class MultiNewsArticleDataBean implements Parcelable {
         }
     }
 
-    public static class ImageListBean {
+    public static class ImageListBean implements Serializable{
         /**
          * url : http://p1.pstatp.com/list/300x196/213b0003f2d1a191e4ff.webp
          * width : 496

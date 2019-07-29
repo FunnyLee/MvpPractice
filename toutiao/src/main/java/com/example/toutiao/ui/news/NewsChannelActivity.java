@@ -10,10 +10,12 @@ import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.MenuItem;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.base.base.ViewActivity;
 import com.example.base.greendao.daoManager.NewsDao;
 import com.example.base.greendao.entity.NewsChannel;
+import com.example.base.router.RouterManager;
 import com.example.toutiao.R;
 import com.example.toutiao.bean.ChannelUIBean;
 import com.example.toutiao.ui.adapter.NewsChannelAdapter;
@@ -27,6 +29,11 @@ import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 
+/**
+ * 选择频道页面
+ */
+
+@Route(path = RouterManager.NEWS_CHANNEL_ACTIVITY)
 public class NewsChannelActivity extends ViewActivity {
 
     Toolbar mToolbar;
@@ -107,8 +114,6 @@ public class NewsChannelActivity extends ViewActivity {
     }
 
     private void setRecyclerView() {
-
-
         mAdapter = new NewsChannelAdapter(this, mDatas, null);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 4));
         mAdapter.setSpanSizeLookup(new BaseQuickAdapter.SpanSizeLookup() {

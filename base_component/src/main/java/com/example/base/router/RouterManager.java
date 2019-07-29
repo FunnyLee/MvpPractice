@@ -13,4 +13,6 @@ public class RouterManager {
 
     public static final String NEWS_CONTENT_ACTIVITY = GROUP_TOUTIAO + "/NewsContentActivity";
 
+    public static final String NEWS_CHANNEL_ACTIVITY = GROUP_TOUTIAO + "/NewsChannelActivity";
+
 }

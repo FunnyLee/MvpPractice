@@ -67,14 +67,6 @@ public class NewsContentActivity extends BaseActivity<INewsContentContract.Prese
         ImmersionBar.with(this).titleBar(mToolBar).init();
     }
 
-    @Override
-    protected void initData() {
-        mPicUrl = getIntent().getStringExtra("picUrl");
-        mBean = getIntent().getParcelableExtra("bean");
-
-        //强行MVP模式
-        mPresenter.doLoadData(mBean);
-    }
 
     @Override
     protected void initView() {
@@ -95,10 +87,21 @@ public class NewsContentActivity extends BaseActivity<INewsContentContract.Prese
         //返回箭头可用
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        mCollapsingLayout.setTitle(mBean.getMedia_name());
+        mBean = (MultiNewsArticleDataBean) getIntent().getSerializableExtra("bean");
+        mPicUrl = getIntent().getStringExtra("picUrl");
 
         ImageHelper.loadCenterCrop(this, mPicUrl, mIvPic);
+
+        mCollapsingLayout.setTitle(mBean.getMedia_name());
+
     }
+
+    @Override
+    protected void initData() {
+        //强行MVP模式
+        mPresenter.doLoadData(mBean);
+    }
+
 
     @Override
     protected void initEvent() {

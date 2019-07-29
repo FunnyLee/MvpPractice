@@ -109,7 +109,7 @@ public class NewsArticleImgViewBinder extends ItemViewBinder<MultiNewsArticleDat
 //                    NewsContentActivity.start(context, picUrl, item);
                     ARouter.getInstance().build(RouterManager.NEWS_CONTENT_ACTIVITY)
                             .withString("picUrl", picUrl)
-                            .withParcelable("bean", item)
+                            .withSerializable("bean", item)
                             .navigation();
                 });
     }

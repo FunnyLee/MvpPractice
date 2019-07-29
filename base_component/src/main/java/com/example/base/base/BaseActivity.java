@@ -38,8 +38,8 @@ public abstract class BaseActivity<P extends IBasePresenter> extends NaviAppComp
         setContentView(getLayoutId());
 
         registEventBus();
-        initData();
         initView();
+        initData();
         //设置状态栏颜色
         initStatusBarColor();
         initEvent();
