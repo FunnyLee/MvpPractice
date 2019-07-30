@@ -11,8 +11,6 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class RxPresenter<V extends IBaseView> implements IBasePresenter {
 
-    protected V mView;
-
     /**
      * 处理Rxjava线程切换
      * 使用RxLifeCycle对Rxjava生命周期进行管理

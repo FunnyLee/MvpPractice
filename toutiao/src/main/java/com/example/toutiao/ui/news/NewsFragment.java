@@ -9,8 +9,8 @@ import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.base.Constants;
-import com.example.base.base.BaseMvpFragment;
 import com.example.base.base.BaseFragment;
+import com.example.base.base.BaseMvpFragment;
 import com.example.base.greendao.daoManager.NewsDao;
 import com.example.base.greendao.entity.NewsChannel;
 import com.example.base.router.RouterManager;
@@ -49,6 +49,14 @@ public class NewsFragment extends BaseFragment {
     }
 
     @Override
+    protected void initView(View view) {
+        mTabLayoutNews = findViewById(R.id.tab_layout_news);
+        mAddChannelIv = findViewById(R.id.add_channel_iv);
+        mHeaderLayout = findViewById(R.id.header_layout);
+        mViewPager = findViewById(R.id.view_pager_news);
+    }
+
+    @Override
     protected void initData() {
         mTitleList = new ArrayList<>();
         mFragmentList = new ArrayList<>();
@@ -61,7 +69,6 @@ public class NewsFragment extends BaseFragment {
             String channelId = channelEntity.channelId;
 
             BaseMvpFragment fragment = null;
-
             if ("question_and_answer".equals(channelId)) {
                 fragment = WendaArticleFragment.newInstance();
             } else {
@@ -69,15 +76,6 @@ public class NewsFragment extends BaseFragment {
             }
             mFragmentList.add(fragment);
         }
-    }
-
-    @Override
-    protected void initView(View view) {
-        mTabLayoutNews = findViewById(R.id.tab_layout_news);
-        mAddChannelIv = findViewById(R.id.add_channel_iv);
-        mHeaderLayout = findViewById(R.id.header_layout);
-        mViewPager = findViewById(R.id.view_pager_news);
-
 
         mTabLayoutNews.setupWithViewPager(mViewPager);
         mTabLayoutNews.setTabMode(TabLayout.MODE_SCROLLABLE);

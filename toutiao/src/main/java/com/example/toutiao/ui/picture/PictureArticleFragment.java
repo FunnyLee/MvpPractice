@@ -1,9 +1,14 @@
 package com.example.toutiao.ui.picture;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
-import com.example.base.base.BaseListFragment;
+import com.example.base.base.BaseMvpFragment;
+import com.example.toutiao.R;
 import com.example.toutiao.bean.phote.PhotoArticleBean;
 import com.example.toutiao.viewHolder.picture.PictureArticleViewBinder;
 
@@ -17,10 +22,14 @@ import me.drakeet.multitype.MultiTypeAdapter;
  * Time: 2018/9/6
  * Description: This is PictureArticleFragment
  */
-public class PictureArticleFragment extends BaseListFragment<IPictureContract.Presenter> implements IPictureContract.View {
+public class PictureArticleFragment extends BaseMvpFragment<IPictureContract.Presenter> implements IPictureContract.View {
 
+    RecyclerView mRecyclerView;
+    SwipeRefreshLayout mRefreshLayout;
 
     private String mCategoryId;
+
+    protected boolean canLoadMore = false;
 
     private Items mDatas = new Items();
     private MultiTypeAdapter mAdapter;
@@ -45,28 +54,44 @@ public class PictureArticleFragment extends BaseListFragment<IPictureContract.Pr
         }
     }
 
-    /**
-     * 在onCreateView中执行
-     */
+
     @Override
-    protected void initData() {
-        mCategoryId = getArguments().getString("categoryId");
+    protected int getLayoutId() {
+        return R.layout.fragment_list;
     }
 
     @Override
     protected void initView(View view) {
-        super.initView(view);
+        mRecyclerView = findViewById(R.id.recycler_view);
+        mRefreshLayout = findViewById(R.id.refresh_layout);
         mAdapter = new MultiTypeAdapter(mDatas);
         mAdapter.register(PhotoArticleBean.DataBean.class, new PictureArticleViewBinder());
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    /**
-     * 在onAcyivityCreated中执行
-     */
     @Override
-    public void fetchData() {
+    protected void initData() {
+        mCategoryId = getArguments().getString("categoryId");
         onLoadData();
+    }
+
+    @Override
+    protected void initEvent() {
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                LinearLayoutManager manager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                int itemCount = manager.getItemCount();
+                int lastVisibleItemPosition = manager.findLastVisibleItemPosition();
+                if (lastVisibleItemPosition == itemCount - 1) {
+                    if (canLoadMore) {
+                        canLoadMore = false;
+                        mPresenter.doLoadMoreData();
+                        Toast.makeText(getContext(), "加载更多", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -76,7 +101,7 @@ public class PictureArticleFragment extends BaseListFragment<IPictureContract.Pr
     }
 
     @Override
-    public void onSetAdapter(List<?> list) {
+    public void onShowContentView(List<?> list) {
         mDatas.clear();
         mDatas.addAll(list);
         mAdapter.notifyDataSetChanged();
@@ -84,5 +109,31 @@ public class PictureArticleFragment extends BaseListFragment<IPictureContract.Pr
         mRecyclerView.stopScroll();
     }
 
+    @Override
+    public void onShowNoMore() {
+        canLoadMore = false;
+    }
+
+    @Override
+    public void onShowLoading() {
+        mRefreshLayout.post(() -> {
+            mRefreshLayout.setRefreshing(true);
+        });
+    }
+
+    @Override
+    public void onHideLoading() {
+        mRefreshLayout.post(() -> {
+            mRefreshLayout.setRefreshing(false);
+        });
+    }
+
+    @Override
+    public void onShowNetError() {
+        Toast.makeText(getContext(), "网络不给力", Toast.LENGTH_SHORT).show();
+        mAdapter.setItems(new Items());
+        mAdapter.notifyDataSetChanged();
+        canLoadMore = false;
+    }
 
 }

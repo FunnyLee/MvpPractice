@@ -1,7 +1,7 @@
 package com.example.toutiao.ui.video;
 
-import com.example.base.base.IBaseListView;
 import com.example.base.base.IBasePresenter;
+import com.example.base.base.IBaseView;
 import com.example.base.net.NetCallBack;
 import com.example.toutiao.bean.news.MultiNewsArticleDataBean;
 import com.trello.rxlifecycle2.LifecycleProvider;
@@ -16,12 +16,42 @@ import java.util.List;
  */
 public interface IVideoContract {
 
-    interface View extends IBaseListView<Presenter> {
+    interface View extends IBaseView<Presenter> {
 
         /**
          * 请求数据
          */
         void onLoadData();
+
+        /**
+         * 显示加载动画
+         */
+        void onShowLoading();
+
+        /**
+         * 隐藏加载动画
+         */
+        void onHideLoading();
+
+        /**
+         * 显示网络错误
+         */
+        void onShowNetError();
+
+        /**
+         * 加载完毕
+         */
+        void onShowNoMore();
+
+        /**
+         * 设置 presenter
+         */
+        void onSetPresenter(Presenter presenter);
+
+        /**
+         * 设置适配器
+         */
+        void onShowContentView(List<?> list);
 
     }
 
@@ -47,8 +77,14 @@ public interface IVideoContract {
          */
         void doShowNoMore();
 
+        /**
+         * 下拉刷新
+         */
         void doRefresh();
 
+        /**
+         * 显示网络错误
+         */
         void doShowNetError();
 
     }

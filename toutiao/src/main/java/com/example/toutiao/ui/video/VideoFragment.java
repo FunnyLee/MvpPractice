@@ -4,8 +4,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
-import com.example.base.base.BaseMvpFragment;
 import com.example.base.base.BaseFragment;
+import com.example.base.base.BaseMvpFragment;
 import com.example.base.greendao.daoManager.VideoDao;
 import com.example.base.greendao.entity.VideoChannel;
 import com.example.toutiao.R;
@@ -37,6 +37,12 @@ public class VideoFragment extends BaseFragment {
     }
 
     @Override
+    protected void initView(View view) {
+        mTabLayoutVideo =  findViewById(R.id.tab_layout_video);
+        mViewPagerVideo =  findViewById(R.id.view_pager_video);
+    }
+
+    @Override
     protected void initData() {
         mFragmentList = new ArrayList<>();
         mTitleList = new ArrayList<>();
@@ -48,16 +54,8 @@ public class VideoFragment extends BaseFragment {
             mFragmentList.add(fragment);
         }
 
-    }
-
-    @Override
-    protected void initView(View view) {
-        mTabLayoutVideo = (TabLayout) findViewById(R.id.tab_layout_video);
-        mViewPagerVideo = (ViewPager) findViewById(R.id.view_pager_video);
-
         mTabLayoutVideo.setupWithViewPager(mViewPagerVideo);
         mTabLayoutVideo.setTabMode(TabLayout.MODE_SCROLLABLE);
-
         ViewPagerFragmentAdapter adapter = new ViewPagerFragmentAdapter(getFragmentManager(), mFragmentList, mTitleList);
         mViewPagerVideo.setAdapter(adapter);
     }

@@ -87,7 +87,7 @@ public class PictureArticlePresenter implements IPictureContract.Presenter {
     public void doSetAdapter(List<PhotoArticleBean.DataBean> datas) {
         mFragment.onHideLoading();
         mDatas.addAll(datas);
-        mFragment.onSetAdapter(mDatas);
+        mFragment.onShowContentView(mDatas);
     }
 
     @Override

@@ -123,7 +123,7 @@ public class NewsArticlePresenter extends RxPresenter<IArticleContract.View> imp
     @Override
     public void doSetAdapter(List<MultiNewsArticleDataBean> list) {
         mDataList.addAll(list);
-        mView.onSetAdapter(mDataList);
+        mView.onShowContentView(mDataList);
         mView.onHideLoading();
     }
 

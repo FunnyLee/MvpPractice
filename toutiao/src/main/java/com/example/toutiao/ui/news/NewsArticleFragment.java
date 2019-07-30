@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.base.base.BaseListFragment;
+import com.example.base.base.BaseMvpFragment;
 import com.example.toutiao.R;
 import com.example.toutiao.bean.news.MultiNewsArticleDataBean;
 import com.example.toutiao.viewHolder.news.NewsArticleImgViewBinder;
@@ -27,12 +27,17 @@ import me.drakeet.multitype.MultiTypeAdapter;
  * Time: 2018/8/16
  * Description: This is NewsArticleView
  */
-public class NewsArticleFragment extends BaseListFragment<IArticleContract.Presenter> implements IArticleContract.View {
+public class NewsArticleFragment extends BaseMvpFragment<IArticleContract.Presenter> implements IArticleContract.View {
 
     RecyclerView mRecyclerView;
     SwipeRefreshLayout mRefreshLayout;
 
     private String mCategoryId;
+
+    protected MultiTypeAdapter mAdapter;
+
+
+    protected boolean canLoadMore = false;
 
     private Items mDatas = new Items();
 
@@ -52,33 +57,29 @@ public class NewsArticleFragment extends BaseListFragment<IArticleContract.Prese
     @Override
     public void onSetPresenter(IArticleContract.Presenter presenter) {
         if (presenter == null) {
-            this.mPresenter = new NewsArticlePresenter(this);
+            mPresenter = new NewsArticlePresenter(this);
         }
     }
 
-    /**
-     * 这个方法在BaseFragment中的onCreateView方法里执行
-     */
     @Override
-    protected void initData() {
-        mCategoryId = getArguments().getString("channelId");
+    protected int getLayoutId() {
+        return R.layout.fragment_list;
     }
 
     @Override
     protected void initView(View view) {
-        super.initView(view);
         mRecyclerView = findViewById(R.id.recycler_view);
         mRefreshLayout = findViewById(R.id.refresh_layout);
 
         mAdapter = new MultiTypeAdapter(mDatas);
         //注册Adapter的多条目
         mAdapter.register(MultiNewsArticleDataBean.class)
-                .to(new NewsArticleImgViewBinder(), new NewsArticleTextViewBinder(),new NewsArticleVideoViewBinder())
+                .to(new NewsArticleImgViewBinder(), new NewsArticleTextViewBinder(), new NewsArticleVideoViewBinder())
                 .withClassLinker(new ClassLinker<MultiNewsArticleDataBean>() {
                     @NonNull
                     @Override
                     public Class<? extends ItemViewBinder<MultiNewsArticleDataBean, ?>> index(int position, @NonNull MultiNewsArticleDataBean multiNewsArticleDataBean) {
-                        if(multiNewsArticleDataBean.isHas_video()){
+                        if (multiNewsArticleDataBean.isHas_video()) {
                             //返回视频条目
                             return NewsArticleVideoViewBinder.class;
                         }
@@ -94,6 +95,15 @@ public class NewsArticleFragment extends BaseListFragment<IArticleContract.Prese
                     }
                 });
         mRecyclerView.setAdapter(mAdapter);
+    }
+
+    /**
+     * 这个方法在BaseFragment中的onCreateView方法里执行
+     */
+    @Override
+    protected void initData() {
+        mCategoryId = getArguments().getString("channelId");
+        onLoadData();
     }
 
     @Override
@@ -113,15 +123,22 @@ public class NewsArticleFragment extends BaseListFragment<IArticleContract.Prese
                 }
             }
         });
+
+        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                LinearLayoutManager manager = (LinearLayoutManager) mRecyclerView.getLayoutManager();
+                int firstVisibleItemPosition = manager.findFirstVisibleItemPosition();
+                if (firstVisibleItemPosition == 0) {
+                    mPresenter.doRefresh();
+                    return;
+                }
+                mRecyclerView.scrollToPosition(5);
+                mRecyclerView.smoothScrollToPosition(0);
+            }
+        });
     }
 
-    /**
-     * 这个方法在LazyLoadFragment生命周期onActivityCreated里执行
-     */
-    @Override
-    public void fetchData() {
-        onLoadData();
-    }
 
     @Override
     public void onLoadData() {
@@ -129,16 +146,54 @@ public class NewsArticleFragment extends BaseListFragment<IArticleContract.Prese
         mPresenter.doLoadData(mCategoryId);
     }
 
+    @Override
+    public void onShowNoMore() {
+        /**
+         * 列表Fragment，加载完毕，无更多数据
+         */
+        // TODO: 2018/9/6 无更多数据实现
+        canLoadMore = false;
+    }
+
     /**
      * 在presenter网络请求的回调中执行
+     *
      * @param list
      */
     @Override
-    public void onSetAdapter(List<?> list) {
+    public void onShowContentView(List<?> list) {
         mDatas.clear();
         mDatas.addAll(list);
         mAdapter.notifyDataSetChanged();
         canLoadMore = true;
         mRecyclerView.stopScroll();
+    }
+
+    @Override
+    public void onShowLoading() {
+        mRefreshLayout.post(() -> {
+            mRefreshLayout.setRefreshing(true);
+        });
+    }
+
+    @Override
+    public void onHideLoading() {
+        /**
+         * 列表Fragment，隐藏加载视图，设置mRefreshLayout刷新状态为false
+         */
+        mRefreshLayout.post(() -> {
+            mRefreshLayout.setRefreshing(false);
+        });
+    }
+
+    @Override
+    public void onShowNetError() {
+        /**
+         * 列表Fragment，加载时显示网络错误
+         */
+        Toast.makeText(getContext(), "网络不给力", Toast.LENGTH_SHORT).show();
+        mAdapter.setItems(new Items());
+        mAdapter.notifyDataSetChanged();
+        canLoadMore = false;
     }
 }

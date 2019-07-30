@@ -38,7 +38,7 @@
             android:paddingTop="4dp"
             android:scaleType="center"
             app:srcCompat="@drawable/ic_add_white_24dp"
-            tools:ignore="ContentDescription"/>
+            tools:ignore="ContentDescription,VectorDrawableCompat"/>
     </LinearLayout>
 
     <android.support.v4.view.ViewPager

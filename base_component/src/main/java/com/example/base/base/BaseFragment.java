@@ -27,8 +27,8 @@ public abstract class BaseFragment extends BaseEventBusFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         mView = LayoutInflater.from(mContext).inflate(getLayoutId(), null);
-        initData();
         initView(mView);
+        initData();
         initEvent();
         return mView;
     }

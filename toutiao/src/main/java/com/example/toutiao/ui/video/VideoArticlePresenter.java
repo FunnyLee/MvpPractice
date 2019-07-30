@@ -55,9 +55,9 @@ public class VideoArticlePresenter implements IVideoContract.Presenter {
                                     return false;
                                 }
 
-                                if (source.contains("头条") || source.contains("问答") || multiNewsArticleDataBean.getTag().contains("ad")) {
-                                    return false;
-                                }
+//                                if (source.contains("头条") || source.contains("问答") || multiNewsArticleDataBean.getTag().contains("ad")) {
+//                                    return false;
+//                                }
 
                                 //去除标题重复的新闻
                                 for (MultiNewsArticleDataBean data : mDatas) {
@@ -94,7 +94,7 @@ public class VideoArticlePresenter implements IVideoContract.Presenter {
     public void doSetAdapter(List<MultiNewsArticleDataBean> datas) {
         mDatas.addAll(datas);
         mView.onHideLoading();
-        mView.onSetAdapter(mDatas);
+        mView.onShowContentView(mDatas);
     }
 
     @Override

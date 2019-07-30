@@ -4,8 +4,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
-import com.example.base.base.BaseMvpFragment;
 import com.example.base.base.BaseFragment;
+import com.example.base.base.BaseMvpFragment;
 import com.example.base.greendao.daoManager.PictureDao;
 import com.example.base.greendao.entity.PictureChannel;
 import com.example.toutiao.R;
@@ -34,6 +34,12 @@ public class PictureFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_picture;
+    }
+
+    @Override
+    protected void initView(View view) {
+        mTabLayoutNews = (TabLayout) findViewById(R.id.tab_layout_news);
+        mViewPager = (ViewPager) findViewById(R.id.view_pager_news);
     }
 
     @Override
@@ -70,17 +76,11 @@ public class PictureFragment extends BaseFragment {
             BaseMvpFragment fragment = PictureArticleFragment.newInstance(channelBean.channelId);
             mFragmentList.add(fragment);
         }
-    }
-
-    @Override
-    protected void initView(View view) {
-        mTabLayoutNews = (TabLayout) findViewById(R.id.tab_layout_news);
-        mViewPager = (ViewPager) findViewById(R.id.view_pager_news);
 
         mTabLayoutNews.setupWithViewPager(mViewPager);
         mTabLayoutNews.setTabMode(TabLayout.MODE_FIXED);
-
         ViewPagerFragmentAdapter adapter = new ViewPagerFragmentAdapter(getFragmentManager(), mFragmentList, mTitleList);
         mViewPager.setAdapter(adapter);
     }
+
 }

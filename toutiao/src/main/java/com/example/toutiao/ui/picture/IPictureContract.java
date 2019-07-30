@@ -1,7 +1,7 @@
 package com.example.toutiao.ui.picture;
 
-import com.example.base.base.IBaseListView;
 import com.example.base.base.IBasePresenter;
+import com.example.base.base.IBaseView;
 import com.example.base.net.NetCallBack;
 import com.example.toutiao.bean.phote.PhotoArticleBean;
 
@@ -14,13 +14,41 @@ import java.util.List;
  */
 public interface IPictureContract {
 
-//    interface View extends IBaseListView<Presenter> {
-    interface View extends IBaseListView<Presenter> {
+    //    interface View extends IBaseListView<Presenter> {
+    interface View extends IBaseView<Presenter> {
+
+        void onLoadData();
 
         /**
-         * 请求数据
+         * 显示加载动画
          */
-        void onLoadData();
+        void onShowLoading();
+
+        /**
+         * 隐藏加载动画
+         */
+        void onHideLoading();
+
+        /**
+         * 显示网络错误
+         */
+        void onShowNetError();
+
+        /**
+         * 加载完毕
+         */
+        void onShowNoMore();
+
+
+        /**
+         * 设置 presenter
+         */
+        void onSetPresenter(Presenter presenter);
+
+        /**
+         * 显示内容视图
+         */
+        void onShowContentView(List<?> list);
 
     }
 
