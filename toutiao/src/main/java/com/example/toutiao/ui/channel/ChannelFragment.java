@@ -22,21 +22,6 @@ public class ChannelFragment extends BaseMvpFragment {
 
 
     @Override
-    public void onShowLoading() {
-
-    }
-
-    @Override
-    public void onHideLoading() {
-
-    }
-
-    @Override
-    public void onShowNetError() {
-
-    }
-
-    @Override
     public void onSetPresenter(Object presenter) {
 
     }

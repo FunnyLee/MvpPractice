@@ -24,20 +24,4 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
 
     }
 
-    @Override
-    public void onShowLoading() {
-
-    }
-
-    @Override
-    public void onHideLoading() {
-
-    }
-
-    @Override
-    public void onShowNetError() {
-
-    }
-
-
 }

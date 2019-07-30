@@ -9,21 +9,21 @@ import com.trello.rxlifecycle2.android.ActivityEvent;
  * Description: This is 一级View接口
  */
 public interface IBaseView<P> {
-    /**
-     * 显示加载中
-     */
-    void onShowLoading();
-
-    /**
-     * 隐藏加载
-     */
-    void onHideLoading();
-
-    /**
-     * 显示网络错误
-     */
-    void onShowNetError();
-
+//    /**
+//     * 显示加载中
+//     */
+//    void onShowLoading();
+//
+//    /**
+//     * 隐藏加载
+//     */
+//    void onHideLoading();
+//
+//    /**
+//     * 显示网络错误
+//     */
+//    void onShowNetError();
+//
     /**
      * 设置 presenter
      */

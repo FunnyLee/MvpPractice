@@ -20,22 +20,6 @@ public class WendaArticleFragment extends BaseMvpFragment {
         return R.layout.fragment_wenda_artic;
     }
 
-
-    @Override
-    public void onShowLoading() {
-
-    }
-
-    @Override
-    public void onHideLoading() {
-
-    }
-
-    @Override
-    public void onShowNetError() {
-
-    }
-
     @Override
     public void onSetPresenter(Object presenter) {
 

@@ -18,6 +18,21 @@ public interface INewsContentContract {
          */
         void onSetWeb(String url);
 
+        /**
+         * 显示加载中
+         */
+        void onShowLoading();
+
+        /**
+         * 隐藏加载
+         */
+        void onHideLoading();
+
+        /**
+         * 显示网络错误
+         */
+        void onShowNetError();
+
     }
 
     interface Presenter extends IBasePresenter {
