@@ -2,7 +2,7 @@ package com.example.toutiao.ui.newsContent;
 
 import com.example.base.base.IBasePresenter;
 import com.example.base.base.IBaseView;
-import com.example.toutiao.bean.news.MultiNewsArticleDataBean;
+import com.example.toutiao.entity.news.MultiNewsArticleDataBean;
 
 /**
  * Author: Funny

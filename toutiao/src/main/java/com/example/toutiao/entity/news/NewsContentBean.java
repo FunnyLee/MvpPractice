@@ -1,4 +1,4 @@
-package com.example.toutiao.bean.news;
+package com.example.toutiao.entity.news;
 
 public class NewsContentBean {
 

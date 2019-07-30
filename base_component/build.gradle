@@ -60,8 +60,9 @@ dependencies {
     //OkHttp
     api 'com.squareup.okhttp3:okhttp:3.11.0'
     //glide
-    api 'com.github.bumptech.glide:glide:4.7.1'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    api 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    api 'jp.wasabeef:glide-transformations:4.0.1'
     //BaseRecyclerViewAdapterHelper
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.41'
     //rxJava

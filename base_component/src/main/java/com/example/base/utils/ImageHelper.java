@@ -1,5 +1,6 @@
 package com.example.base.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
@@ -14,6 +15,9 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.example.base.R;
+
+import jp.wasabeef.glide.transformations.BlurTransformation;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
@@ -24,19 +28,10 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 public class ImageHelper extends AppGlideModule {
 
     public static void loadCenterCrop(Context context, String url, ImageView view) {
-//        if (SettingUtil.getInstance().getIsNoPhotoMode() && NetWorkUtil.isMobileConnected(context)) {
-//            view.setImageResource(defaultResId);
-//        } else {
-//            GlideApp.with(context)
-//                    .load(url)
-//                    .transition(withCrossFade())
-//                    .apply(new RequestOptions().centerCrop())
-//                    .into(view);
-//        }
         Glide.with(context)
                 .load(url)
                 .transition(withCrossFade())
-                .apply(new RequestOptions().centerCrop())
+                .apply(new RequestOptions().centerCrop().error(R.drawable.error_image))
                 .into(view);
     }
 
@@ -44,16 +39,6 @@ public class ImageHelper extends AppGlideModule {
      * 带加载异常图片
      */
     public static void loadCenterCrop(Context context, String url, ImageView view, int defaultResId, int errorResId) {
-//        if (SettingUtil.getInstance().getIsNoPhotoMode() && NetWorkUtil.isMobileConnected(context)) {
-//            view.setImageResource(defaultResId);
-//        } else {
-//            GlideApp.with(context)
-//                    .load(url)
-//                    .transition(withCrossFade())
-//                    .apply(new RequestOptions().centerCrop().error(errorResId))
-//                    .into(view);
-//        }
-
         Glide.with(context)
                 .load(url)
                 .transition(withCrossFade())
@@ -93,5 +78,14 @@ public class ImageHelper extends AppGlideModule {
                         view.setBackground(resource);
                     }
                 });
+    }
+
+    @SuppressLint("CheckResult")
+    public static void loadBlurryImage(Context context, String url, ImageView imageView) {
+        Glide.with(context)
+                .load(url)
+                .apply(new RequestOptions().error(R.drawable.error_image).centerCrop())
+                .apply(RequestOptions.bitmapTransform(new BlurTransformation(12, 1)))
+                .into(imageView);
     }
 }

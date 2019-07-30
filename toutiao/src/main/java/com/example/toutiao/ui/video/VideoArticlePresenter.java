@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.text.TextUtils;
 import com.example.base.net.NetCallBack;
 import com.example.base.utils.TimeUtil;
-import com.example.toutiao.bean.news.MultiNewsArticleDataBean;
+import com.example.toutiao.entity.news.MultiNewsArticleDataBean;
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 

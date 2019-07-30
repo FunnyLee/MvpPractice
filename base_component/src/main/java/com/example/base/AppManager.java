@@ -31,7 +31,7 @@ public class AppManager extends Application {
         GreenDaoManager.getInstance().initGreenDao(this);
     }
 
-    public static Context getAppContext() {
+    public static Context getAppManagerContext() {
         return appContext;
     }
 

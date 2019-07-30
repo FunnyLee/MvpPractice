@@ -28,7 +28,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RetrofitFactory {
 
-    private static final String HOST = "http://toutiao.com/";
+    // TODO: 2019/7/30 base_url待修改
+    private static final String base_url = "https://www.wanandroid.com/";
 
     private static volatile Retrofit sInstance;
 
@@ -41,7 +42,7 @@ public class RetrofitFactory {
                 if (sInstance == null) {
 
                     //添加持久化cookie
-                    ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(AppManager.getAppContext()));
+                    ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(AppManager.getAppManagerContext()));
 
                     //日志拦截器
                     LoggingInterceptor loggingInterceptor = new LoggingInterceptor.Builder()
@@ -72,7 +73,7 @@ public class RetrofitFactory {
                             .build();
 
                     sInstance = new Retrofit.Builder()
-                            .baseUrl(HOST)
+                            .baseUrl(base_url)
                             .client(mClient)
                             .addConverterFactory(GsonConverterFactory.create())
                             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

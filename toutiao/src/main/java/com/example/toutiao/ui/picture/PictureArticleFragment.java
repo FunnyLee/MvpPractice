@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import com.example.base.base.BaseMvpFragment;
 import com.example.toutiao.R;
-import com.example.toutiao.bean.phote.PhotoArticleBean;
+import com.example.toutiao.entity.phote.PhotoArticleBean;
 import com.example.toutiao.viewHolder.picture.PictureArticleViewBinder;
 
 import java.util.List;

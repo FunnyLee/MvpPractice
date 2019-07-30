@@ -17,7 +17,7 @@ import com.example.base.greendao.daoManager.NewsDao;
 import com.example.base.greendao.entity.NewsChannel;
 import com.example.base.router.RouterManager;
 import com.example.toutiao.R;
-import com.example.toutiao.bean.ChannelUIBean;
+import com.example.toutiao.entity.ChannelUIBean;
 import com.example.toutiao.ui.adapter.NewsChannelAdapter;
 import com.example.toutiao.widget.ItemTouchCallback;
 import com.gyf.immersionbar.ImmersionBar;

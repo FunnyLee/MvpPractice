@@ -1,4 +1,4 @@
-package com.example.toutiao.bean;
+package com.example.toutiao.entity;
 
 
 import com.example.base.greendao.entity.NewsChannel;

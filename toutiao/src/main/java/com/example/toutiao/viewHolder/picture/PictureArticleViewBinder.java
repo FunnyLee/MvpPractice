@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.example.base.utils.ImageHelper;
 import com.example.base.utils.TimeUtil;
 import com.example.toutiao.R;
-import com.example.toutiao.bean.phote.PhotoArticleBean;
+import com.example.toutiao.entity.phote.PhotoArticleBean;
 
 import me.drakeet.multitype.ItemViewBinder;
 

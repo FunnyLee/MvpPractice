@@ -3,8 +3,8 @@ package com.example.toutiao.ui.newsContent;
 import com.example.base.net.RetrofitFactory;
 import com.example.base.utils.ErrorAction;
 import com.example.toutiao.api.INewsApi;
-import com.example.toutiao.bean.news.MultiNewsArticleDataBean;
-import com.example.toutiao.bean.news.NewsContentBean;
+import com.example.toutiao.entity.news.MultiNewsArticleDataBean;
+import com.example.toutiao.entity.news.NewsContentBean;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableOnSubscribe;

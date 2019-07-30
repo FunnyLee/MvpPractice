@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.example.base.base.BaseMvpFragment;
 import com.example.toutiao.R;
-import com.example.toutiao.bean.news.MultiNewsArticleDataBean;
+import com.example.toutiao.entity.news.MultiNewsArticleDataBean;
 import com.example.toutiao.viewHolder.news.NewsArticleImgViewBinder;
 import com.example.toutiao.viewHolder.news.NewsArticleTextViewBinder;
 import com.example.toutiao.viewHolder.news.NewsArticleVideoViewBinder;

@@ -3,7 +3,7 @@ package com.example.toutiao.ui.picture;
 import android.annotation.SuppressLint;
 import com.example.base.net.NetCallBack;
 import com.example.base.utils.TimeUtil;
-import com.example.toutiao.bean.phote.PhotoArticleBean;
+import com.example.toutiao.entity.phote.PhotoArticleBean;
 
 import java.util.ArrayList;
 import java.util.List;

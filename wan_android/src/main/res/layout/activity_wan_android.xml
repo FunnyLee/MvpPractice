@@ -5,12 +5,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".WanAndroidActivity">
 
-    <TextView
-        android:gravity="center"
-        android:text="AAAAAA"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="@dimen/dp_200">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/banner_bg_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/banner_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_180"
+            android:layout_centerVertical="true"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_25"
+            android:background="@drawable/grey_gradient"/>
+
+    </RelativeLayout>
+
 
 </LinearLayout>

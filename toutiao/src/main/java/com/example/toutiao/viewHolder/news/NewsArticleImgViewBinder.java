@@ -21,7 +21,7 @@ import com.example.base.router.RouterManager;
 import com.example.base.utils.ImageHelper;
 import com.example.base.utils.TimeUtil;
 import com.example.toutiao.R;
-import com.example.toutiao.bean.news.MultiNewsArticleDataBean;
+import com.example.toutiao.entity.news.MultiNewsArticleDataBean;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.jakewharton.rxbinding2.widget.RxPopupMenu;
 

@@ -13,7 +13,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.util.MultiTypeDelegate;
 import com.example.base.Constants;
 import com.example.toutiao.R;
-import com.example.toutiao.bean.ChannelUIBean;
+import com.example.toutiao.entity.ChannelUIBean;
 import com.example.toutiao.ui.news.NewsChannelActivity;
 import com.jakewharton.rxbinding2.view.RxView;
 

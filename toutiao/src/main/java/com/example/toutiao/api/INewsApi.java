@@ -1,6 +1,6 @@
 package com.example.toutiao.api;
 
-import com.example.toutiao.bean.news.NewsContentBean;
+import com.example.toutiao.entity.news.NewsContentBean;
 
 import io.reactivex.Observable;
 import io.reactivex.annotations.NonNull;

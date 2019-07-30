@@ -3,7 +3,7 @@ package com.example.toutiao.ui.video;
 import com.example.base.base.IBasePresenter;
 import com.example.base.base.IBaseView;
 import com.example.base.net.NetCallBack;
-import com.example.toutiao.bean.news.MultiNewsArticleDataBean;
+import com.example.toutiao.entity.news.MultiNewsArticleDataBean;
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 

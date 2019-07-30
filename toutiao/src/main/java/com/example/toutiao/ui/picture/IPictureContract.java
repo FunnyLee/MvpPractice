@@ -3,7 +3,7 @@ package com.example.toutiao.ui.picture;
 import com.example.base.base.IBasePresenter;
 import com.example.base.base.IBaseView;
 import com.example.base.net.NetCallBack;
-import com.example.toutiao.bean.phote.PhotoArticleBean;
+import com.example.toutiao.entity.phote.PhotoArticleBean;
 
 import java.util.List;
 

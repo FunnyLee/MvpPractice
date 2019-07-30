@@ -256,10 +256,10 @@ public class ScreenHelper {
     }
 
     public static int getDimensionPixelOffset(@DimenRes int resId) {
-        return AppManager.getAppContext().getResources().getDimensionPixelOffset(resId);
+        return AppManager.getAppManagerContext().getResources().getDimensionPixelOffset(resId);
     }
 
     public static int getColor(@ColorRes int resId) {
-        return AppManager.getAppContext().getResources().getColor(resId);
+        return AppManager.getAppManagerContext().getResources().getColor(resId);
     }
 }

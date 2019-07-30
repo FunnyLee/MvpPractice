@@ -1,4 +1,4 @@
-package com.example.toutiao.bean.phote;
+package com.example.toutiao.entity.phote;
 
 import android.os.Parcel;
 import android.os.Parcelable;

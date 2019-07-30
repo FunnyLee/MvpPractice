@@ -13,5 +13,4 @@ public abstract class BaseMvpActivity<P extends IBasePresenter> extends BaseActi
     protected void initPresenter() {
         onSetPresenter(mPresenter);
     }
-
 }

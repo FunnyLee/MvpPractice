@@ -82,13 +82,13 @@ public class ItemTouchCallback<T> extends ItemTouchHelper.Callback {
     public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
         super.onSelectedChanged(viewHolder, actionState);
         if(actionState != ItemTouchHelper.ACTION_STATE_IDLE){
-            viewHolder.itemView.setBackground(AppManager.getAppContext().getResources().getDrawable(R.drawable.channle_view_bg_selected_shape));
+            viewHolder.itemView.setBackground(AppManager.getAppManagerContext().getResources().getDrawable(R.drawable.channle_view_bg_selected_shape));
         }
     }
 
     @Override
     public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
         super.clearView(recyclerView, viewHolder);
-        viewHolder.itemView.setBackground(AppManager.getAppContext().getResources().getDrawable(R.drawable.channle_view_bg_normal_shape));
+        viewHolder.itemView.setBackground(AppManager.getAppManagerContext().getResources().getDrawable(R.drawable.channle_view_bg_normal_shape));
     }
 }

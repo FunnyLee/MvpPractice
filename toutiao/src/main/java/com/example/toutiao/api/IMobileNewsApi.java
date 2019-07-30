@@ -1,7 +1,7 @@
 package com.example.toutiao.api;
 
 
-import com.example.toutiao.bean.news.MultiNewsArticleBean;
+import com.example.toutiao.entity.news.MultiNewsArticleBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
