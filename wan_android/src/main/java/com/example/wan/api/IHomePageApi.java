@@ -27,5 +27,5 @@ public interface IHomePageApi {
      * @return
      */
     @GET("article/list/0/json")
-    Observable<BaseWanAndroidResponse<List<HomeArticleInfo>>> getHomeArticle();
+    Observable<BaseWanAndroidResponse<HomeArticleInfo>> getHomeArticle();
 }

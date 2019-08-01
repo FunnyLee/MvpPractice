@@ -53,13 +53,13 @@ public class WanAndroidPresenter extends RxPresenter<IWanAndroidContract.View> i
     @SuppressLint("CheckResult")
     @Override
     public void loadData() {
-        Observable<BaseWanAndroidResponse<List<HomeArticleInfo>>> observable = RetrofitFactory.getInstance().create(IHomePageApi.class).getHomeArticle();
-        add(observable).subscribe(new Consumer<BaseWanAndroidResponse<List<HomeArticleInfo>>>() {
+        Observable<BaseWanAndroidResponse<HomeArticleInfo>> observable = RetrofitFactory.getInstance().create(IHomePageApi.class).getHomeArticle();
+        add(observable).subscribe(new Consumer<BaseWanAndroidResponse<HomeArticleInfo>>() {
             @Override
-            public void accept(BaseWanAndroidResponse<List<HomeArticleInfo>> response) throws Exception {
-                List<HomeArticleInfo> data = response.data;
-                if (data != null && data.size() > 0) {
-                    mView.onShowContentView(data);
+            public void accept(BaseWanAndroidResponse<HomeArticleInfo> response) throws Exception {
+                List<HomeArticleInfo.DatasInfo> datas = response.data.datas;
+                if (datas != null && datas.size() > 0) {
+                    mView.onShowContentView(datas);
                 }
             }
         }, new Consumer<Throwable>() {

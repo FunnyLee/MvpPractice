@@ -5,40 +5,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/windowBackground"
     android:orientation="vertical"
     tools:context=".WanAndroidActivity">
 
-    <RelativeLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_200">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/banner_bg_recycler_view"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:overScrollMode="never">
-        </android.support.v7.widget.RecyclerView>
+            android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/banner_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_180"
-            android:layout_centerVertical="true"
-            android:overScrollMode="never"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_170">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_25"
-            android:background="@drawable/grey_gradient"/>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/banner_bg_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never">
+                </android.support.v7.widget.RecyclerView>
 
-    </RelativeLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/banner_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_180"
+                    android:layout_centerVertical="true"
+                    android:overScrollMode="never"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager">
-    </android.support.v7.widget.RecyclerView>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_25"
+                    android:background="@drawable/grey_gradient"/>
 
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:nestedScrollingEnabled="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

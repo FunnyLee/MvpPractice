@@ -12,6 +12,7 @@ import com.example.base.router.RouterManager;
 import com.example.base.utils.WindowDispaly;
 import com.example.wan.adapter.BannerAdapter;
 import com.example.wan.adapter.BannerBgAdapter;
+import com.example.wan.adapter.HomeArticleAdapter;
 import com.example.wan.entity.HomeArticleInfo;
 import com.example.wan.entity.HomeBannerInfo;
 import com.gyf.immersionbar.ImmersionBar;
@@ -26,7 +27,8 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
     private BannerAdapter mBannerAdapter;
     private List<HomeBannerInfo> mBannerList = new ArrayList<>();
 
-    private List<HomeArticleInfo> mDatas = new ArrayList<>();
+    private List<HomeArticleInfo.DatasInfo> mDatas = new ArrayList<>();
+    private HomeArticleAdapter mArticleAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -69,7 +71,7 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
         bannerRecyclerView.addItemDecoration(new GalleryItemDecoration());
         mBannerAdapter = new BannerAdapter(R.layout.item_banner_view, mBannerList);
         bannerRecyclerView.setAdapter(mBannerAdapter);
-        PagerSnapHelper pagerSnapHelper = new PagerSnapHelper(){
+        PagerSnapHelper pagerSnapHelper = new PagerSnapHelper() {
             @Override
             public int findTargetSnapPosition(RecyclerView.LayoutManager layoutManager, int velocityX, int velocityY) {
                 int position = super.findTargetSnapPosition(layoutManager, velocityX, velocityY);
@@ -78,6 +80,10 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
             }
         };
         pagerSnapHelper.attachToRecyclerView(bannerRecyclerView);
+
+        //文章列表
+        mArticleAdapter = new HomeArticleAdapter(R.layout.item_home_article_view, mDatas);
+        recyclerView.setAdapter(mArticleAdapter);
     }
 
     @Override
@@ -114,8 +120,9 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
     }
 
     @Override
-    public void onShowContentView(List<HomeArticleInfo> data) {
-
+    public void onShowContentView( List<HomeArticleInfo.DatasInfo> data) {
+        mDatas.addAll(data);
+        mArticleAdapter.setNewData(mDatas);
     }
 
     class GalleryItemDecoration extends RecyclerView.ItemDecoration {

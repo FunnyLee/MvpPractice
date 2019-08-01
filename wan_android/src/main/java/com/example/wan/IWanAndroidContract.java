@@ -47,7 +47,7 @@ public interface IWanAndroidContract {
         /**
          * 显示内容视图
          */
-        void onShowContentView(List<HomeArticleInfo> data);
+        void onShowContentView( List<HomeArticleInfo.DatasInfo> data);
 
     }
 
