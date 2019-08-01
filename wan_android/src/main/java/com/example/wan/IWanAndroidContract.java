@@ -2,6 +2,7 @@ package com.example.wan;
 
 import com.example.base.base.IBasePresenter;
 import com.example.base.base.IBaseView;
+import com.example.wan.entity.HomeArticleInfo;
 import com.example.wan.entity.HomeBannerInfo;
 
 import java.util.List;
@@ -36,8 +37,17 @@ public interface IWanAndroidContract {
         void onShowNetError();
 
 
+        /**
+         * 设置轮播图
+         *
+         * @param data
+         */
+        void onSetBanner(List<HomeBannerInfo> data);
 
-        void setBanner(List<HomeBannerInfo> data);
+        /**
+         * 显示内容视图
+         */
+        void onShowContentView(List<HomeArticleInfo> data);
 
     }
 

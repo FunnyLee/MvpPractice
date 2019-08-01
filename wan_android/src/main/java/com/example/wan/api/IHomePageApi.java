@@ -1,6 +1,7 @@
 package com.example.wan.api;
 
 import com.example.wan.entity.BaseWanAndroidResponse;
+import com.example.wan.entity.HomeArticleInfo;
 import com.example.wan.entity.HomeBannerInfo;
 
 import java.util.List;
@@ -19,6 +20,12 @@ public interface IHomePageApi {
      * 获取首页Banner图
      */
     @GET("banner/json")
-    Observable<BaseWanAndroidResponse<List<HomeBannerInfo>>> getBanner();
+    Observable<BaseWanAndroidResponse<List<HomeBannerInfo>>> getHomeBanner();
 
+    /**
+     * 获取首页文章列表
+     * @return
+     */
+    @GET("article/list/0/json")
+    Observable<BaseWanAndroidResponse<List<HomeArticleInfo>>> getHomeArticle();
 }

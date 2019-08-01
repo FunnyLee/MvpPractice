@@ -15,14 +15,16 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/banner_bg_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
         </android.support.v7.widget.RecyclerView>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/banner_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_180"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:overScrollMode="never"/>
 
         <View
             android:layout_width="match_parent"
@@ -30,6 +32,13 @@
             android:background="@drawable/grey_gradient"/>
 
     </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+    </android.support.v7.widget.RecyclerView>
 
 
 </LinearLayout>

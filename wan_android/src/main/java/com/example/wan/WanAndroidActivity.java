@@ -12,6 +12,7 @@ import com.example.base.router.RouterManager;
 import com.example.base.utils.WindowDispaly;
 import com.example.wan.adapter.BannerAdapter;
 import com.example.wan.adapter.BannerBgAdapter;
+import com.example.wan.entity.HomeArticleInfo;
 import com.example.wan.entity.HomeBannerInfo;
 import com.gyf.immersionbar.ImmersionBar;
 
@@ -24,6 +25,8 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
     private BannerBgAdapter mBannerBgAdapter;
     private BannerAdapter mBannerAdapter;
     private List<HomeBannerInfo> mBannerList = new ArrayList<>();
+
+    private List<HomeArticleInfo> mDatas = new ArrayList<>();
 
     @Override
     protected int getLayoutId() {
@@ -46,6 +49,7 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
     protected void initView() {
         RecyclerView bannerBgRecyclerView = findViewById(R.id.banner_bg_recycler_view);
         RecyclerView bannerRecyclerView = findViewById(R.id.banner_recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
 
         //背景RecyclerView
         PagerSnapHelper snapHelper = new PagerSnapHelper();
@@ -83,6 +87,7 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
 
     @Override
     public void onLoadData() {
+        mPresenter.loadData();
         mPresenter.loadBanner();
     }
 
@@ -102,10 +107,15 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
     }
 
     @Override
-    public void setBanner(List<HomeBannerInfo> data) {
+    public void onSetBanner(List<HomeBannerInfo> data) {
         mBannerList.addAll(data);
         mBannerAdapter.setNewData(mBannerList);
         mBannerBgAdapter.setNewData(mBannerList);
+    }
+
+    @Override
+    public void onShowContentView(List<HomeArticleInfo> data) {
+
     }
 
     class GalleryItemDecoration extends RecyclerView.ItemDecoration {
