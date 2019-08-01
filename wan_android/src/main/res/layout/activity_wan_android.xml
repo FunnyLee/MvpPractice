@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/windowBackground"
-    android:orientation="vertical"
     tools:context=".WanAndroidActivity">
 
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scroll_view"
+        android:overScrollMode="never"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -36,18 +37,13 @@
                     android:layout_centerVertical="true"
                     android:overScrollMode="never"/>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_25"
-                    android:background="@drawable/grey_gradient"/>
-
             </RelativeLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view"
-                android:nestedScrollingEnabled="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager">
             </android.support.v7.widget.RecyclerView>
 
@@ -55,4 +51,36 @@
 
     </android.support.v4.widget.NestedScrollView>
 
-</LinearLayout>
+    <LinearLayout
+        android:background="@drawable/green_gradient_color_shape"
+        android:id="@+id/head_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_25"
+            android:background="@drawable/grey_gradient"/>
+
+        <RelativeLayout
+            android:layout_marginBottom="@dimen/dp_5"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginRight="@dimen/dp_15"
+            android:background="@drawable/home_search_bg_shape">
+
+            <ImageView
+                android:layout_marginRight="@dimen/dp_15"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/icon_list_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -3,7 +3,7 @@ ext {
             //app、sdk版本信息
             applicationId    : "com.example.think",
             compileSdkVersion: 27,
-            minSdkVersion    : 19,
+            minSdkVersion    : 23,
             targetSdkVersion : 27,
             versionCode      : 1,
             versionName      : "1.0",

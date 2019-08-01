@@ -1,10 +1,12 @@
 package com.example.wan;
 
 import android.graphics.Rect;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.base.base.BaseMvpActivity;
@@ -29,6 +31,9 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
 
     private List<HomeArticleInfo.DatasInfo> mDatas = new ArrayList<>();
     private HomeArticleAdapter mArticleAdapter;
+    private NestedScrollView mScrollView;
+    private int mBannerHeight;
+    private LinearLayout mHeadLl;
 
     @Override
     protected int getLayoutId() {
@@ -44,11 +49,18 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
 
     @Override
     protected void initStatusBarColor() {
+        //设置透明状态栏
         ImmersionBar.with(this).transparentStatusBar().init();
     }
 
     @Override
     protected void initView() {
+        mScrollView = findViewById(R.id.scroll_view);
+        mHeadLl = findViewById(R.id.head_ll);
+
+        mBannerHeight = (int) getResources().getDimension(R.dimen.dp_170);
+        mHeadLl.getBackground().setAlpha(0);
+
         RecyclerView bannerBgRecyclerView = findViewById(R.id.banner_bg_recycler_view);
         RecyclerView bannerRecyclerView = findViewById(R.id.banner_recycler_view);
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
@@ -92,6 +104,24 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
     }
 
     @Override
+    protected void initEvent() {
+
+        mScrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+
+                if (scrollY <= mBannerHeight) {
+                    float alpha = (float) scrollY / mBannerHeight * 255;
+                    mHeadLl.getBackground().setAlpha((int) alpha);
+                } else {
+                    mHeadLl.getBackground().setAlpha(255);
+                }
+            }
+        });
+    }
+
+    @Override
     public void onLoadData() {
         mPresenter.loadData();
         mPresenter.loadBanner();
@@ -120,7 +150,7 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
     }
 
     @Override
-    public void onShowContentView( List<HomeArticleInfo.DatasInfo> data) {
+    public void onShowContentView(List<HomeArticleInfo.DatasInfo> data) {
         mDatas.addAll(data);
         mArticleAdapter.setNewData(mDatas);
     }
