@@ -28,8 +28,8 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
     private BannerBgAdapter mBannerBgAdapter;
     private BannerAdapter mBannerAdapter;
     private List<HomeBannerInfo> mBannerList = new ArrayList<>();
-
     private List<HomeArticleInfo.DatasInfo> mDatas = new ArrayList<>();
+
     private HomeArticleAdapter mArticleAdapter;
     private NestedScrollView mScrollView;
     private int mBannerHeight;
