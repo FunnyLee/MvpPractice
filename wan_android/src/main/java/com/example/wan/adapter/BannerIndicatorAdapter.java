@@ -1,7 +1,9 @@
 package com.example.wan.adapter;
 
+import android.support.annotation.DimenRes;
 import android.support.annotation.Nullable;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -26,31 +28,16 @@ public class BannerIndicatorAdapter extends BaseQuickAdapter<BannerIndicatorInfo
         ImageView indicatorIv = helper.getView(R.id.indicator_iv);
         if(item.isSelected){
             indicatorIv.setBackgroundResource(R.drawable.indicator_point_white_shape);
+            setSize(indicatorIv, R.dimen.dp_10);
         }else {
             indicatorIv.setBackgroundResource(R.drawable.indicator_point_grey_shape);
+            setSize(indicatorIv, R.dimen.dp_5);
         }
     }
 
-//    @Override
-//    public int getItemCount() {
-//        return Integer.MAX_VALUE;
-//    }
-//
-//    @Nullable
-//    @Override
-//    public BannerIndicatorInfo getItem(int position) {
-//        int newPosition = position % getData().size();
-//        return getData().get(newPosition);
-//    }
-//
-//    @Override
-//    public int getItemViewType(int position) {
-//        int count = getHeaderLayoutCount() + getData().size();
-//        //刚开始进入包含该类的activity时,count为0。就会出现0%0的情况，这会抛出异常，所以我们要在下面做一下判断
-//        if (count <= 0) {
-//            count = 1;
-//        }
-//        int newPosition = position % count;
-//        return super.getItemViewType(newPosition);
-//    }
+    private void setSize(ImageView indicatorIv, @DimenRes int dp) {
+        int dimension = (int) mContext.getResources().getDimension(dp);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dimension, dimension);
+        indicatorIv.setLayoutParams(params);
+    }
 }

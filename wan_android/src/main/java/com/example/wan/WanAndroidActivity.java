@@ -118,8 +118,6 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         indicatorRecyclerView.setLayoutManager(manager);
         indicatorRecyclerView.setAdapter(mIndicatorAdapter);
-//        PagerSnapHelper psh = new PagerSnapHelper();
-//        psh.attachToRecyclerView(indicatorRecyclerView);
 
         //文章列表
         mArticleAdapter = new HomeArticleAdapter(R.layout.item_home_article_view, mDatas);
