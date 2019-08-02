@@ -97,16 +97,16 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
                 bannerBgRecyclerView.scrollToPosition(position);
 
                 //indicator联动
+                int realPosition = position % mBannerList.size();
                 for (int i = 0; i < mIndicatorList.size(); i++) {
                     BannerIndicatorInfo info = mIndicatorList.get(i);
-                    if (i == position) {
+                    if (i == realPosition) {
                         info.isSelected = true;
                     } else {
                         info.isSelected = false;
                     }
                 }
                 mIndicatorAdapter.setNewData(mIndicatorList);
-//                indicatorRecyclerView.smoothScrollToPosition(position);
                 return position;
             }
         };
@@ -118,8 +118,8 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         indicatorRecyclerView.setLayoutManager(manager);
         indicatorRecyclerView.setAdapter(mIndicatorAdapter);
-        PagerSnapHelper psh = new PagerSnapHelper();
-        psh.attachToRecyclerView(indicatorRecyclerView);
+//        PagerSnapHelper psh = new PagerSnapHelper();
+//        psh.attachToRecyclerView(indicatorRecyclerView);
 
         //文章列表
         mArticleAdapter = new HomeArticleAdapter(R.layout.item_home_article_view, mDatas);
