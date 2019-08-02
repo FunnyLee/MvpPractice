@@ -14,7 +14,9 @@ import com.example.base.router.RouterManager;
 import com.example.base.utils.WindowDispaly;
 import com.example.wan.adapter.BannerAdapter;
 import com.example.wan.adapter.BannerBgAdapter;
+import com.example.wan.adapter.BannerIndicatorAdapter;
 import com.example.wan.adapter.HomeArticleAdapter;
+import com.example.wan.entity.BannerIndicatorInfo;
 import com.example.wan.entity.HomeArticleInfo;
 import com.example.wan.entity.HomeBannerInfo;
 import com.gyf.immersionbar.ImmersionBar;
@@ -29,11 +31,13 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
     private BannerAdapter mBannerAdapter;
     private List<HomeBannerInfo> mBannerList = new ArrayList<>();
     private List<HomeArticleInfo.DatasInfo> mDatas = new ArrayList<>();
+    private List<BannerIndicatorInfo> mIndicatorList = new ArrayList<>();
 
     private HomeArticleAdapter mArticleAdapter;
     private NestedScrollView mScrollView;
     private int mBannerHeight;
     private LinearLayout mHeadLl;
+    private BannerIndicatorAdapter mIndicatorAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -63,6 +67,7 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
 
         RecyclerView bannerBgRecyclerView = findViewById(R.id.banner_bg_recycler_view);
         RecyclerView bannerRecyclerView = findViewById(R.id.banner_recycler_view);
+        RecyclerView indicatorRecyclerView = findViewById(R.id.indicator_recycler_view);
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
 
         //背景RecyclerView
@@ -86,12 +91,31 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
         PagerSnapHelper pagerSnapHelper = new PagerSnapHelper() {
             @Override
             public int findTargetSnapPosition(RecyclerView.LayoutManager layoutManager, int velocityX, int velocityY) {
+                //Banner图显示哪个position图片的监听
                 int position = super.findTargetSnapPosition(layoutManager, velocityX, velocityY);
+                //banner背景联动
                 bannerBgRecyclerView.scrollToPosition(position);
+                //indicator联动
+                for (int i = 0; i < mIndicatorList.size(); i++) {
+                    BannerIndicatorInfo info = mIndicatorList.get(i);
+                    if (i == position) {
+                        info.isSelected = true;
+                    } else {
+                        info.isSelected = false;
+                    }
+                }
+                mIndicatorAdapter.setNewData(mIndicatorList);
                 return position;
             }
         };
         pagerSnapHelper.attachToRecyclerView(bannerRecyclerView);
+
+        //指示器RecyclerView
+        mIndicatorAdapter = new BannerIndicatorAdapter(R.layout.item_banner_indicator_view, mIndicatorList);
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        indicatorRecyclerView.setLayoutManager(manager);
+        indicatorRecyclerView.setAdapter(mIndicatorAdapter);
 
         //文章列表
         mArticleAdapter = new HomeArticleAdapter(R.layout.item_home_article_view, mDatas);
@@ -106,8 +130,8 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
     @Override
     protected void initEvent() {
 
+        //ScrollView滑动监听
         mScrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
 
@@ -147,6 +171,17 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
         mBannerList.addAll(data);
         mBannerAdapter.setNewData(mBannerList);
         mBannerBgAdapter.setNewData(mBannerList);
+
+        for (int i = 0; i < mBannerList.size(); i++) {
+            BannerIndicatorInfo info = new BannerIndicatorInfo();
+            if (i == 0) {
+                info.isSelected = true;
+            } else {
+                info.isSelected = false;
+            }
+            mIndicatorList.add(info);
+        }
+        mIndicatorAdapter.setNewData(mIndicatorList);
     }
 
     @Override

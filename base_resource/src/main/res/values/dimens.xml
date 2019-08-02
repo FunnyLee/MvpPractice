@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!--尺寸 dp 从小到大  所有布局都需要使用这个列表的定义，如果需要自定义，也需要引用此定义，用于分辨率统一适配-->
+    <dimen name="dp__8">-8dp</dimen>
+    <dimen name="dp__5">-5dp</dimen>
     <dimen name="dp_0">0dp</dimen>
     <dimen name="dp_0.25" tools:ignore="MissingDefaultResource">0.25dp</dimen>
     <dimen name="dp_0.5" tools:ignore="MissingDefaultResource">0.5dp</dimen>
