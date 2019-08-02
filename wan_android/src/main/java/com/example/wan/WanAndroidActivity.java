@@ -71,11 +71,11 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
 
         //背景RecyclerView
-        PagerSnapHelper snapHelper = new PagerSnapHelper();
         LinearLayoutManager bgLinearLayoutManager = new LinearLayoutManager(this);
         bgLinearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         bannerBgRecyclerView.setLayoutManager(bgLinearLayoutManager);
         bannerBgRecyclerView.setNestedScrollingEnabled(false); //背景禁止滑动
+        PagerSnapHelper snapHelper = new PagerSnapHelper();
         snapHelper.attachToRecyclerView(bannerBgRecyclerView);
         mBannerBgAdapter = new BannerBgAdapter(R.layout.item_banner_bg_view, mBannerList);
         bannerBgRecyclerView.setAdapter(mBannerBgAdapter);
@@ -95,6 +95,7 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
                 int position = super.findTargetSnapPosition(layoutManager, velocityX, velocityY);
                 //banner背景联动
                 bannerBgRecyclerView.scrollToPosition(position);
+
                 //indicator联动
                 for (int i = 0; i < mIndicatorList.size(); i++) {
                     BannerIndicatorInfo info = mIndicatorList.get(i);
@@ -105,6 +106,7 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
                     }
                 }
                 mIndicatorAdapter.setNewData(mIndicatorList);
+//                indicatorRecyclerView.smoothScrollToPosition(position);
                 return position;
             }
         };
@@ -116,6 +118,8 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         indicatorRecyclerView.setLayoutManager(manager);
         indicatorRecyclerView.setAdapter(mIndicatorAdapter);
+        PagerSnapHelper psh = new PagerSnapHelper();
+        psh.attachToRecyclerView(indicatorRecyclerView);
 
         //文章列表
         mArticleAdapter = new HomeArticleAdapter(R.layout.item_home_article_view, mDatas);

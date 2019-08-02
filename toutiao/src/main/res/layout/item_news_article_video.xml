@@ -31,6 +31,7 @@
                 android:scaleType="centerCrop"/>
 
             <TextView
+                style="@style/Txt_2_R_13"
                 android:id="@+id/tv_extra"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -70,6 +71,7 @@
             android:orientation="vertical">
 
             <TextView
+                style="@style/Txt_1_R_15"
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -92,6 +94,7 @@
                     tools:ignore="ContentDescription"/>
 
                 <TextView
+                    style="@style/Txt_2_R_13"
                     android:id="@+id/tv_video_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

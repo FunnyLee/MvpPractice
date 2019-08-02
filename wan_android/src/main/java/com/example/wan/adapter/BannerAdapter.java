@@ -27,4 +27,29 @@ public class BannerAdapter extends BaseQuickAdapter<HomeBannerInfo, BaseViewHold
         ImageView picIv = helper.getView(R.id.pic_iv);
         ImageHelper.loadCenterCrop(mContext, item.imagePath, picIv);
     }
+
+    @Override
+    public int getItemCount() {
+        return Integer.MAX_VALUE;
+    }
+
+    @Nullable
+    @Override
+    public HomeBannerInfo getItem(int position) {
+        //在这里处理postion，返回的对象就是convert方法中的对象
+        int newPosition = position % getData().size();
+        return getData().get(newPosition);
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        //处理条目类型
+        int count = getHeaderLayoutCount() + getData().size();
+        //刚开始进入包含该类的activity时,count为0。就会出现0%0的情况，这会抛出异常，所以我们要在下面做一下判断
+        if (count <= 0) {
+            count = 1;
+        }
+        int newPosition = position % count;
+        return super.getItemViewType(newPosition);
+    }
 }

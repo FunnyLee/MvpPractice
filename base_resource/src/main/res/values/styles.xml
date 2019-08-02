@@ -42,15 +42,27 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <style name="Txt_1_R_12">
+        <item name="android:textColor">@color/Grey900</item>
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
     <style name="Txt_2_R_18">
-        <item name="android:textColor">@color/Grey500</item>
+        <item name="android:textColor">@color/Grey600</item>
         <item name="android:textSize">@dimen/sp_18</item>
         <item name="android:textStyle">normal</item>
     </style>
 
     <style name="Txt_2_R_15">
-        <item name="android:textColor">@color/Grey500</item>
+        <item name="android:textColor">@color/Grey600</item>
         <item name="android:textSize">@dimen/sp_15</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Txt_2_R_13">
+        <item name="android:textColor">@color/Grey600</item>
+        <item name="android:textSize">@dimen/sp_13</item>
         <item name="android:textStyle">normal</item>
     </style>
 

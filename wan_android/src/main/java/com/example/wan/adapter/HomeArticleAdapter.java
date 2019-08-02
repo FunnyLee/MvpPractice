@@ -23,8 +23,8 @@ public class HomeArticleAdapter extends BaseQuickAdapter<HomeArticleInfo.DatasIn
     @Override
     protected void convert(BaseViewHolder helper, HomeArticleInfo.DatasInfo item) {
         helper.setText(R.id.title_tv, item.title)
-                .setText(R.id.author_tv, item.author)
-                .setText(R.id.category_tv, item.chapterName)
+                .setText(R.id.author_tv, "作者：" + item.author)
+                .setText(R.id.category_tv, "分类：" + item.chapterName)
                 .setText(R.id.time_tv, item.niceDate);
     }
 }

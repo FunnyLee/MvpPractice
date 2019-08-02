@@ -21,7 +21,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_170">
+                android:layout_height="@dimen/dp_200">
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/banner_bg_recycler_view"
@@ -39,7 +39,7 @@
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/indicator_recycler_view"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/dp_60"
                     android:layout_height="@dimen/dp_15"
                     android:layout_marginLeft="@dimen/dp__5"
                     android:layout_marginBottom="@dimen/dp_15"
@@ -54,7 +54,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp__8"
-                android:background="@drawable/home_recycler_bg_shape"
                 android:nestedScrollingEnabled="false"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager">
             </android.support.v7.widget.RecyclerView>

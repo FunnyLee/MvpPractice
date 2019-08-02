@@ -31,6 +31,7 @@
                 android:scaleType="centerCrop"/>
 
             <TextView
+                style="@style/Txt_2_R_13"
                 android:id="@+id/tv_extra"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -77,6 +78,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/Txt_1_R_15"
                     android:id="@+id/tv_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,6 +88,7 @@
                     tools:text="菲总统称中国将向菲提供武器 已指示军方前往接收"/>
 
                 <TextView
+                    style="@style/Txt_2_R_13"
                     android:id="@+id/tv_abstract"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -27,4 +27,27 @@ public class BannerBgAdapter extends BaseQuickAdapter<HomeBannerInfo, BaseViewHo
         ImageView bgIv = helper.getView(R.id.bg_iv);
         ImageHelper.loadBlurryImage(mContext, item.imagePath, bgIv);
     }
+
+    @Override
+    public int getItemCount() {
+        return Integer.MAX_VALUE;
+    }
+
+    @Nullable
+    @Override
+    public HomeBannerInfo getItem(int position) {
+        int newPosition = position % getData().size();
+        return getData().get(newPosition);
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        int count = getHeaderLayoutCount() + getData().size();
+        //刚开始进入包含该类的activity时,count为0。就会出现0%0的情况，这会抛出异常，所以我们要在下面做一下判断
+        if (count <= 0) {
+            count = 1;
+        }
+        int newPosition = position % count;
+        return super.getItemViewType(newPosition);
+    }
 }

@@ -39,6 +39,7 @@
                 android:ellipsize="end"
                 android:maxLength="30"
                 android:maxLines="1"
+                style="@style/Txt_2_R_13"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                 tools:text="新闻源 - 2222条评论 - 1小时前"/>
 
@@ -70,19 +71,20 @@
             android:orientation="vertical">
 
             <TextView
+                style="@style/Txt_1_R_15"
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:textStyle="bold"
                 tools:text="菲总统称中国将向菲提供武器 已指示军方前往接收"/>
 
             <TextView
+                style="@style/Txt_2_R_13"
                 android:id="@+id/tv_abstract"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="5dp"
                 android:ellipsize="end"
                 android:maxLines="3"
                 tools:text="美国总统当选人特朗普日前暗示，可能拿美国的“一中政策”当谈判筹码，与中国大陆就诸如人民币汇率及南海等争议讨价还价。"/>
