@@ -8,6 +8,7 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 /**
  * Author: Funny
@@ -24,8 +25,9 @@ public interface IHomePageApi {
 
     /**
      * 获取首页文章列表
+     *
      * @return
      */
-    @GET("article/list/0/json")
-    Observable<BaseWanAndroidResponse<HomeArticleInfo>> getHomeArticle();
+    @GET("article/list/{page}/json")
+    Observable<BaseWanAndroidResponse<HomeArticleInfo>> getHomeArticle(@Path("page") int page);
 }
