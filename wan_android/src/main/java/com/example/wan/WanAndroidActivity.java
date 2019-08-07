@@ -72,7 +72,7 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
         mHeadLl = findViewById(R.id.head_ll);
 
         mBannerHeight = (int) getResources().getDimension(R.dimen.dp_170);
-        mHeadLl.getBackground().setAlpha(0);
+        mHeadLl.setAlpha(0);
         mRefreshLayout = findViewById(R.id.refresh_layout);
 
         RecyclerView bannerBgRecyclerView = findViewById(R.id.banner_bg_recycler_view);
@@ -148,10 +148,10 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
 
                 if (scrollY <= mBannerHeight) {
-                    float alpha = (float) scrollY / mBannerHeight * 255;
-                    mHeadLl.getBackground().setAlpha((int) alpha);
+                    float alpha = (float) scrollY / mBannerHeight;
+                    mHeadLl.setAlpha(alpha);
                 } else {
-                    mHeadLl.getBackground().setAlpha(255);
+                    mHeadLl.setAlpha(1);
                 }
             }
         });
