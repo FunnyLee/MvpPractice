@@ -56,7 +56,7 @@ public interface IWanAndroidContract {
 
         void loadBanner();
 
-        void loadData();
+        void loadData(int pageNo);
     }
 
 }

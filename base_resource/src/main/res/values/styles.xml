@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/windowBackground</item>
         <item name="android:screenOrientation">portrait</item>
+        <item name="android:statusBarColor">@color/transparent</item>
         <item name="android:windowTranslucentStatus">true</item>
         <!--设置这一行，是为了APP启动时的状态颜色-->
     </style>

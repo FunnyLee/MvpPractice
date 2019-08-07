@@ -1,6 +1,7 @@
 package com.example.wan;
 
 import android.graphics.Rect;
+import android.support.annotation.NonNull;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
@@ -20,6 +21,9 @@ import com.example.wan.entity.BannerIndicatorInfo;
 import com.example.wan.entity.HomeArticleInfo;
 import com.example.wan.entity.HomeBannerInfo;
 import com.gyf.immersionbar.ImmersionBar;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,15 +33,20 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
 
     private BannerBgAdapter mBannerBgAdapter;
     private BannerAdapter mBannerAdapter;
+    private BannerIndicatorAdapter mIndicatorAdapter;
     private List<HomeBannerInfo> mBannerList = new ArrayList<>();
     private List<HomeArticleInfo.DatasInfo> mDatas = new ArrayList<>();
     private List<BannerIndicatorInfo> mIndicatorList = new ArrayList<>();
+    private int mBannerHeight;
 
     private HomeArticleAdapter mArticleAdapter;
     private NestedScrollView mScrollView;
-    private int mBannerHeight;
     private LinearLayout mHeadLl;
-    private BannerIndicatorAdapter mIndicatorAdapter;
+    private SmartRefreshLayout mRefreshLayout;
+
+
+    private int mPageNo = 0;
+    private RecyclerView mRecyclerView;
 
     @Override
     protected int getLayoutId() {
@@ -64,11 +73,12 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
 
         mBannerHeight = (int) getResources().getDimension(R.dimen.dp_170);
         mHeadLl.getBackground().setAlpha(0);
+        mRefreshLayout = findViewById(R.id.refresh_layout);
 
         RecyclerView bannerBgRecyclerView = findViewById(R.id.banner_bg_recycler_view);
         RecyclerView bannerRecyclerView = findViewById(R.id.banner_recycler_view);
         RecyclerView indicatorRecyclerView = findViewById(R.id.indicator_recycler_view);
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        mRecyclerView = findViewById(R.id.recycler_view);
 
         //背景RecyclerView
         LinearLayoutManager bgLinearLayoutManager = new LinearLayoutManager(this);
@@ -121,7 +131,7 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
 
         //文章列表
         mArticleAdapter = new HomeArticleAdapter(R.layout.item_home_article_view, mDatas);
-        recyclerView.setAdapter(mArticleAdapter);
+        mRecyclerView.setAdapter(mArticleAdapter);
     }
 
     @Override
@@ -145,11 +155,24 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
                 }
             }
         });
+
+        mRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                mPresenter.loadData(mPageNo);
+            }
+
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                mPageNo = 0;
+                mPresenter.loadData(mPageNo);
+            }
+        });
     }
 
     @Override
     public void onLoadData() {
-        mPresenter.loadData();
+        mPresenter.loadData(mPageNo);
         mPresenter.loadBanner();
     }
 
@@ -190,6 +213,10 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
     public void onShowContentView(List<HomeArticleInfo.DatasInfo> data) {
         mDatas.addAll(data);
         mArticleAdapter.setNewData(mDatas);
+        mPageNo += 1;
+
+        mRefreshLayout.finishLoadMore();
+        mRefreshLayout.finishRefresh();
     }
 
     class GalleryItemDecoration extends RecyclerView.ItemDecoration {
