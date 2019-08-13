@@ -88,16 +88,12 @@
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
     <LinearLayout
+        android:paddingTop="@dimen/dp_25"
         android:id="@+id/head_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/green_gradient_color_shape"
         android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_25"
-            android:background="@drawable/grey_gradient"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -119,5 +115,9 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_25"
+        android:background="@drawable/grey_gradient"/>
 
 </RelativeLayout>
