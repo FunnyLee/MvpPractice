@@ -1,4 +1,4 @@
-package com.example.wan;
+package com.example.wan.contract;
 
 import com.example.base.base.IBasePresenter;
 import com.example.base.base.IBaseView;
@@ -9,12 +9,12 @@ import java.util.List;
 
 /**
  * Author: Funny
- * Time: 2019/7/29
- * Description: This is IWanAndroidContract
+ * Time: 2019/8/13
+ * Description: This is HomeContract
  */
-public interface IWanAndroidContract {
+public interface IHomeContract {
 
-    interface View extends IBaseView<Presenter> {
+    interface View extends IBaseView<Presenter>{
 
         /**
          * 加载数据
@@ -51,12 +51,12 @@ public interface IWanAndroidContract {
 
     }
 
-
-    interface Presenter extends IBasePresenter {
+    interface Presenter extends IBasePresenter{
 
         void loadBanner();
 
         void loadData(int pageNo);
+
     }
 
 }

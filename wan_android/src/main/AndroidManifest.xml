@@ -3,9 +3,7 @@
           package="com.example.wan">
 
     <application>
-        <activity
-            android:name=".WanAndroidActivity"
-            android:launchMode="singleTop">
+        <activity android:name=".ui.WanAndroidMainActivity">
         </activity>
     </application>
 

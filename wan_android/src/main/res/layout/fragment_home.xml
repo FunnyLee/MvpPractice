@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/windowBackground"
-    tools:context=".WanAndroidActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical">
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
-        android:layout_width="match_parent"
         android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <com.scwang.smartrefresh.layout.header.ClassicsHeader
-            android:layout_width="match_parent"
-            app:srlPrimaryColor="@color/Grey800"
             app:srlAccentColor="@color/White"
+            app:srlPrimaryColor="@color/Grey800"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </com.scwang.smartrefresh.layout.header.ClassicsHeader>
 
@@ -67,11 +64,11 @@
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recycler_view"
+                        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp__8"
-                        android:nestedScrollingEnabled="false"
-                        app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+                        android:nestedScrollingEnabled="false">
                     </android.support.v7.widget.RecyclerView>
 
                 </LinearLayout>
@@ -88,12 +85,12 @@
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
     <LinearLayout
-        android:paddingTop="@dimen/dp_25"
         android:id="@+id/head_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/green_gradient_color_shape"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp_25">
 
         <RelativeLayout
             android:layout_width="match_parent"

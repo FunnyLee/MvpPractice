@@ -44,7 +44,7 @@
                 app:elevation="@dimen/dp_16"
                 app:itemIconTint="@drawable/selector_nav_item_color"
                 app:itemTextColor="@drawable/selector_nav_item_color"
-                app:layout_behavior="com.example.toutiao.widget.BottomNavigationBehavior"
+                app:layout_behavior="com.example.base.widget.BottomNavigationBehavior"
                 app:menu="@menu/bottom_navigation_main"/>
 
         </android.support.design.widget.CoordinatorLayout>

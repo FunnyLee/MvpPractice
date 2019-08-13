@@ -1,4 +1,4 @@
-package com.example.toutiao.widget;
+package com.example.base.widget;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.example.wan;
+package com.example.wan.ui;
 
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
@@ -10,17 +10,19 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.example.base.base.BaseMvpActivity;
+import com.example.base.base.BaseMvpFragment;
 import com.example.base.router.RouterManager;
 import com.example.base.utils.WindowDispaly;
+import com.example.wan.R;
 import com.example.wan.adapter.BannerAdapter;
 import com.example.wan.adapter.BannerBgAdapter;
 import com.example.wan.adapter.BannerIndicatorAdapter;
 import com.example.wan.adapter.HomeArticleAdapter;
+import com.example.wan.contract.IHomeContract;
 import com.example.wan.entity.BannerIndicatorInfo;
 import com.example.wan.entity.HomeArticleInfo;
 import com.example.wan.entity.HomeBannerInfo;
-import com.gyf.immersionbar.ImmersionBar;
+import com.example.wan.presenter.HomePresenter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
@@ -28,8 +30,14 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import java.util.ArrayList;
 import java.util.List;
 
-@Route(path = RouterManager.WAN_ANDROID_ACTIVITY)
-public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Presenter> implements IWanAndroidContract.View {
+/**
+ * Author: Funny
+ * Time: 2019/8/13
+ * Description: This is HomeFragment
+ */
+
+@Route(path = RouterManager.HOME_FRAGMENT)
+public class HomeFragment extends BaseMvpFragment<IHomeContract.Presenter> implements IHomeContract.View {
 
     private BannerBgAdapter mBannerBgAdapter;
     private BannerAdapter mBannerAdapter;
@@ -44,30 +52,23 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
     private LinearLayout mHeadLl;
     private SmartRefreshLayout mRefreshLayout;
 
-
     private int mPageNo = 0;
     private RecyclerView mRecyclerView;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_wan_android;
+        return R.layout.fragment_home;
     }
 
     @Override
-    public void onSetPresenter(IWanAndroidContract.Presenter presenter) {
+    public void onSetPresenter(IHomeContract.Presenter presenter) {
         if (mPresenter == null) {
-            mPresenter = new WanAndroidPresenter(this);
+            mPresenter = new HomePresenter(this);
         }
     }
 
     @Override
-    protected void initStatusBarColor() {
-        //设置透明状态栏
-        ImmersionBar.with(this).transparentStatusBar().init();
-    }
-
-    @Override
-    protected void initView() {
+    protected void initView(View view) {
         mScrollView = findViewById(R.id.scroll_view);
         mHeadLl = findViewById(R.id.head_ll);
 
@@ -81,7 +82,7 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
         mRecyclerView = findViewById(R.id.recycler_view);
 
         //背景RecyclerView
-        LinearLayoutManager bgLinearLayoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager bgLinearLayoutManager = new LinearLayoutManager(mContext);
         bgLinearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         bannerBgRecyclerView.setLayoutManager(bgLinearLayoutManager);
         bannerBgRecyclerView.setNestedScrollingEnabled(false); //背景禁止滑动
@@ -91,7 +92,7 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
         bannerBgRecyclerView.setAdapter(mBannerBgAdapter);
 
         //BannerRecyclerView
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         bannerRecyclerView.setLayoutManager(linearLayoutManager);
         //设置第一张图片和最后一张图片也居中
@@ -124,7 +125,7 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
 
         //指示器RecyclerView
         mIndicatorAdapter = new BannerIndicatorAdapter(R.layout.item_banner_indicator_view, mIndicatorList);
-        LinearLayoutManager manager = new LinearLayoutManager(this);
+        LinearLayoutManager manager = new LinearLayoutManager(mContext);
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         indicatorRecyclerView.setLayoutManager(manager);
         indicatorRecyclerView.setAdapter(mIndicatorAdapter);
@@ -141,7 +142,6 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
 
     @Override
     protected void initEvent() {
-
         //ScrollView滑动监听
         mScrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
             @Override
@@ -169,6 +169,7 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
             }
         });
     }
+
 
     @Override
     public void onLoadData() {
@@ -251,4 +252,5 @@ public class WanAndroidActivity extends BaseMvpActivity<IWanAndroidContract.Pres
         }
 
     }
+
 }

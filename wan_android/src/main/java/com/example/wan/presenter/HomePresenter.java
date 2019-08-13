@@ -1,10 +1,11 @@
-package com.example.wan;
+package com.example.wan.presenter;
 
 import android.annotation.SuppressLint;
 
 import com.example.base.base.RxPresenter;
 import com.example.base.net.RetrofitFactory;
 import com.example.wan.api.IHomePageApi;
+import com.example.wan.contract.IHomeContract;
 import com.example.wan.entity.BaseWanAndroidResponse;
 import com.example.wan.entity.HomeArticleInfo;
 import com.example.wan.entity.HomeBannerInfo;
@@ -16,17 +17,16 @@ import io.reactivex.functions.Consumer;
 
 /**
  * Author: Funny
- * Time: 2019/7/29
- * Description: This is WanAndroidPresenter
+ * Time: 2019/8/13
+ * Description: This is WanAndroidMainPresenter
  */
-public class WanAndroidPresenter extends RxPresenter<IWanAndroidContract.View> implements IWanAndroidContract.Presenter {
-
+public class HomePresenter extends RxPresenter<IHomeContract.View> implements IHomeContract.Presenter {
     /**
      * Presenter中持有View对象
      *
      * @param view
      */
-    public WanAndroidPresenter(IWanAndroidContract.View view) {
+    public HomePresenter(IHomeContract.View view) {
         super(view);
     }
 

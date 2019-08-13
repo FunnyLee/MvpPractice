@@ -23,6 +23,10 @@ public class RouterManager {
      */
     public static final String GROUP_WAN_ANDROID = "/group_wan_android";
 
+    public static final String WAN_ANDROID_MAIN_ACTIVITY = GROUP_WAN_ANDROID + "/WanAndroidMainActivity";
+
     public static final String WAN_ANDROID_ACTIVITY = GROUP_WAN_ANDROID + "/WanAndroidActivity";
+
+    public static final String HOME_FRAGMENT = GROUP_WAN_ANDROID + "/HomeFragment";
 
 }
