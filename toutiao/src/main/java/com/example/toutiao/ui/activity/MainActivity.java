@@ -227,7 +227,6 @@ public class MainActivity extends BaseActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(id, fragment);
-        transaction.addToBackStack(null);
         transaction.commit();
     }
 

@@ -53,9 +53,9 @@ public interface IHomeContract {
 
     interface Presenter extends IBasePresenter{
 
-        void loadBanner();
+        void doLoadBanner();
 
-        void loadData(int pageNo);
+        void doLoadData(int pageNo);
 
     }
 

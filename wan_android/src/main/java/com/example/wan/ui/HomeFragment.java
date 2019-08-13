@@ -159,13 +159,13 @@ public class HomeFragment extends BaseMvpFragment<IHomeContract.Presenter> imple
         mRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                mPresenter.loadData(mPageNo);
+                mPresenter.doLoadData(mPageNo);
             }
 
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 mPageNo = 0;
-                mPresenter.loadData(mPageNo);
+                mPresenter.doLoadData(mPageNo);
             }
         });
     }
@@ -173,8 +173,8 @@ public class HomeFragment extends BaseMvpFragment<IHomeContract.Presenter> imple
 
     @Override
     public void onLoadData() {
-        mPresenter.loadData(mPageNo);
-        mPresenter.loadBanner();
+        mPresenter.doLoadData(mPageNo);
+        mPresenter.doLoadBanner();
     }
 
     @Override

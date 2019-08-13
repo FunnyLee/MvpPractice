@@ -32,7 +32,7 @@ public class HomePresenter extends RxPresenter<IHomeContract.View> implements IH
 
     @SuppressLint("CheckResult")
     @Override
-    public void loadBanner() {
+    public void doLoadBanner() {
         Observable<BaseWanAndroidResponse<List<HomeBannerInfo>>> observable = RetrofitFactory.getInstance().create(IHomePageApi.class).getHomeBanner();
         add(observable).subscribe(new Consumer<BaseWanAndroidResponse<List<HomeBannerInfo>>>() {
             @Override
@@ -52,7 +52,7 @@ public class HomePresenter extends RxPresenter<IHomeContract.View> implements IH
 
     @SuppressLint("CheckResult")
     @Override
-    public void loadData(int pageNo) {
+    public void doLoadData(int pageNo) {
         Observable<BaseWanAndroidResponse<HomeArticleInfo>> observable = RetrofitFactory.getInstance().create(IHomePageApi.class).getHomeArticle(pageNo);
         add(observable).subscribe(new Consumer<BaseWanAndroidResponse<HomeArticleInfo>>() {
             @Override

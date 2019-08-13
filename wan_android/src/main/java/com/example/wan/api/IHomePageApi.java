@@ -13,7 +13,7 @@ import retrofit2.http.Path;
 /**
  * Author: Funny
  * Time: 2019/7/30
- * Description: This is IHomePageApi
+ * Description: This is 首页api
  */
 public interface IHomePageApi {
 
@@ -30,4 +30,5 @@ public interface IHomePageApi {
      */
     @GET("article/list/{page}/json")
     Observable<BaseWanAndroidResponse<HomeArticleInfo>> getHomeArticle(@Path("page") int page);
+
 }
