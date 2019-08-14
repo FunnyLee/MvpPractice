@@ -53,7 +53,7 @@ public class WanAndroidMainActivity extends BaseActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 if (id == R.id.action_home) {
-                    BaseFragment homeFragment = (BaseFragment) ARouter.getInstance().build(RouterManager.HOME_FRAGMENT).navigation();
+                    HomeFragment homeFragment = (HomeFragment) ARouter.getInstance().build(RouterManager.HOME_FRAGMENT).navigation();
                     switchFragment(homeFragment, R.id.frame_layout);
                 } else if (id == R.id.action_project) {
                     ProjectFragment projectFragment = (ProjectFragment) ARouter.getInstance().build(RouterManager.PROJECT_FRAGMENT).navigation();

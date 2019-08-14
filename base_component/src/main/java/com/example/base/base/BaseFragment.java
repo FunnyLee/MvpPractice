@@ -12,7 +12,7 @@ import android.view.ViewGroup;
  * Time: 2018/9/5
  * Description: This is BaseViewFragment，BaseFragment
  */
-public abstract class BaseFragment extends BaseEventBusFragment {
+public abstract class BaseFragment extends BaseImmersionFragment {
     protected Context mContext;
     private View mView;
 

@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.example.base.base.BaseMvpFragment;
 import com.example.wan.R;
+import com.gyf.immersionbar.ImmersionBar;
 
 /**
  * Author: Funny
@@ -22,6 +23,11 @@ public class ProjectContentFragment extends BaseMvpFragment {
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_project_content;
+    }
+
+    @Override
+    public void initImmersionBar() {
+        ImmersionBar.with(this).statusBarColor(R.color.Red).init();
     }
 
     @Override
