@@ -15,7 +15,7 @@ import com.example.base.greendao.daoManager.NewsDao;
 import com.example.base.greendao.entity.NewsChannel;
 import com.example.base.router.RouterManager;
 import com.example.toutiao.R;
-import com.example.toutiao.ui.adapter.ViewPagerFragmentAdapter;
+import com.example.base.adapter.ViewPagerFragmentAdapter;
 import com.jakewharton.rxbinding2.view.RxView;
 
 import java.util.ArrayList;

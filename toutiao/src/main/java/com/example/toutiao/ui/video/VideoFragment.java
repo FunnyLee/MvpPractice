@@ -9,7 +9,7 @@ import com.example.base.base.BaseMvpFragment;
 import com.example.base.greendao.daoManager.VideoDao;
 import com.example.base.greendao.entity.VideoChannel;
 import com.example.toutiao.R;
-import com.example.toutiao.ui.adapter.ViewPagerFragmentAdapter;
+import com.example.base.adapter.ViewPagerFragmentAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

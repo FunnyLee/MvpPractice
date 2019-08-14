@@ -2,6 +2,9 @@ package com.example.wan.contract;
 
 import com.example.base.base.IBasePresenter;
 import com.example.base.base.IBaseView;
+import com.example.wan.entity.ProjectCategoryInfo;
+
+import java.util.List;
 
 /**
  * Author: Funny
@@ -10,7 +13,11 @@ import com.example.base.base.IBaseView;
  */
 public interface IProjectContract {
 
-    interface View extends IBaseView<Presenter>{}
+    interface View extends IBaseView<Presenter>{
+
+        void onShowContentView(List<ProjectCategoryInfo> data);
+
+    }
 
     interface Presenter extends IBasePresenter{
 

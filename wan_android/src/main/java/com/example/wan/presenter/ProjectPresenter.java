@@ -38,6 +38,9 @@ public class ProjectPresenter extends RxPresenter<IProjectContract.View> impleme
             @Override
             public void accept(BaseWanAndroidResponse<List<ProjectCategoryInfo>> response) throws Exception {
                 List<ProjectCategoryInfo> data = response.data;
+                if (data != null && data.size() > 0) {
+                    mView.onShowContentView(data);
+                }
             }
         }, new Consumer<Throwable>() {
             @Override

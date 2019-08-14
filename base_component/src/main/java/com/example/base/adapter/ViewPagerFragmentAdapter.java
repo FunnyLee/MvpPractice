@@ -1,4 +1,4 @@
-package com.example.toutiao.ui.adapter;
+package com.example.base.adapter;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
