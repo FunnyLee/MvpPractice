@@ -106,4 +106,5 @@ dependencies {
 
     //刷新控件
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-32'
+    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'
 }

@@ -29,10 +29,10 @@ public interface IProjectApi {
     /**
      * 获取项目内容列表
      * @param page
-     * @param id
+     * @param cid
      * @return
      */
-    @GET("project/list/{page}/json?cid=294")
+    @GET("project/list/{page}/json")
     Observable<BaseWanAndroidResponse<ProjectContentInfo>> getProjectContent(@Path("page") int page, @Query("cid") String cid);
 
 }
