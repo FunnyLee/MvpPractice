@@ -60,7 +60,8 @@ public class WanAndroidMainActivity extends BaseActivity {
                 } else if (id == R.id.action_project) {
                     ProjectFragment projectFragment = (ProjectFragment) ARouter.getInstance().build(RouterManager.PROJECT_FRAGMENT).navigation();
                     switchFragment(projectFragment, R.id.frame_layout);
-                    ImmersionBar.with(WanAndroidMainActivity.this).statusBarColor(R.color.Red).init();
+                    //设置透明状态栏
+                    ImmersionBar.with(WanAndroidMainActivity.this).transparentStatusBar().init();
                 } else if (id == R.id.action_system) {
 
                 } else if (id == R.id.action_me) {

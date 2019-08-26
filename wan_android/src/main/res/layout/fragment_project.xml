@@ -5,8 +5,16 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <View
+        android:id="@+id/status_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/green_gradient_color_shape"/>
+
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_layout"
+        style="@style/TabLayout"
+        android:theme="@style/AppTheme.AppBarOverlay"
         android:background="@drawable/green_gradient_color_shape"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">

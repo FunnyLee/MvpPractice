@@ -9,7 +9,7 @@ import com.trello.rxlifecycle2.navi.NaviLifecycle;
 /**
  * Author: Funny
  * Time: 2018/8/14
- * Description: This is BaseFragment
+ * Description: This is BaseMvpFragment
  */
 public abstract class BaseMvpFragment<P extends IBasePresenter> extends BaseFragment implements IBaseView<P> {
 

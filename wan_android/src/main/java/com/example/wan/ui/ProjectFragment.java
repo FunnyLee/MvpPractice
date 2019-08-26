@@ -6,13 +6,13 @@ import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.base.adapter.ViewPagerFragmentAdapter;
-import com.example.base.base.BaseFragment;
 import com.example.base.base.BaseMvpFragment;
 import com.example.base.router.RouterManager;
 import com.example.wan.R;
 import com.example.wan.contract.IProjectContract;
 import com.example.wan.entity.ProjectCategoryInfo;
 import com.example.wan.presenter.ProjectPresenter;
+import com.gyf.immersionbar.ImmersionBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +33,11 @@ public class ProjectFragment extends BaseMvpFragment<IProjectContract.Presenter>
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_project;
+    }
+
+    @Override
+    public void initImmersionBar() {
+        ImmersionBar.with(getActivity()).statusBarView(R.id.status_view).init();
     }
 
     @Override
