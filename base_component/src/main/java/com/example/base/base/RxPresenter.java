@@ -8,6 +8,7 @@ import io.reactivex.schedulers.Schedulers;
  * Author: Funny
  * Time: 2018/10/19
  * Description: This is 封装一些RxJava的通用方法
+ * 在Presenter中持有View对象
  * 这个类暂时只使用在WanAndroid module中
  */
 public class RxPresenter<V extends IBaseView> {

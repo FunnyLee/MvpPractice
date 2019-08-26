@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.base.adapter.ViewPagerFragmentAdapter;
 import com.example.base.base.BaseMvpFragment;
 import com.example.base.router.RouterManager;
@@ -66,7 +67,10 @@ public class ProjectFragment extends BaseMvpFragment<IProjectContract.Presenter>
     public void onShowContentView(List<ProjectCategoryInfo> data) {
         for (ProjectCategoryInfo info : data) {
             mTitleList.add(info.name);
-            ProjectContentFragment projectContentFragment = ProjectContentFragment.newInstance();
+            ProjectContentFragment projectContentFragment = (ProjectContentFragment) ARouter.getInstance()
+                    .build(RouterManager.PROJECT_CONTENT_FRAGMENT)
+                    .withString("categoryId", info.id)
+                    .navigation();
             mFragmentList.add(projectContentFragment);
         }
         ViewPagerFragmentAdapter fragmentAdapter = new ViewPagerFragmentAdapter(getFragmentManager(), mFragmentList, mTitleList);

@@ -22,7 +22,7 @@ public class ProjectCategoryInfo {
      */
 
     public int courseId;
-    public int id;
+    public String id;
     public String name;
     public int order;
     public int parentChapterId;

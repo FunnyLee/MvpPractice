@@ -29,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitFactory {
 
     // TODO: 2019/7/30 base_url待修改
-    private static final String base_url = "https://www.wanandroid.com/";
+    private static final String BASE_URL = "https://www.wanandroid.com/";
 
     private static volatile Retrofit sInstance;
 
@@ -73,7 +73,7 @@ public class RetrofitFactory {
                             .build();
 
                     sInstance = new Retrofit.Builder()
-                            .baseUrl(base_url)
+                            .baseUrl(BASE_URL)
                             .client(mClient)
                             .addConverterFactory(GsonConverterFactory.create())
                             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

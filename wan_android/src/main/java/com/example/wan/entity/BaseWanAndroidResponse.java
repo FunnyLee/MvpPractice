@@ -1,5 +1,7 @@
 package com.example.wan.entity;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 /**
@@ -9,9 +11,12 @@ import java.io.Serializable;
  */
 public class BaseWanAndroidResponse<T> implements Serializable {
 
+    @SerializedName("errorCode")
     public int errorCode;
 
+    @SerializedName("errorMsg")
     public String errorMsg;
 
+    @SerializedName("data")
     public T data;
 }

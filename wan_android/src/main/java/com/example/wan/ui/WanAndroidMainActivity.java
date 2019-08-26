@@ -55,13 +55,9 @@ public class WanAndroidMainActivity extends BaseActivity {
                 if (id == R.id.action_home) {
                     HomeFragment homeFragment = (HomeFragment) ARouter.getInstance().build(RouterManager.HOME_FRAGMENT).navigation();
                     switchFragment(homeFragment, R.id.frame_layout);
-                    //设置透明状态栏
-                    ImmersionBar.with(WanAndroidMainActivity.this).transparentStatusBar().init();
                 } else if (id == R.id.action_project) {
                     ProjectFragment projectFragment = (ProjectFragment) ARouter.getInstance().build(RouterManager.PROJECT_FRAGMENT).navigation();
                     switchFragment(projectFragment, R.id.frame_layout);
-                    //设置透明状态栏
-                    ImmersionBar.with(WanAndroidMainActivity.this).transparentStatusBar().init();
                 } else if (id == R.id.action_system) {
 
                 } else if (id == R.id.action_me) {
