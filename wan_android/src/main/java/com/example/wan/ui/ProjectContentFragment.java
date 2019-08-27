@@ -68,12 +68,12 @@ public class ProjectContentFragment extends BaseMvpFragment<IProjectContentContr
         mRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                mDatas.clear();
                 onLoadData();
             }
 
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                mDatas.clear();
                 mPageNo = 1;
                 onLoadData();
             }
