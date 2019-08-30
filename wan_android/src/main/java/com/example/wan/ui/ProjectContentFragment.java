@@ -36,7 +36,6 @@ public class ProjectContentFragment extends BaseMvpFragment<IProjectContentContr
     private ProjectContentAdapter mAdapter;
     private SmartRefreshLayout mRefreshLayout;
 
-
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_project_content;
