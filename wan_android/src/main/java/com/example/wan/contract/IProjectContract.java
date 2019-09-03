@@ -21,6 +21,9 @@ public interface IProjectContract {
 
     interface Presenter extends IBasePresenter{
 
+        /**
+         * 加载分类数据
+         */
         void doLoadProjectCategory();
 
     }

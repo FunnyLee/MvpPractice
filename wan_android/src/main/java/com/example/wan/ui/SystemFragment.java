@@ -7,10 +7,10 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.base.adapter.ViewPagerFragmentAdapter;
+import com.example.base.base.BaseFragment;
 import com.example.base.base.BaseMvpFragment;
 import com.example.base.router.RouterManager;
 import com.example.wan.R;
-import com.example.wan.contract.ISystemContract;
 import com.gyf.immersionbar.ImmersionBar;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import java.util.List;
  * Description: This is SystemFragment
  */
 @Route(path = RouterManager.SYSTEM_FRAGMENT)
-public class SystemFragment extends BaseMvpFragment<ISystemContract.Presenter> implements ISystemContract.View {
+public class SystemFragment extends BaseFragment {
 
     private List<BaseMvpFragment> mFragmentList = new ArrayList<>();
     private List<String> mTitleList = new ArrayList<>();
@@ -56,10 +56,5 @@ public class SystemFragment extends BaseMvpFragment<ISystemContract.Presenter> i
         mFragmentList.add(navigationContentFragment);
         ViewPagerFragmentAdapter fragmentAdapter = new ViewPagerFragmentAdapter(getFragmentManager(), mFragmentList, mTitleList);
         mViewPager.setAdapter(fragmentAdapter);
-    }
-
-    @Override
-    public void onSetPresenter(ISystemContract.Presenter presenter) {
-
     }
 }
