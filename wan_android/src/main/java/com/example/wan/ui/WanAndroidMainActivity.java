@@ -59,7 +59,8 @@ public class WanAndroidMainActivity extends BaseActivity {
                     ProjectFragment projectFragment = (ProjectFragment) ARouter.getInstance().build(RouterManager.PROJECT_FRAGMENT).navigation();
                     switchFragment(projectFragment, R.id.frame_layout);
                 } else if (id == R.id.action_system) {
-
+                    SystemFragment systemFragment = (SystemFragment) ARouter.getInstance().build(RouterManager.SYSTEM_FRAGMENT).navigation();
+                    switchFragment(systemFragment, R.id.frame_layout);
                 } else if (id == R.id.action_me) {
 
                 }

@@ -31,4 +31,10 @@ public class RouterManager {
 
     public static final String PROJECT_CONTENT_FRAGMENT = GROUP_WAN_ANDROID + "/ProjectContentFragment";
 
+    public static final String SYSTEM_FRAGMENT = GROUP_WAN_ANDROID + "/SystemFragment";
+
+    public static final String SYSTEM_CONTENT_FRAGMENT = GROUP_WAN_ANDROID + "/SystemContentFragment";
+
+    public static final String NAVIGATION_CONTENT_RAGMENT = GROUP_WAN_ANDROID + "/NavigationContentFragment";
+
 }
