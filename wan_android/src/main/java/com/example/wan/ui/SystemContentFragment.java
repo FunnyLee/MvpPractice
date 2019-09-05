@@ -1,6 +1,7 @@
 package com.example.wan.ui;
 
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -42,6 +43,8 @@ public class SystemContentFragment extends BaseMvpFragment<ISystemContract.Prese
     @Override
     protected void initView(View view) {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, RecyclerView.VERTICAL);
+        recyclerView.setLayoutManager(manager);
         mAdapter = new SystemContentAdapter(mDatas);
         recyclerView.setAdapter(mAdapter);
     }
