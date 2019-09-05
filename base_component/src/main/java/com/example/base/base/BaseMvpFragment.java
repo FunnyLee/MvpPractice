@@ -18,7 +18,9 @@ public abstract class BaseMvpFragment<P extends IBasePresenter> extends BaseFrag
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        onSetPresenter(mPresenter);
+        if(mPresenter == null){
+            onSetPresenter(mPresenter);
+        }
     }
 
     public LifecycleProvider<ActivityEvent> autoRxLifeCycle() {
