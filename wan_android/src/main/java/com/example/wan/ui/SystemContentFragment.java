@@ -44,6 +44,16 @@ public class SystemContentFragment extends BaseMvpFragment<ISystemContract.Prese
     protected void initView(View view) {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, RecyclerView.VERTICAL);
+
+        recyclerView.setItemAnimator(null);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                manager.invalidateSpanAssignments();
+            }
+        });
+
         recyclerView.setLayoutManager(manager);
         mAdapter = new SystemContentAdapter(mDatas);
         recyclerView.setAdapter(mAdapter);

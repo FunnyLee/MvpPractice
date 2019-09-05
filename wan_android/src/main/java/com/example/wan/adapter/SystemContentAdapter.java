@@ -26,15 +26,18 @@ public class SystemContentAdapter extends BaseQuickAdapter<SystemContentInfo, Ba
 
     @Override
     protected void convert(BaseViewHolder helper, SystemContentInfo item) {
+
         FlowLayout flowLayout = helper.getView(R.id.flow_layout);
 
         List<SystemContentInfo.Childreninfo> childrens = item.children;
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(0, 10, 30, 10);
+        //添加之前一定要先清空所有子view
+        flowLayout.removeAllViews();
         for (SystemContentInfo.Childreninfo children : childrens) {
             TextView tv = new TextView(mContext);
-            tv.setPadding(5,5,5,5);
+            tv.setPadding(5, 5, 5, 5);
             tv.setBackgroundResource(R.drawable.text_view_bg_shape);
             tv.setLayoutParams(layoutParams);
             tv.setTextSize(13);
