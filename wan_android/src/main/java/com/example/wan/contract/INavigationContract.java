@@ -2,6 +2,9 @@ package com.example.wan.contract;
 
 import com.example.base.base.IBasePresenter;
 import com.example.base.base.IBaseView;
+import com.example.wan.entity.NavigationContentInfo;
+
+import java.util.List;
 
 /**
  * Author: Funny
@@ -14,7 +17,7 @@ public interface INavigationContract {
 
         void onLoadData();
 
-        void onShowContentView();
+        void onShowContentView( List<NavigationContentInfo> data);
 
     }
 

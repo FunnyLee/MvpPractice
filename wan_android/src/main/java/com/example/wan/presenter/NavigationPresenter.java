@@ -37,7 +37,10 @@ public class NavigationPresenter extends RxPresenter<INavigationContract.View> i
         add(observable).subscribe(new Consumer<BaseWanAndroidResponse<List<NavigationContentInfo>>>() {
             @Override
             public void accept(BaseWanAndroidResponse<List<NavigationContentInfo>> response) throws Exception {
-
+                List<NavigationContentInfo> data = response.data;
+                if (data != null && data.size() > 0) {
+                    mView.onShowContentView(data);
+                }
             }
         }, new Consumer<Throwable>() {
             @Override

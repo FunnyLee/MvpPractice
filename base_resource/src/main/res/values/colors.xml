@@ -60,5 +60,7 @@
     <color name="Grey800">#424242</color>
     <color name="Grey900">#212121</color>
 
+    <color name="divide_line">@color/Grey300</color>
+
     <color name="green_1">#69B056</color>
 </resources>
