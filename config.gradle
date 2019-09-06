@@ -8,6 +8,8 @@ ext {
             versionCode      : 1,
             versionName      : "1.0",
             supportVersion   : "27.1.1",
+            appName          : "FunnyNews",
+
     ]
 
 }
