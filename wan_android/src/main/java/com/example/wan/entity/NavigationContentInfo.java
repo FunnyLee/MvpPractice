@@ -18,6 +18,7 @@ public class NavigationContentInfo {
     public int cid;
     public String name;
     public List<Articlesinfo> articles;
+    public boolean isSelected = false;
 
     public static class Articlesinfo {
         /**

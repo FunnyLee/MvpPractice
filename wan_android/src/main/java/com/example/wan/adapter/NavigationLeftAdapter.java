@@ -2,6 +2,7 @@ package com.example.wan.adapter;
 
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -24,7 +25,10 @@ public class NavigationLeftAdapter extends BaseQuickAdapter<NavigationContentInf
     @Override
     protected void convert(BaseViewHolder helper, NavigationContentInfo item) {
         View divideView = helper.getView(R.id.divide_view);
-        helper.setText(R.id.name_tv, item.name);
+        TextView nameTv = helper.getView(R.id.name_tv);
+
+        nameTv.setText(item.name);
+        nameTv.setSelected(item.isSelected);
 
         if (helper.getLayoutPosition() == 0) {
             divideView.setVisibility(View.GONE);
