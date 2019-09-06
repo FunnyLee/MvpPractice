@@ -11,6 +11,8 @@ public abstract class BaseMvpActivity<P extends IBasePresenter> extends BaseActi
 
     @Override
     protected void initPresenter() {
-        onSetPresenter(mPresenter);
+        if(mPresenter == null){
+            onSetPresenter(mPresenter);
+        }
     }
 }

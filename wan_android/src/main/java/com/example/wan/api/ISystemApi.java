@@ -1,6 +1,7 @@
 package com.example.wan.api;
 
 import com.example.wan.entity.BaseWanAndroidResponse;
+import com.example.wan.entity.NavigationContentInfo;
 import com.example.wan.entity.SystemContentInfo;
 
 import java.util.List;
@@ -22,4 +23,10 @@ public interface ISystemApi {
     @GET("tree/json")
     Observable<BaseWanAndroidResponse<List<SystemContentInfo>>> getSystemContent();
 
+
+    /**
+     * 获取导航数据
+     */
+    @GET("navi/json")
+    Observable<BaseWanAndroidResponse<List<NavigationContentInfo>>> getNavigationContent();
 }
