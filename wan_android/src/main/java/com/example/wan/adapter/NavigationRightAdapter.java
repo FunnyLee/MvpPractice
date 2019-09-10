@@ -25,7 +25,6 @@ public class NavigationRightAdapter extends BaseQuickAdapter<NavigationContentIn
         super(R.layout.item_navigation_right, data);
     }
 
-
     @Override
     protected void convert(BaseViewHolder helper, NavigationContentInfo item) {
         View divideView = helper.getView(R.id.divide_view);

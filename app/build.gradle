@@ -23,6 +23,21 @@ android {
         }
     }
 
+    signingConfigs {
+        debug {
+            storeFile file("Funny.jks")
+            storePassword "123456"
+            keyAlias "Funny"
+            keyPassword "123456"
+        }
+        segi {
+            storeFile file("Funny.jks")
+            storePassword "123456"
+            keyAlias "Funny"
+            keyPassword "123456"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
