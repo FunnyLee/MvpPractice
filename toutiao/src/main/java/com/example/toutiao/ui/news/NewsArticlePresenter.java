@@ -51,6 +51,15 @@ public class NewsArticlePresenter implements IArticleContract.Presenter {
         //下拉刷新时，catagory参数不会变，time参数会改变
         Observable<MultiNewsArticleBean> observable = RetrofitFactory.getInstance()
                 .create(IMobileNewsApi.class).getNewsArticleOne(category, time);
+
+//        observable.subscribeOn(Schedulers.io())
+//                .switchMap(new Function<MultiNewsArticleBean, ObservableSource<MultiNewsArticleDataBean>>() {
+//                    @Override
+//                    public ObservableSource<MultiNewsArticleDataBean> apply(MultiNewsArticleBean multiNewsArticleBean) throws Exception {
+//                        return null;
+//                    }
+//                });
+
         observable.subscribeOn(Schedulers.io())
                 .switchMap((Function<MultiNewsArticleBean, Observable<MultiNewsArticleDataBean>>) multiNewsArticleBean -> {
                     List<MultiNewsArticleDataBean> dataList = new ArrayList<>();
