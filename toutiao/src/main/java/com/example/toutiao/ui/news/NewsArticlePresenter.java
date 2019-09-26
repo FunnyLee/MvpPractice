@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
@@ -52,13 +53,13 @@ public class NewsArticlePresenter implements IArticleContract.Presenter {
         Observable<MultiNewsArticleBean> observable = RetrofitFactory.getInstance()
                 .create(IMobileNewsApi.class).getNewsArticleOne(category, time);
 
-//        observable.subscribeOn(Schedulers.io())
-//                .switchMap(new Function<MultiNewsArticleBean, ObservableSource<MultiNewsArticleDataBean>>() {
-//                    @Override
-//                    public ObservableSource<MultiNewsArticleDataBean> apply(MultiNewsArticleBean multiNewsArticleBean) throws Exception {
-//                        return null;
-//                    }
-//                });
+        observable.subscribeOn(Schedulers.io())
+                .switchMap(new Function<MultiNewsArticleBean, ObservableSource<MultiNewsArticleDataBean>>() {
+                    @Override
+                    public ObservableSource<MultiNewsArticleDataBean> apply(MultiNewsArticleBean multiNewsArticleBean) throws Exception {
+                        return null;
+                    }
+                });
 
         observable.subscribeOn(Schedulers.io())
                 .switchMap((Function<MultiNewsArticleBean, Observable<MultiNewsArticleDataBean>>) multiNewsArticleBean -> {
