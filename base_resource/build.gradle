@@ -9,8 +9,12 @@ android {
     defaultConfig {
         minSdkVersion configInfo.minSdkVersion
         targetSdkVersion configInfo.targetSdkVersion
-        versionCode configInfo.versionCode
-        versionName configInfo.versionName
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
 
         //支持vector矢量图，minSdk小于21时，需要加这一行
         vectorDrawables.useSupportLibrary = true
@@ -31,4 +35,72 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api('com.alibaba:arouter-api:1.5.0') {
+        exclude group: 'com.android.support'
+    }
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+
+    //GreenDao
+    api 'org.greenrobot:greendao:3.2.2'
+
+    api 'com.android.support.constraint:constraint-layout:1.1.2'
+
+    api "com.android.support:appcompat-v7:${configInfo.supportVersion}"
+    //matrial design
+    api "com.android.support:design:${configInfo.supportVersion}"
+    //CardView
+    api "com.android.support:cardview-v7:${configInfo.supportVersion}"
+    //RecyclerView
+    api "com.android.support:recyclerview-v7:${configInfo.supportVersion}"
+    //OkHttp
+    api 'com.squareup.okhttp3:okhttp:3.11.0'
+    //glide
+    api 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    api 'jp.wasabeef:glide-transformations:4.0.1'
+    //BaseRecyclerViewAdapterHelper
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.41'
+    //rxJava
+    //implementation "io.reactivex.rxjava2:rxjava:2.2.0"
+    //RxBinding
+    api 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+    //rxAndroid
+    api 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    //retrofit
+    api 'com.squareup.retrofit2:retrofit:2.4.0'
+    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    //rxLifecycle
+    api 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.2'
+    api 'com.trello.rxlifecycle2:rxlifecycle-navi:2.2.2'
+    //rxCache
+    api 'com.github.VictorAlbertos.RxCache:runtime:1.8.3-2.x'
+    api 'io.reactivex.rxjava2:rxjava:2.2.0'
+    api 'com.github.VictorAlbertos.Jolyglot:gson:0.0.4'
+    //徽章控件
+    api 'cn.bingoogolapple:bga-badgeview-api:1.1.8'
+    annotationProcessor "cn.bingoogolapple:bga-badgeview-compiler:1.1.8"
+    //轮播图控件
+    api 'com.youth.banner:banner:1.4.9'
+    //EventBus
+    api 'org.greenrobot:eventbus:3.1.1'
+    //Logger
+    api 'com.orhanobut:logger:2.2.0'
+    //多条目
+    api 'me.drakeet.multitype:multitype:3.4.4'
+    // 持久化 Cookie
+    api 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+    //网络请求日志拦截
+    api('com.github.ihsanbal:LoggingInterceptor:2.0.7') {
+        exclude group: 'org.json', module: 'json'
+    }
+
+    //沉浸式状态栏
+    api 'com.gyf.immersionbar:immersionbar:3.0.0-beta05'
+    api 'com.gyf.immersionbar:immersionbar-components:3.0.0-beta05'
+
+    //刷新控件
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-32'
+    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'
 }
