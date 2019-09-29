@@ -73,9 +73,9 @@ android {
             variant.getPackageApplication().outputDirectory = new File(project.rootDir.absolutePath + "/apk/" + variant.flavorName)
             def fileName
             if (outputFile.name.contains("debug")) {
-                fileName = "${configInfo.appName}v${configInfo.versionName}_${getTime()}_debug"
+                fileName = "${configInfo.appName}_v${configInfo.versionName}_${getTime()}_debug"
             } else {
-                fileName = "${configInfo.appName}v${configInfo.versionName}_${getTime()}_release"
+                fileName = "${configInfo.appName}_v${configInfo.versionName}_${getTime()}_release"
             }
             fileName += ".apk"
             outputFileName = fileName
