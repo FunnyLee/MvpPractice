@@ -25,12 +25,13 @@ android {
 
     signingConfigs {
         debug {
-            storeFile file("Funny.jks")
-            storePassword "123456"
-            keyAlias "Funny"
-            keyPassword "123456"
+//            storeFile file("Funny.jks")
+//            storePassword "123456"
+//            keyAlias "Funny"
+//            keyPassword "123456"
         }
-        segi {
+
+        release {
             storeFile file("Funny.jks")
             storePassword "123456"
             keyAlias "Funny"
@@ -39,12 +40,25 @@ android {
     }
 
     buildTypes {
+
+        debug {
+
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
+    flavorDimensions("default")
+
+    productFlavors {
+        common {
+            dimension "default"
+            signingConfig signingConfigs.release
+        }
+    }
 
 
     dexOptions {
