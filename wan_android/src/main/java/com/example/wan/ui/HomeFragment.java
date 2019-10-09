@@ -35,7 +35,6 @@ import java.util.List;
  * Time: 2019/8/13
  * Description: This is HomeFragment
  */
-
 @Route(path = RouterManager.HOME_FRAGMENT)
 public class HomeFragment extends BaseMvpFragment<IHomeContract.Presenter> implements IHomeContract.View {
 
