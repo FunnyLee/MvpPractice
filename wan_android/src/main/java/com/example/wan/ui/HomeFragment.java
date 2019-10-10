@@ -141,7 +141,7 @@ public class HomeFragment extends BaseMvpFragment<IHomeContract.Presenter> imple
 
     @Override
     protected void initEvent() {
-        //ScrollView滑动监听
+        //ScrollView滑动监听器
         mScrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
