@@ -65,7 +65,7 @@ public class HomePresenter extends RxPresenter<IHomeContract.View> implements IH
         }, new Consumer<Throwable>() {
             @Override
             public void accept(Throwable throwable) throws Exception {
-
+                throwable.printStackTrace();
             }
         });
     }
