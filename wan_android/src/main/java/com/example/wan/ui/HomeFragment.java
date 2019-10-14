@@ -155,6 +155,7 @@ public class HomeFragment extends BaseMvpFragment<IHomeContract.Presenter> imple
             }
         });
 
+        //刷新监听
         mRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
