@@ -50,7 +50,7 @@ public class HomeArticleInfo implements Serializable {
          * superChapterId : 135
          * superChapterName : 项目必备
          * tags : []
-         * title : Android 换肤那些事儿， Resource包装流 ？AssetManager替换流？
+         * title : ？Android 换肤那些事儿， Resource包装流 ？AssetManager替换流
          * type : 0
          * userId : -1
          * visible : 1

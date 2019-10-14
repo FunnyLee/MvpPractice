@@ -3,6 +3,8 @@
           package="com.example.wan">
 
     <application>
+        <activity android:name=".ui.ArticleWebViewActivity">
+        </activity>
         <activity android:name=".ui.WanAndroidMainActivity">
         </activity>
     </application>

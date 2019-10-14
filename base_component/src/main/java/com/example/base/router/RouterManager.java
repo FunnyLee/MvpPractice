@@ -37,4 +37,6 @@ public class RouterManager {
 
     public static final String NAVIGATION_CONTENT_RAGMENT = GROUP_WAN_ANDROID + "/NavigationContentFragment";
 
+    public static final String ARTICLE_WEBVIEW_ACTIVITY = GROUP_WAN_ANDROID + "/ArticleWebViewActivity";
+
 }

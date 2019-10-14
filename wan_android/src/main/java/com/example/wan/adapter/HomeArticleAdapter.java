@@ -1,9 +1,12 @@
 package com.example.wan.adapter;
 
 import android.support.annotation.Nullable;
+import android.view.View;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.example.base.router.RouterManager;
 import com.example.wan.R;
 import com.example.wan.entity.HomeArticleInfo;
 
@@ -27,6 +30,15 @@ public class HomeArticleAdapter extends BaseQuickAdapter<HomeArticleInfo.DatasIn
                 .setText(R.id.category_tv, "分类：" + item.chapterName)
                 .setText(R.id.time_tv, item.niceDate);
 
-
+        helper.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance()
+                        .build(RouterManager.ARTICLE_WEBVIEW_ACTIVITY)
+                        .withString("link", item.link)
+                        .withString("title", item.title)
+                        .navigation();
+            }
+        });
     }
 }

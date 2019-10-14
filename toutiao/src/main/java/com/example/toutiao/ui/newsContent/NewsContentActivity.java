@@ -79,7 +79,6 @@ public class NewsContentActivity extends BaseMvpActivity<INewsContentContract.Pr
         mFlContainer = findViewById(R.id.fl_container);
         mCollapsingLayout = findViewById(R.id.collapsing_layout);
 
-
         //设置ToolBar
         setSupportActionBar(mToolBar);
         //ToolBar左边增加返回箭头
