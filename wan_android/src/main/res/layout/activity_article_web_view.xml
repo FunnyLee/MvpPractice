@@ -17,14 +17,9 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:contentInsetStart="@dimen/dp_0"
+        app:contentInsetEnd="@dimen/dp_10"
         app:contentInsetStartWithNavigation="0dp"
         app:theme="@style/AppTheme.AppBarOverlay">
     </android.support.v7.widget.Toolbar>
-
-    <!--<com.just.agentweb.AgentWebView-->
-        <!--android:id="@+id/web_view"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
-    <!--</com.just.agentweb.AgentWebView>-->
 
 </LinearLayout>

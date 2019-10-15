@@ -1,6 +1,7 @@
 package com.example.wan.ui;
 
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -18,6 +19,7 @@ import com.just.agentweb.AgentWeb;
 public class ArticleWebViewActivity extends BaseActivity {
 
     private Toolbar mToolbar;
+    private AgentWeb mAgentWeb;
 
     @Override
     protected int getLayoutId() {
@@ -41,7 +43,7 @@ public class ArticleWebViewActivity extends BaseActivity {
         //返回箭头可用
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        AgentWeb.with(this)
+        mAgentWeb = AgentWeb.with(this)
                 .setAgentWebParent(linearLayout, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
                 .useDefaultIndicator()
                 .createAgentWeb()
@@ -56,9 +58,17 @@ public class ArticleWebViewActivity extends BaseActivity {
         //Toolbar上面按钮的点击事件
         int i = item.getItemId();
         if (i == android.R.id.home) {//返回按钮
-            finish();
+           finish();
         }
         return true;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (mAgentWeb.handleKeyEvent(keyCode, event)) {
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 }
