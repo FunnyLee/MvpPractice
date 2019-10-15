@@ -3,7 +3,9 @@ package com.example.wan.ui;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -20,6 +22,7 @@ public class ArticleWebViewActivity extends BaseActivity {
 
     private Toolbar mToolbar;
     private AgentWeb mAgentWeb;
+    private WebView mWebView;
 
     @Override
     protected int getLayoutId() {
@@ -50,7 +53,23 @@ public class ArticleWebViewActivity extends BaseActivity {
                 .ready()
                 .go(link);
 
-
+        mWebView = mAgentWeb.getWebCreator().getWebView();
+        mWebView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK) {
+                        if (mWebView.canGoBack()) {
+                            mWebView.goBack();
+                            return true;
+                        } else {
+                            finish();
+                        }
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -58,17 +77,12 @@ public class ArticleWebViewActivity extends BaseActivity {
         //Toolbar上面按钮的点击事件
         int i = item.getItemId();
         if (i == android.R.id.home) {//返回按钮
-           finish();
+            if (mWebView.canGoBack()) {
+                mWebView.goBack();
+            }else {
+                finish();
+            }
         }
         return true;
     }
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (mAgentWeb.handleKeyEvent(keyCode, event)) {
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
-
 }
