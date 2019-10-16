@@ -18,7 +18,7 @@ import com.example.wan.R;
 import com.gyf.immersionbar.ImmersionBar;
 
 @Route(path = RouterManager.WAN_ANDROID_MAIN_ACTIVITY)
-public class WanAndroidMainActivity extends BaseActivity {
+public class WanAndroidMainActivityCustom extends BaseActivity {
 
     private BottomNavigationView mBottomNavigationView;
 

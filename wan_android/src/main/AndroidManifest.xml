@@ -6,6 +6,10 @@
         <activity android:name=".ui.ArticleWebViewActivity">
         </activity>
         <activity android:name=".ui.WanAndroidMainActivity">
+            <intent-filter>
+                <action android:name="WanAndroidMainActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
         </activity>
     </application>
 

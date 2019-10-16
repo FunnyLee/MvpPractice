@@ -185,7 +185,10 @@ public class MainActivity extends BaseActivity {
             if (i == R.id.nav_toutiao) {
                 ARouter.getInstance().build(RouterManager.MAIN_ACTIVTY_URL).navigation();
             } else if (i == R.id.nav_wan_android) {
-                ARouter.getInstance().build(RouterManager.WAN_ANDROID_MAIN_ACTIVITY).navigation();
+//                ARouter.getInstance().build(RouterManager.WAN_ANDROID_MAIN_ACTIVITY).navigation();
+                Intent intent = new Intent();
+                intent.setAction("WanAndroidMainActivity");
+                startActivity(intent);
             } else if (i == R.id.nav_share) {//分享
                 Intent shareIntent = new Intent()
                         .setAction(Intent.ACTION_SEND)
