@@ -34,9 +34,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions("default")
+    productFlavors{
+        common {
+            dimension "default"
+        }
+
+        custom{
+            dimension "default"
+        }
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":base_resource")
+
+
 }

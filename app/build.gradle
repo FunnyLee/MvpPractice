@@ -58,6 +58,11 @@ android {
             dimension "default"
             signingConfig signingConfigs.release
         }
+
+        custom{
+            dimension "default"
+            signingConfig signingConfigs.release
+        }
     }
 
 

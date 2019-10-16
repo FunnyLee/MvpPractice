@@ -31,6 +31,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions("default")
+    productFlavors{
+        common {
+            dimension "default"
+        }
+
+        custom{
+            dimension "default"
+        }
+    }
 }
 
 dependencies {

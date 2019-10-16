@@ -28,6 +28,17 @@ android {
         }
     }
 
+    flavorDimensions("default")
+    productFlavors{
+        common {
+            dimension "default"
+        }
+
+        custom{
+            dimension "default"
+        }
+    }
+
 }
 
 dependencies {
