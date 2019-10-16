@@ -17,6 +17,9 @@ import com.example.base.router.RouterManager;
 import com.example.wan.R;
 import com.gyf.immersionbar.ImmersionBar;
 
+/**
+ * 定制化类
+ */
 @Route(path = RouterManager.WAN_ANDROID_MAIN_ACTIVITY)
 public class WanAndroidMainActivityCustom extends BaseActivity {
 

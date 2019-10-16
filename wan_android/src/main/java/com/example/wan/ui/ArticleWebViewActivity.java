@@ -12,6 +12,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.base.base.BaseActivity;
 import com.example.base.router.RouterManager;
 import com.example.wan.R;
+import com.example.wan.utils.VaraintUtils;
 import com.just.agentweb.AgentWeb;
 
 /**
@@ -31,6 +32,9 @@ public class ArticleWebViewActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        //定制化方法
+        VaraintUtils.showMsg();
+
         mToolbar = findViewById(R.id.tool_bar);
         LinearLayout linearLayout = findViewById(R.id.linear_layout);
 
@@ -79,7 +83,7 @@ public class ArticleWebViewActivity extends BaseActivity {
         if (i == android.R.id.home) {//返回按钮
             if (mWebView.canGoBack()) {
                 mWebView.goBack();
-            }else {
+            } else {
                 finish();
             }
         }
