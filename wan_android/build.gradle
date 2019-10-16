@@ -28,9 +28,6 @@ android {
         }
     }
 
-
-    publishNonDefault true
-    defaultPublishConfig "commonDebug"
     flavorDimensions("default")
     productFlavors {
         common {
