@@ -28,13 +28,16 @@ android {
         }
     }
 
+
+    publishNonDefault true
+    defaultPublishConfig "commonDebug"
     flavorDimensions("default")
-    productFlavors{
+    productFlavors {
         common {
             dimension "default"
         }
 
-        custom{
+        custom {
             dimension "default"
         }
     }
@@ -49,3 +52,4 @@ dependencies {
 
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
 }
+
