@@ -26,7 +26,15 @@ public abstract class BaseFragment extends BaseImmersionFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        mView = LayoutInflater.from(mContext).inflate(getLayoutId(), null);
+        if(mView == null){
+            mView = LayoutInflater.from(mContext).inflate(getLayoutId(), null);
+        }else {
+            ViewGroup parent = (ViewGroup) mView.getParent();
+            if(parent != null){
+                parent.removeView(mView);
+            }
+        }
+
         initView(mView);
         initData();
         initEvent();
