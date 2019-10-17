@@ -17,10 +17,15 @@ import com.example.base.router.RouterManager;
 import com.example.wan.R;
 import com.gyf.immersionbar.ImmersionBar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Route(path = RouterManager.WAN_ANDROID_MAIN_ACTIVITY)
 public class WanAndroidMainActivity extends BaseActivity {
 
     private BottomNavigationView mBottomNavigationView;
+
+    private List<BaseFragment> mFragmentList = new ArrayList<>();
 
     @Override
     protected int getLayoutId() {
@@ -69,6 +74,15 @@ public class WanAndroidMainActivity extends BaseActivity {
                 return true;
             }
         });
+    }
+
+    private void initFragment(){
+        HomeFragment homeFragment = (HomeFragment) ARouter.getInstance().build(RouterManager.HOME_FRAGMENT).navigation();
+        ProjectFragment projectFragment = (ProjectFragment) ARouter.getInstance().build(RouterManager.PROJECT_FRAGMENT).navigation();
+        SystemFragment systemFragment = (SystemFragment) ARouter.getInstance().build(RouterManager.SYSTEM_FRAGMENT).navigation();
+        mFragmentList.add(homeFragment);
+        mFragmentList.add(projectFragment);
+        mFragmentList.add(systemFragment);
     }
 
     /**
