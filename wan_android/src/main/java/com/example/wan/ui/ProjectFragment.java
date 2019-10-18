@@ -73,7 +73,8 @@ public class ProjectFragment extends BaseMvpFragment<IProjectContract.Presenter>
                     .navigation();
             mFragmentList.add(projectContentFragment);
         }
-        ViewPagerFragmentAdapter fragmentAdapter = new ViewPagerFragmentAdapter(getFragmentManager(), mFragmentList, mTitleList);
+        //一定要使用getChildFragmentManager，否则会出现页面加载错误
+        ViewPagerFragmentAdapter fragmentAdapter = new ViewPagerFragmentAdapter(getChildFragmentManager(), mFragmentList, mTitleList);
         mViewPager.setAdapter(fragmentAdapter);
     }
 }

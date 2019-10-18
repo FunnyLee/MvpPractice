@@ -27,6 +27,9 @@ public class WanAndroidMainActivity extends BaseActivity {
 
     private List<BaseFragment> mFragmentList = new ArrayList<>();
 
+    private Fragment mCurrentFragment = null;
+
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_wan_android_main;
@@ -34,18 +37,16 @@ public class WanAndroidMainActivity extends BaseActivity {
 
     @Override
     protected void initStatusBarColor() {
-        //设置透明状态栏
-        ImmersionBar.with(this).transparentStatusBar().init();
+//        //设置透明状态栏
+        ImmersionBar.with(WanAndroidMainActivity.this).transparentStatusBar().init();
     }
 
     @Override
     protected void initView() {
         Toast.makeText(this, getClass().getName(), Toast.LENGTH_SHORT).show();
         mBottomNavigationView = findViewById(R.id.bottom_navigation);
-
-        //默认选中首页
-        BaseFragment homeFragment = (BaseFragment) ARouter.getInstance().build(RouterManager.HOME_FRAGMENT).navigation();
-        switchFragment(homeFragment, R.id.frame_layout);
+        initFragment();
+        showFragment(0);
     }
 
     @Override
@@ -60,14 +61,11 @@ public class WanAndroidMainActivity extends BaseActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 if (id == R.id.action_home) {
-                    HomeFragment homeFragment = (HomeFragment) ARouter.getInstance().build(RouterManager.HOME_FRAGMENT).navigation();
-                    switchFragment(homeFragment, R.id.frame_layout);
+                    showFragment(0);
                 } else if (id == R.id.action_project) {
-                    ProjectFragment projectFragment = (ProjectFragment) ARouter.getInstance().build(RouterManager.PROJECT_FRAGMENT).navigation();
-                    switchFragment(projectFragment, R.id.frame_layout);
+                    showFragment(1);
                 } else if (id == R.id.action_system) {
-                    SystemFragment systemFragment = (SystemFragment) ARouter.getInstance().build(RouterManager.SYSTEM_FRAGMENT).navigation();
-                    switchFragment(systemFragment, R.id.frame_layout);
+                    showFragment(2);
                 } else if (id == R.id.action_me) {
 
                 }
@@ -76,7 +74,7 @@ public class WanAndroidMainActivity extends BaseActivity {
         });
     }
 
-    private void initFragment(){
+    private void initFragment() {
         HomeFragment homeFragment = (HomeFragment) ARouter.getInstance().build(RouterManager.HOME_FRAGMENT).navigation();
         ProjectFragment projectFragment = (ProjectFragment) ARouter.getInstance().build(RouterManager.PROJECT_FRAGMENT).navigation();
         SystemFragment systemFragment = (SystemFragment) ARouter.getInstance().build(RouterManager.SYSTEM_FRAGMENT).navigation();
@@ -95,5 +93,27 @@ public class WanAndroidMainActivity extends BaseActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(id, fragment);
         transaction.commit();
+    }
+
+    /**
+     * 使用show、hide来管理fragment
+     */
+    private void showFragment(int position) {
+        if (mFragmentList != null && mFragmentList.size() > 0) {
+            Fragment fragment = mFragmentList.get(position);
+            if (null != fragment && mCurrentFragment != fragment) {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                if (mCurrentFragment != null) {
+                    transaction.hide(mCurrentFragment);
+                }
+                mCurrentFragment = fragment;
+                if (!fragment.isAdded()) {
+                    transaction.add(R.id.frame_layout, fragment);
+                } else {
+                    transaction.show(fragment);
+                }
+                transaction.commit();
+            }
+        }
     }
 }

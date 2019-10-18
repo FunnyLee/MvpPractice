@@ -7,7 +7,6 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.base.adapter.ViewPagerFragmentAdapter;
-import com.example.base.base.BaseFragment;
 import com.example.base.base.BaseMvpFragment;
 import com.example.base.router.RouterManager;
 import com.example.wan.R;
@@ -22,7 +21,7 @@ import java.util.List;
  * Description: This is SystemFragment
  */
 @Route(path = RouterManager.SYSTEM_FRAGMENT)
-public class SystemFragment extends BaseFragment {
+public class SystemFragment extends BaseMvpFragment {
 
     private List<BaseMvpFragment> mFragmentList = new ArrayList<>();
     private List<String> mTitleList = new ArrayList<>();
@@ -54,7 +53,13 @@ public class SystemFragment extends BaseFragment {
         NavigationContentFragment navigationContentFragment = (NavigationContentFragment) ARouter.getInstance().build(RouterManager.NAVIGATION_CONTENT_RAGMENT).navigation();
         mFragmentList.add(systemContentFragment);
         mFragmentList.add(navigationContentFragment);
-        ViewPagerFragmentAdapter fragmentAdapter = new ViewPagerFragmentAdapter(getFragmentManager(), mFragmentList, mTitleList);
+        //一定要使用getChildFragmentManager，否则会出现页面加载错误
+        ViewPagerFragmentAdapter fragmentAdapter = new ViewPagerFragmentAdapter(getChildFragmentManager(), mFragmentList, mTitleList);
         mViewPager.setAdapter(fragmentAdapter);
+    }
+
+    @Override
+    public void onSetPresenter(Object presenter) {
+
     }
 }
