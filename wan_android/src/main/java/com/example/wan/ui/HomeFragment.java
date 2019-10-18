@@ -23,6 +23,7 @@ import com.example.wan.entity.BannerIndicatorInfo;
 import com.example.wan.entity.HomeArticleInfo;
 import com.example.wan.entity.HomeBannerInfo;
 import com.example.wan.presenter.HomePresenter;
+import com.gyf.immersionbar.ImmersionBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
@@ -57,6 +58,12 @@ public class HomeFragment extends BaseMvpFragment<IHomeContract.Presenter> imple
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_home;
+    }
+
+    @Override
+    public void initImmersionBar() {
+//        //设置透明状态栏
+        ImmersionBar.with(this).transparentStatusBar().init();
     }
 
     @Override

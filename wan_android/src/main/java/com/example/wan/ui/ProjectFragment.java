@@ -3,6 +3,7 @@ package com.example.wan.ui;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -38,7 +39,10 @@ public class ProjectFragment extends BaseMvpFragment<IProjectContract.Presenter>
 
     @Override
     public void initImmersionBar() {
-        ImmersionBar.with(getActivity()).statusBarView(R.id.status_view).init();
+        View statusView = findViewById(R.id.status_view);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.MATCH_PARENT,ImmersionBar.getStatusBarHeight(this));
+        statusView.setLayoutParams(params);
+        ImmersionBar.with(this).statusBarView(R.id.status_view).init();
     }
 
     @Override

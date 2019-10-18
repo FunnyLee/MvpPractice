@@ -15,7 +15,6 @@ import com.example.base.base.BaseActivity;
 import com.example.base.base.BaseFragment;
 import com.example.base.router.RouterManager;
 import com.example.wan.R;
-import com.gyf.immersionbar.ImmersionBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +32,6 @@ public class WanAndroidMainActivity extends BaseActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_wan_android_main;
-    }
-
-    @Override
-    protected void initStatusBarColor() {
-//        //设置透明状态栏
-        ImmersionBar.with(WanAndroidMainActivity.this).transparentStatusBar().init();
     }
 
     @Override
