@@ -59,7 +59,6 @@ public class ProjectFragment extends BaseMvpFragment<IProjectContract.Presenter>
 
         tabLayout.setupWithViewPager(mViewPager);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-
     }
 
     @Override
