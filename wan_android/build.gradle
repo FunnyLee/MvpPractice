@@ -48,5 +48,7 @@ dependencies {
     implementation project(":base_component")
 
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+
+    implementation 'com.funny.maven:TestMaven:3.0.0'
 }
 

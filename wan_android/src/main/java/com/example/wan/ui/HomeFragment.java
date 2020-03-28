@@ -1,7 +1,9 @@
 package com.example.wan.ui;
 
 import android.graphics.Rect;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
@@ -23,6 +25,7 @@ import com.example.wan.entity.BannerIndicatorInfo;
 import com.example.wan.entity.HomeArticleInfo;
 import com.example.wan.entity.HomeBannerInfo;
 import com.example.wan.presenter.HomePresenter;
+import com.funny.maven.ScreenHelper;
 import com.gyf.immersionbar.ImmersionBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -73,8 +76,12 @@ public class HomeFragment extends BaseMvpFragment<IHomeContract.Presenter> imple
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void initView(View view) {
+
+        ScreenHelper.testMaven();
+
         mScrollView = findViewById(R.id.scroll_view);
         mHeadLl = findViewById(R.id.head_ll);
 
@@ -146,6 +153,7 @@ public class HomeFragment extends BaseMvpFragment<IHomeContract.Presenter> imple
         onLoadData();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void initEvent() {
         //ScrollView滑动监听器
