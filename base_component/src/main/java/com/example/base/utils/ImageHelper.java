@@ -92,8 +92,4 @@ public class ImageHelper extends AppGlideModule {
                 .apply(RequestOptions.bitmapTransform(new BlurTransformation(12, 1)))
                 .into(imageView);
     }
-
-    public static void test() {
-        Log.d("AAAA", "AAAA");
-    }
 }
