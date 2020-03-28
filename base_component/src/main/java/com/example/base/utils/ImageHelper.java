@@ -5,8 +5,10 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.annotation.GlideModule;
@@ -16,6 +18,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.base.R;
+
+import java.util.logging.Logger;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
@@ -87,5 +91,9 @@ public class ImageHelper extends AppGlideModule {
                 .apply(new RequestOptions().error(R.drawable.error_image).centerCrop())
                 .apply(RequestOptions.bitmapTransform(new BlurTransformation(12, 1)))
                 .into(imageView);
+    }
+
+    public static void test() {
+        Log.d("AAAA", "AAAA");
     }
 }
