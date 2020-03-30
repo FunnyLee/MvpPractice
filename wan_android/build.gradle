@@ -49,6 +49,8 @@ dependencies {
 
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
 
-    implementation 'com.funny.maven:TestMaven:3.0.0'
+//    implementation 'com.funny.maven:TestMaven:4.0.0-SNAPSHOT'
+//    implementation 'com.funny.maven:TestMaven:4.0.0@aar'
+    implementation 'com.funny.maven:TestMaven:5.0.0'
 }
 

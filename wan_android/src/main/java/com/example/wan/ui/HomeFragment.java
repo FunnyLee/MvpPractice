@@ -25,7 +25,7 @@ import com.example.wan.entity.BannerIndicatorInfo;
 import com.example.wan.entity.HomeArticleInfo;
 import com.example.wan.entity.HomeBannerInfo;
 import com.example.wan.presenter.HomePresenter;
-import com.funny.maven.ScreenHelper;
+import com.funny.maven.TestMavenHelper;
 import com.gyf.immersionbar.ImmersionBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -80,7 +80,7 @@ public class HomeFragment extends BaseMvpFragment<IHomeContract.Presenter> imple
     @Override
     protected void initView(View view) {
 
-        ScreenHelper.testMaven();
+        TestMavenHelper.testMaven();
 
         mScrollView = findViewById(R.id.scroll_view);
         mHeadLl = findViewById(R.id.head_ll);

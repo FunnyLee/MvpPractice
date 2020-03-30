@@ -2,7 +2,7 @@
 apply from: "config.gradle"
 
 buildscript {
-    
+
     repositories {
         google()
         jcenter()
@@ -26,8 +26,17 @@ allprojects {
         jcenter()
         mavenCentral()
         maven { url 'https://jitpack.io' }
-        maven { url 'F:/MyProject/GitCoding/MvpPractice/maven_lib/local_maven_repository' }
 
+        //本地maven库地址
+//        maven { url 'F:/MyProject/GitCoding/MvpPractice/maven_lib/local_maven_repository' }
+
+        //远程maven nexus地址（远程仓库一定要打开，允许匿名用户访问服务器，否则无法访问该url）
+        maven { url 'http://127.0.0.1:8081/repository/funny/' }
+    }
+
+    //清除maven库的缓存
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
     }
 }
 
