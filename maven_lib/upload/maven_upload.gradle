@@ -6,7 +6,7 @@ uploadArchives{
 //        repository(url: uri('./local_maven_repository'))
 
         //配置远程nexus路径
-        repository(url: "http://127.0.0.1:8081/repository/maven-releases/") {
+        repository(url: "http://127.0.0.1:8081/repository/funny-releases/") {
             authentication(userName: "admin", password: "admin123")
         }
 
