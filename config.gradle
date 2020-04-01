@@ -2,9 +2,9 @@ ext {
     android = [
             //app、sdk版本信息
             applicationId    : "com.example.think",
-            compileSdkVersion: 27,
+            compileSdkVersion: 29,
             minSdkVersion    : 23,
-            targetSdkVersion : 27,
+            targetSdkVersion : 29,
             versionCode      : 1,
             versionName      : "1.0",
             supportVersion   : "27.1.1",
