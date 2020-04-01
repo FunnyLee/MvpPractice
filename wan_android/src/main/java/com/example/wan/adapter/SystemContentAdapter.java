@@ -1,6 +1,5 @@
 package com.example.wan.adapter;
 
-import android.support.annotation.Nullable;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -12,6 +11,8 @@ import com.example.wan.R;
 import com.example.wan.entity.SystemContentInfo;
 
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 /**
  * Author: Funny

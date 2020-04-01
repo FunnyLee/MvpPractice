@@ -1,11 +1,5 @@
 package com.example.wan.ui;
 
-import android.support.annotation.IdRes;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -15,9 +9,16 @@ import com.example.base.base.BaseActivity;
 import com.example.base.base.BaseFragment;
 import com.example.base.router.RouterManager;
 import com.example.wan.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 @Route(path = RouterManager.WAN_ANDROID_MAIN_ACTIVITY)
 public class WanAndroidMainActivity extends BaseActivity {

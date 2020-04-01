@@ -11,7 +11,7 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.ArticleWebViewActivity">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/tool_bar"
         android:background="@color/theme_color"
         android:layout_width="match_parent"
@@ -20,6 +20,6 @@
         app:contentInsetEnd="@dimen/dp_10"
         app:contentInsetStartWithNavigation="0dp"
         app:theme="@style/AppTheme.AppBarOverlay">
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
 </LinearLayout>

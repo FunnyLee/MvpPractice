@@ -2,10 +2,11 @@ package com.example.base.base;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
 import com.gyf.immersionbar.components.SimpleImmersionOwner;
 import com.gyf.immersionbar.components.SimpleImmersionProxy;
+
+import androidx.annotation.Nullable;
 
 /**
  * Author: Funny

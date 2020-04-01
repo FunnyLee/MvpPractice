@@ -1,18 +1,19 @@
 package com.example.toutiao.ui.video;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 
+import com.example.base.adapter.ViewPagerFragmentAdapter;
 import com.example.base.base.BaseFragment;
 import com.example.base.base.BaseMvpFragment;
 import com.example.base.greendao.daoManager.VideoDao;
 import com.example.base.greendao.entity.VideoChannel;
 import com.example.toutiao.R;
-import com.example.base.adapter.ViewPagerFragmentAdapter;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * Author: Funny

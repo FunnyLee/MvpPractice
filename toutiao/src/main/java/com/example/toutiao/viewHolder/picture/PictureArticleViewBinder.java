@@ -1,8 +1,6 @@
 package com.example.toutiao.viewHolder.picture;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +14,8 @@ import com.example.base.utils.TimeUtil;
 import com.example.toutiao.R;
 import com.example.toutiao.entity.phote.PhotoArticleBean;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import me.drakeet.multitype.ItemViewBinder;
 
 /**

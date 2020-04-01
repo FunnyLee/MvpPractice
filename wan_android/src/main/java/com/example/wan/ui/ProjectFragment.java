@@ -1,7 +1,5 @@
 package com.example.wan.ui;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -14,10 +12,13 @@ import com.example.wan.R;
 import com.example.wan.contract.IProjectContract;
 import com.example.wan.entity.ProjectCategoryInfo;
 import com.example.wan.presenter.ProjectPresenter;
+import com.google.android.material.tabs.TabLayout;
 import com.gyf.immersionbar.ImmersionBar;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * Author: Funny

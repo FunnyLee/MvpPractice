@@ -3,11 +3,6 @@ package com.example.toutiao.ui.news;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.support.design.widget.AppBarLayout;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.MenuItem;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -20,11 +15,16 @@ import com.example.toutiao.R;
 import com.example.toutiao.entity.ChannelUIBean;
 import com.example.toutiao.ui.adapter.NewsChannelAdapter;
 import com.example.toutiao.widget.ItemTouchCallback;
+import com.google.android.material.appbar.AppBarLayout;
 import com.gyf.immersionbar.ImmersionBar;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;

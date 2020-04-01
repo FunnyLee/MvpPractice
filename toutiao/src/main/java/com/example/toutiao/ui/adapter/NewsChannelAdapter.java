@@ -1,8 +1,6 @@
 package com.example.toutiao.ui.adapter;
 
 import android.annotation.SuppressLint;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -20,6 +18,9 @@ import com.jakewharton.rxbinding2.view.RxView;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.ItemTouchHelper;
+
 /**
  * Author: Funny
  * Time: 2018/9/30
@@ -35,7 +36,7 @@ public class NewsChannelAdapter extends BaseQuickAdapter<ChannelUIBean, BaseView
 
     private ItemTouchHelper mItemTouchHelper;
 
-    public NewsChannelAdapter(NewsChannelActivity activity, @Nullable List<ChannelUIBean> data,ItemTouchHelper itemTouchHelper) {
+    public NewsChannelAdapter(NewsChannelActivity activity, @Nullable List<ChannelUIBean> data, ItemTouchHelper itemTouchHelper) {
         super(data);
         this.mActivity = activity;
         this.mDatas = data;

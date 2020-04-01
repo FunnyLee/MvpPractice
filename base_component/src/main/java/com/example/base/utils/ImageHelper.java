@@ -3,12 +3,8 @@ package com.example.base.utils;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.annotation.GlideModule;
@@ -19,8 +15,8 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.base.R;
 
-import java.util.logging.Logger;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;

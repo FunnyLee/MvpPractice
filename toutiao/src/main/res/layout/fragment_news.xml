@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <android.support.design.widget.TabLayout
+        <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout_news"
             style="@style/TabLayout"
             android:layout_width="0dp"
@@ -22,7 +22,7 @@
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/AppTheme.AppBarOverlay"
             app:tabTextColor="@color/gray">
-        </android.support.design.widget.TabLayout>
+        </com.google.android.material.tabs.TabLayout>
 
         <ImageView
             android:id="@+id/add_channel_iv"
@@ -41,13 +41,13 @@
             tools:ignore="ContentDescription,VectorDrawableCompat"/>
     </LinearLayout>
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager_news"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:layout="@layout/fragment_list">
-    </android.support.v4.view.ViewPager>
+    </androidx.viewpager.widget.ViewPager>
 
 
 </LinearLayout>

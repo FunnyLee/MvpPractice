@@ -1,16 +1,6 @@
 package com.example.toutiao.ui.activity;
 
 import android.content.Intent;
-import android.support.annotation.IdRes;
-import android.support.design.internal.NavigationMenuView;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -32,10 +22,21 @@ import com.example.toutiao.ui.channel.ChannelFragment;
 import com.example.toutiao.ui.news.NewsFragment;
 import com.example.toutiao.ui.picture.PictureFragment;
 import com.example.toutiao.ui.video.VideoFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.internal.NavigationMenuView;
+import com.google.android.material.navigation.NavigationView;
 import com.gyf.immersionbar.ImmersionBar;
 
 import java.util.List;
 import java.util.Random;
+
+import androidx.annotation.IdRes;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 @Route(path = RouterManager.MAIN_ACTIVTY_URL)
 public class MainActivity extends BaseActivity {

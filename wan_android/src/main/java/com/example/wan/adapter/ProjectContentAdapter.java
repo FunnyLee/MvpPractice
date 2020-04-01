@@ -1,6 +1,5 @@
 package com.example.wan.adapter;
 
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -13,6 +12,8 @@ import com.example.wan.R;
 import com.example.wan.entity.ProjectContentInfo;
 
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 /**
  * Author: Funny

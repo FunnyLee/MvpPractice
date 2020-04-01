@@ -1,9 +1,9 @@
 package com.example.base.utils;
 
-import android.support.annotation.NonNull;
 
 import com.example.base.BuildConfig;
 
+import androidx.annotation.NonNull;
 import io.reactivex.functions.Consumer;
 
 /**

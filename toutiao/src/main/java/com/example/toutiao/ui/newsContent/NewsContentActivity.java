@@ -1,12 +1,6 @@
 package com.example.toutiao.ui.newsContent;
 
 import android.graphics.Bitmap;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.widget.ContentLoadingProgressBar;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebChromeClient;
@@ -22,7 +16,14 @@ import com.example.base.router.RouterManager;
 import com.example.base.utils.ImageHelper;
 import com.example.toutiao.R;
 import com.example.toutiao.entity.news.MultiNewsArticleDataBean;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.gyf.immersionbar.ImmersionBar;
+
+import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.widget.ContentLoadingProgressBar;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
 /**

@@ -1,11 +1,8 @@
 package com.example.wan.ui;
 
-import android.support.annotation.IdRes;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import androidx.core.app.Fragment;
+import androidx.core.app.FragmentManager;
+import androidx.core.app.FragmentTransaction;
 import android.view.MenuItem;
 import android.widget.Toast;
 

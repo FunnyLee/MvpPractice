@@ -1,7 +1,5 @@
 package com.example.wan.adapter;
 
-import android.support.annotation.DimenRes;
-import android.support.annotation.Nullable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -11,6 +9,9 @@ import com.example.wan.R;
 import com.example.wan.entity.BannerIndicatorInfo;
 
 import java.util.List;
+
+import androidx.annotation.DimenRes;
+import androidx.annotation.Nullable;
 
 /**
  * Author: Funny

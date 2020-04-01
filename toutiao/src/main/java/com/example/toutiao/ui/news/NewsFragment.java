@@ -1,26 +1,27 @@
 package com.example.toutiao.ui.news;
 
 import android.annotation.SuppressLint;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.base.Constants;
+import com.example.base.adapter.ViewPagerFragmentAdapter;
 import com.example.base.base.BaseFragment;
 import com.example.base.base.BaseMvpFragment;
 import com.example.base.greendao.daoManager.NewsDao;
 import com.example.base.greendao.entity.NewsChannel;
 import com.example.base.router.RouterManager;
 import com.example.toutiao.R;
-import com.example.base.adapter.ViewPagerFragmentAdapter;
+import com.google.android.material.tabs.TabLayout;
 import com.jakewharton.rxbinding2.view.RxView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import androidx.viewpager.widget.ViewPager;
 
 
 /**

@@ -6,22 +6,22 @@
               android:orientation="horizontal"
               android:weightSum="10">
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/left_recycler_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="3"
         android:overScrollMode="never"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager">
-    </android.support.v7.widget.RecyclerView>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+    </androidx.recyclerview.widget.RecyclerView>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/right_recycler_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="7"
         android:overScrollMode="never"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager">
-    </android.support.v7.widget.RecyclerView>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

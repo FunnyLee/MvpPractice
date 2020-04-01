@@ -1,7 +1,5 @@
 package com.example.wan.ui;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -15,6 +13,9 @@ import com.example.wan.presenter.SystemPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 /**
  * Author: Funny
